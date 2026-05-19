@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam Asadov — AI Product Portfolio</title>
+<meta name="description" content="Seven AI-native products across finance, real estate, clean energy, prediction markets, wellness, travel, and reconstruction. Built by Sam Asadov.">
+<meta property="og:title" content="Sam Asadov — AI Product Portfolio">
+<meta property="og:description" content="Seven AI-native products. One discipline: financial rigor applied to everyday decisions.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #FFFFFF; --panel: #F8FAFC; --line: #E5E7EB; --line-2: #D1D5DB;
+  --text: #0F172A; --muted: #475569; --dim: #94A3B8;
+  --accent: #14B8A6; --accent-strong: #0D9488;
+  --green: #10B981;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+.mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace; }
+
+.topbar {
+  border-bottom: 1px solid var(--line); padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(12px); background-color: rgba(255,255,255,0.85);
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  color: #FFFFFF; font-size: 16px;
+}
+.brand-name { font-weight: 600; font-size: 15px; letter-spacing: -0.2px; }
+.brand-role { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.clock { color: var(--muted); font-size: 12px; }
+.clock .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-right: 6px; vertical-align: 1px; box-shadow: 0 0 8px rgba(16,185,129,0.6); }
+
+.tape { border-bottom: 1px solid var(--line); background: var(--panel); overflow: hidden; white-space: nowrap; padding: 8px 0; font-size: 12px; }
+.tape-track { display: inline-block; animation: scroll 60s linear infinite; padding-left: 100%; }
+.tape-item { margin-right: 36px; color: var(--muted); }
+.tape-item .sym { color: var(--accent-strong); font-weight: 600; }
+.tape-item .chg-up { color: var(--green); }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+.hero { padding: 72px 28px 32px; max-width: 1200px; margin: 0 auto; }
+.eyebrow { color: var(--accent-strong); font-size: 11px; letter-spacing: 2px; font-weight: 600; margin-bottom: 16px; }
+.hero h1 { font-size: 60px; font-weight: 700; line-height: 1.05; letter-spacing: -1.8px; max-width: 860px; color: var(--text); }
+.hero h1 .accent { color: var(--accent-strong); }
+.hero p { color: var(--muted); font-size: 18px; margin-top: 20px; max-width: 680px; line-height: 1.55; }
+.stats { display: flex; gap: 56px; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--line); }
+.stat { display: flex; flex-direction: column; }
+.stat-num { font-family: 'JetBrains Mono', monospace; font-size: 34px; font-weight: 700; color: var(--text); line-height: 1; }
+.stat-label { color: var(--muted); font-size: 11px; letter-spacing: 1.5px; margin-top: 8px; font-weight: 500; }
+
+.industries { padding: 24px 28px 32px; max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; }
+.industries .lab { font-family: 'JetBrains Mono', monospace; color: var(--dim); font-size: 11px; letter-spacing: 1.5px; margin-right: 8px; align-self: center; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 999px; background: var(--chip-bg, #F1F5F9); color: var(--chip-text, #334155); transition: transform 0.15s ease; }
+.chip::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--chip-dot, currentColor); }
+.chip:hover { transform: translateY(-1px); }
+
+.section-head { padding: 48px 28px 16px; max-width: 1200px; margin: 0 auto; display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--line); }
+.section-head h2 { font-size: 13px; letter-spacing: 2px; font-weight: 600; color: var(--accent-strong); }
+.section-head .meta { color: var(--dim); font-size: 12px; }
+
+.positions { padding: 0 28px 64px; max-width: 1200px; margin: 0 auto; }
+.card { background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; position: relative; }
+.card:hover { transform: translateY(-3px); border-color: var(--accent-card, var(--accent)); box-shadow: 0 16px 48px -12px rgba(15,23,42,0.18); }
+
+/* BIG LOGO at top of every card */
+.card-logo {
+  width: 128px; height: 128px;
+  background: var(--accent-card-soft, #F1F5F9);
+  border-radius: 24px; padding: 22px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px; flex-shrink: 0; position: relative;
+}
+.card-logo::after {
+  content: ""; position: absolute; inset: 0; border-radius: 24px;
+  border: 1px solid var(--accent-card, var(--accent));
+  opacity: 0.2; pointer-events: none;
+}
+.card-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.card-logo .fallback {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700; font-size: 36px;
+  color: var(--accent-card, var(--accent));
+  letter-spacing: 1px;
+}
+.card.small .card-logo {
+  width: 96px; height: 96px;
+  border-radius: 20px; padding: 16px;
+  margin-bottom: 16px;
+}
+.card.small .card-logo::after { border-radius: 20px; }
+.card.small .card-logo .fallback { font-size: 26px; }
+
+/* FEATURED */
+.featured { margin-top: 24px; display: grid; grid-template-columns: 1.1fr 1fr; min-height: 520px; }
+.featured .left { padding: 40px 40px 36px; display: flex; flex-direction: column; }
+.featured .right { background: var(--panel); border-left: 1px solid var(--line); position: relative; overflow: hidden; }
+
+.card-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.ticker { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; color: var(--accent-card, var(--accent)); padding: 5px 11px; background: var(--accent-card-soft, rgba(20,184,166,0.1)); border: 1px solid var(--accent-card, var(--accent)); border-radius: 6px; letter-spacing: 1px; }
+.pill { font-size: 10px; letter-spacing: 1.5px; padding: 5px 11px; border-radius: 999px; font-weight: 600; }
+.pill.live { background: rgba(16,185,129,0.1); color: #047857; border: 1px solid rgba(16,185,129,0.3); }
+.pill.live::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; background: var(--green); box-shadow: 0 0 6px rgba(16,185,129,0.6); }
+.category { font-family: 'JetBrains Mono', monospace; color: var(--dim); font-size: 11px; letter-spacing: 1.2px; }
+
+.featured h2 { font-size: 44px; font-weight: 700; letter-spacing: -1.2px; margin-bottom: 10px; color: var(--text); }
+.featured .tagline { color: var(--muted); font-size: 16px; font-style: italic; margin-bottom: 22px; }
+.featured .desc { color: #334155; font-size: 15px; line-height: 1.7; }
+.featured .cta-row { margin-top: auto; padding-top: 32px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 10px; background: var(--accent-card, var(--accent)); color: #FFFFFF; font-weight: 600; font-size: 14px; transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease; }
+.cta:hover { transform: translateX(2px); filter: brightness(1.08); box-shadow: 0 10px 24px -6px var(--accent-card, var(--accent)); }
+.cta .arrow { transition: transform 0.15s ease; }
+.cta:hover .arrow { transform: translateX(4px); }
+.cta.ghost { background: transparent; color: var(--text); border: 1px solid var(--line-2); }
+.cta.ghost:hover { border-color: var(--accent-card, var(--accent)); color: var(--accent-card, var(--accent)); box-shadow: none; }
+
+.preview { position: absolute; inset: 0; }
+.preview iframe { width: 200%; height: 200%; border: 0; transform: scale(0.5); transform-origin: top left; pointer-events: none; filter: saturate(1.05); }
+.preview .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, rgba(248,250,252,0.0) 50%, rgba(248,250,252,0.55) 100%); pointer-events: none; }
+.preview .fallback-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent-card-soft, #F1F5F9) 0%, #FFFFFF 100%); display: none; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; color: var(--accent-card, var(--accent)); font-size: 12px; text-align: center; padding: 24px; flex-direction: column; gap: 8px; }
+.preview.no-frame .fallback-bg { display: flex; }
+.preview.no-frame iframe, .preview.no-frame .scrim { display: none; }
+
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 22px; }
+.card.small { display: flex; flex-direction: column; min-height: 420px; }
+.card.small .small-top { padding: 24px 24px 16px; }
+.card.small h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; margin-bottom: 6px; color: var(--text); }
+.card.small .tagline { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+.card.small .desc { color: #334155; font-size: 13px; line-height: 1.6; }
+.card.small .small-preview { position: relative; flex: 1; min-height: 120px; background: var(--panel); border-top: 1px solid var(--line); overflow: hidden; }
+.card.small .small-preview iframe { width: 250%; height: 250%; border: 0; transform: scale(0.4); transform-origin: top left; pointer-events: none; }
+.card.small .small-preview .fallback-bg { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 6px; background: linear-gradient(135deg, var(--accent-card-soft) 0%, #FFFFFF 100%); font-family: 'JetBrains Mono', monospace; color: var(--accent-card); font-size: 12px; }
+.card.small .small-preview.no-frame .fallback-bg { display: flex; }
+.card.small .small-preview.no-frame iframe { display: none; }
+.card.small .small-bottom { padding: 16px 24px 20px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.card.small .cta-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent-card, var(--accent)); font-weight: 600; letter-spacing: 0.5px; }
+.card.small .cta-link .arrow { display: inline-block; transition: transform 0.2s; }
+.card.small:hover .cta-link .arrow { transform: translateX(4px); }
+
+.footer { padding: 40px 28px 48px; max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--line); margin-top: 32px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.footer .who { color: var(--muted); font-size: 13px; }
+.footer .who strong { color: var(--text); }
+.footer .credits { color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; }
+
+@media (max-width: 960px) {
+  .hero h1 { font-size: 42px; }
+  .featured { grid-template-columns: 1fr; }
+  .featured .right { min-height: 280px; border-left: 0; border-top: 1px solid var(--line); }
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats { gap: 32px; flex-wrap: wrap; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 48px 20px 24px; }
+  .hero h1 { font-size: 34px; }
+  .stats { gap: 24px; flex-wrap: wrap; }
+  .stat-num { font-size: 26px; }
+  .positions { padding: 0 20px 48px; }
+  .featured .left { padding: 28px; }
+  .featured h2 { font-size: 32px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .topbar { padding: 12px 20px; }
+  .brand-role { display: none; }
+  .industries { padding: 16px 20px 24px; }
+  .card-logo { width: 96px; height: 96px; padding: 16px; }
+  .card.small .card-logo { width: 80px; height: 80px; padding: 12px; }
+}
+</style>
+</head><body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">SA</div>
+    <div class="brand-info">
+      <div class="brand-name">Sam Asadov</div>
+      <div class="brand-role">M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Modeler</div>
+    </div>
+  </div>
+  <div class="clock mono"><span class="dot"></span><span id="clock">--:--:-- UTC</span></div>
+</header>
+<div class="tape"><div class="tape-track"><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span></div></div>
+<section class="hero">
+  <div class="eyebrow mono">PORTFOLIO · 2026 · AI-NATIVE</div>
+  <h1>Seven AI products.<br><span class="accent">One discipline.</span></h1>
+  <p>Institutional-grade analysis, applied to the choices people actually make — from buying a home to financing the rebuilding of an entire country.</p>
+  <div class="stats">
+    <div class="stat"><span class="stat-num mono">7</span><span class="stat-label">AI-NATIVE PRODUCTS</span></div>
+    <div class="stat"><span class="stat-num mono">7</span><span class="stat-label">INDUSTRIES SERVED</span></div>
+  </div>
+</section>
+<div class="industries"><span class="lab">INDUSTRIES //</span><a href="#uvidnova" class="chip" style="--chip-bg: #FEF3C7; --chip-text: #92400E; --chip-dot: #F59E0B;">Reconstruction Finance</a><a href="#modelup" class="chip" style="--chip-bg: #CCFBF1; --chip-text: #0F766E; --chip-dot: #14B8A6;">Financial Modeling</a><a href="#roofsolar" class="chip" style="--chip-bg: #FFEDD5; --chip-text: #9A3412; --chip-dot: #F97316;">Clean Energy</a><a href="#polymind" class="chip" style="--chip-bg: #EDE9FE; --chip-text: #5B21B6; --chip-dot: #8B5CF6;">Prediction Markets</a><a href="#dishroll" class="chip" style="--chip-bg: #FCE7F3; --chip-text: #9D174D; --chip-dot: #EC4899;">Wellness</a><a href="#mortwise" class="chip" style="--chip-bg: #DBEAFE; --chip-text: #1E40AF; --chip-dot: #3B82F6;">Real Estate</a><a href="#storyroute" class="chip" style="--chip-bg: #D1FAE5; --chip-text: #065F46; --chip-dot: #10B981;">Travel</a></div>
+<div class="section-head"><h2 class="mono">FEATURED POSITION</h2><span class="meta mono">// anchor asset</span></div>
+<div class="positions">
+<article class="card featured" id="uvidnova" style="--accent-card: #F59E0B; --accent-card-soft: #FEF3C7;">
+  <div class="left">
+    <div class="card-logo">
+      <img class="logo-img" src="assets/logos/uvidnova.png" alt="uVidNova logo">
+      <span class="fallback" style="display:none">UVN</span>
+    </div>
+    <div class="card-meta">
+      <span class="ticker mono">UVN</span>
+      <span class="pill live">LIVE</span>
+      <span class="category">NON-PROFIT · RECONSTRUCTION FINANCE</span>
+    </div>
+    <h2>uVidNova</h2>
+    <div class="tagline">The AI-powered reconstruction-finance atlas of Ukraine</div>
+    <p class="desc">A non-profit AI atlas that maps Ukraine&#x27;s reconstruction asset by asset. For every damaged school, hospital, bridge, or substation, the AI produces three deterministic cost paths — baseline / code-compliant / build-back-better — anchored to World Bank RDNA3 + KSE methodology, and pairs each with the financing structures most likely to fund it.</p>
+    <div class="cta-row">
+      <a class="cta" href="https://uvidnova.org" target="_blank" rel="noopener">Open uVidNova <span class="arrow">→</span></a>
+      <a class="cta ghost" href="#all">View all positions</a>
+    </div>
+  </div>
+  <div class="right">
+    <div class="preview">
+      <iframe src="https://uvidnova.org" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+      <div class="scrim"></div>
+      <div class="fallback-bg">
+        <div>UVN · uVidNova</div>
+        <div>click <strong>Open</strong> to launch</div>
+      </div>
+    </div>
+  </div>
+</article></div>
+<div class="section-head" id="all"><h2 class="mono">ALL POSITIONS</h2><span class="meta mono">// 6 products</span></div>
+<div class="positions"><div class="card-grid">
+<article class="card small" id="modelup" style="--accent-card: #14B8A6; --accent-card-soft: #CCFBF1;">
+  <a href="https://modelups.netlify.app" target="_blank" rel="noopener" style="display:contents;">
+    <div class="small-top">
+      <div class="card-logo">
+      <img class="logo-img" src="assets/logos/modelup.png" alt="ModelUp logo">
+      <span class="fallback" style="display:none">MUP</span>
+    </div>
+      <div class="card-meta">
+        <span class="ticker mono">MUP</span>
+        <span class="pill live">LIVE</span>
+      </div>
+      <h3>ModelUp</h3>
+      <div class="tagline">AI-generated financial models for founders</div>
+      <p class="desc">Describe your business in plain language and the AI generates an investor-grade three-statement model — revenue forecasts, sensitivities, runway, professional formatting. Decades of M&amp;A and structured finance discipline distilled into an AI engine.</p>
+    </div>
+    <div class="small-preview">
+      <iframe src="https://modelups.netlify.app" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+      <div class="fallback-bg">
+        <div>MUP</div>
+        <div style="font-size:11px;">click to open</div>
+      </div>
+    </div>
+    <div class="small-bottom">
+      <span class="category">SAAS · FINANCIAL MODELING</span>
+      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+    </div>
+  </a>
+</article>
+<article class="card small" id="roofsolar" style="--accent-card: #F97316; --accent-card-soft: #FFEDD5;">
+  <a href="https://roofsolars.netlify.app" target="_blank" rel="noopener" style="display:contents;">
+    <div class="small-top">
+      <div class="card-logo">
+      <img class="logo-img" src="assets/logos/roofsolar.png" alt="RoofSolar logo">
+      <span class="fallback" style="display:none">RSL</span>
+    </div>
+      <div class="card-meta">
+        <span class="ticker mono">RSL</span>
+        <span class="pill live">LIVE</span>
+      </div>
+      <h3>RoofSolar</h3>
+      <div class="tagline">AI-driven solar ROI in seconds</div>
+      <p class="desc">Enter location, roof size, and electricity bill — the AI factors in sunlight patterns, panel efficiency curves, utility rates, incentives, and lifetime degradation to project payback, monthly savings, and 25-year cash flows. Model-grade economics without the sales pitch.</p>
+    </div>
+    <div class="small-preview">
+      <iframe src="https://roofsolars.netlify.app" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+      <div class="fallback-bg">
+        <div>RSL</div>
+        <div style="font-size:11px;">click to open</div>
+      </div>
+    </div>
+    <div class="small-bottom">
+      <span class="category">CALCULATOR · CLEAN ENERGY</span>
+      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+    </div>
+  </a>
+</article>
+<article class="card small" id="polymind" style="--accent-card: #8B5CF6; --accent-card-soft: #EDE9FE;">
+  <a href="https://polyminds.netlify.app" target="_blank" rel="noopener" style="display:contents;">
+    <div class="small-top">
+      <div class="card-logo">
+      <img class="logo-img" src="assets/logos/polymind.png" alt="PolyMind logo">
+      <span class="fallback" style="display:none">PMD</span>
+    </div>
+      <div class="card-meta">
+        <span class="ticker mono">PMD</span>
+        <span class="pill live">LIVE</span>
+      </div>
+      <h3>PolyMind</h3>
+      <div class="tagline">AI signals for prediction-market traders</div>
+      <p class="desc">An AI alert engine that watches the entire PolyMarket firehose and pings you the moment a contract moves on real signal — not noise. Price action, volume spikes, and news flow across politics, sports, crypto, and macro, intelligently filtered.</p>
+    </div>
+    <div class="small-preview">
+      <iframe src="https://polyminds.netlify.app" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+      <div class="fallback-bg">
+        <div>PMD</div>
+        <div style="font-size:11px;">click to open</div>
+      </div>
+    </div>
+    <div class="small-bottom">
+      <span class="category">TRADING · PREDICTION MARKETS</span>
+      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+    </div>
+  </a>
+</article>
+<article class="card small" id="dishroll" style="--accent-card: #EC4899; --accent-card-soft: #FCE7F3;">
+  <a href="https://dishroll.netlify.app" target="_blank" rel="noopener" style="display:contents;">
+    <div class="small-top">
+      <div class="card-logo">
+      <img class="logo-img" src="assets/logos/dishroll.png" alt="DishRoll logo">
+      <span class="fallback" style="display:none">DSH</span>
+    </div>
+      <div class="card-meta">
+        <span class="ticker mono">DSH</span>
+        <span class="pill live">LIVE</span>
+      </div>
+      <h3>DishRoll</h3>
+      <div class="tagline">Your personal AI meal planner</div>
+      <p class="desc">Tell the AI your diet, allergies, budget, and cooking time — it generates a 7-day plan with recipes, a consolidated shopping list, and balanced nutrition. PWA runs anywhere and learns what you actually like. Stripe-powered freemium.</p>
+    </div>
+    <div class="small-preview">
+      <iframe src="https://dishroll.netlify.app" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+      <div class="fallback-bg">
+        <div>DSH</div>
+        <div style="font-size:11px;">click to open</div>
+      </div>
+    </div>
+    <div class="small-bottom">
+      <span class="category">CONSUMER · WELLNESS</span>
+      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+    </div>
+  </a>
+</article>
+<article class="card small" id="mortwise" style="--accent-card: #3B82F6; --accent-card-soft: #DBEAFE;">
+  <a href="https://mortwise.netlify.app" target="_blank" rel="noopener" style="display:contents;">
+    <div class="small-top">
+      <div class="card-logo">
+      <img class="logo-img" src="assets/logos/mortwise.png" alt="MortWise logo">
+      <span class="fallback" style="display:none">MWS</span>
+    </div>
+      <div class="card-meta">
+        <span class="ticker mono">MWS</span>
+        <span class="pill live">LIVE</span>
+      </div>
+      <h3>MortWise</h3>
+      <div class="tagline">Your AI mortgage co-pilot</div>
+      <p class="desc">AI mortgage analyzer that runs full amortization schedules, surfaces the cheapest path over the loan&#x27;s life, and stress-tests scenarios most buyers never check — extra payments, rate shifts, refinancing windows.</p>
+    </div>
+    <div class="small-preview">
+      <iframe src="https://mortwise.netlify.app" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+      <div class="fallback-bg">
+        <div>MWS</div>
+        <div style="font-size:11px;">click to open</div>
+      </div>
+    </div>
+    <div class="small-bottom">
+      <span class="category">CALCULATOR · REAL ESTATE</span>
+      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+    </div>
+  </a>
+</article>
+<article class="card small" id="storyroute" style="--accent-card: #10B981; --accent-card-soft: #D1FAE5;">
+  <a href="https://storyroute.netlify.app" target="_blank" rel="noopener" style="display:contents;">
+    <div class="small-top">
+      <div class="card-logo">
+      <img class="logo-img" src="assets/logos/storyroute.png" alt="StoryRoute logo">
+      <span class="fallback" style="display:none">SRT</span>
+    </div>
+      <div class="card-meta">
+        <span class="ticker mono">SRT</span>
+        <span class="pill live">LIVE</span>
+      </div>
+      <h3>StoryRoute</h3>
+      <div class="tagline">AI-narrated city exploration</div>
+      <p class="desc">AI travel companion that turns any city walk into an immersive narrated experience. Custom routes tuned to your interests, with the stories behind each street, building, and hidden corner woven into a cinematic walking tour.</p>
+    </div>
+    <div class="small-preview">
+      <iframe src="https://storyroute.netlify.app" loading="lazy" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+      <div class="fallback-bg">
+        <div>SRT</div>
+        <div style="font-size:11px;">click to open</div>
+      </div>
+    </div>
+    <div class="small-bottom">
+      <span class="category">CONSUMER · TRAVEL</span>
+      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+    </div>
+  </a>
+</article></div></div>
+<footer class="footer">
+  <div class="who"><strong>Sam Asadov</strong> · M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Financial Modeler</div>
+  <div class="credits mono">© 2026 · BUILT WITH AI · DEPLOYED ON NETLIFY</div>
+</footer>
+<script>
+(function(){
+  const el = document.getElementById('clock');
+  if (!el) return;
+  function tick(){ const d = new Date();
+    el.textContent = `${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}:${String(d.getUTCSeconds()).padStart(2,'0')} UTC`;
+  } tick(); setInterval(tick, 1000);
+})();
+(function(){
+  document.querySelectorAll('.preview, .small-preview').forEach(c => {
+    const f = c.querySelector('iframe'); if (!f) return;
+    let loaded = false; f.addEventListener('load', () => loaded = true);
+    setTimeout(() => { if (!loaded) c.classList.add('no-frame'); }, 5000);
+  });
+})();
+(function(){
+  document.querySelectorAll('.logo-img').forEach(img => {
+    img.addEventListener('error', () => {
+      const fb = img.parentElement.querySelector('.fallback');
+      img.style.display = 'none';
+      if (fb) fb.style.display = 'block';
+    });
+  });
+})();
+</script>
+</body>
+</html>

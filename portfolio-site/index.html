@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-F6ZX7NB436');
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +35,7 @@ a { color: inherit; text-decoration: none; }
 .topbar {
   border-bottom: 1px solid var(--line); padding: 14px 28px;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 24px; position: sticky; top: 0; z-index: 50;
+  gap: 16px; position: sticky; top: 0; z-index: 50;
   backdrop-filter: blur(12px); background-color: rgba(255,255,255,0.85);
 }
 .brand { display: flex; align-items: center; gap: 14px; }
@@ -45,12 +44,43 @@ a { color: inherit; text-decoration: none; }
   background: linear-gradient(135deg, var(--accent), var(--accent-strong));
   display: flex; align-items: center; justify-content: center;
   font-family: 'JetBrains Mono', monospace; font-weight: 700;
-  color: #FFFFFF; font-size: 16px;
+  color: #FFFFFF; font-size: 16px; flex-shrink: 0;
 }
 .brand-name { font-weight: 600; font-size: 15px; letter-spacing: -0.2px; }
 .brand-role { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
 .clock { color: var(--muted); font-size: 12px; }
 .clock .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-right: 6px; vertical-align: 1px; box-shadow: 0 0 8px rgba(16,185,129,0.6); }
+
+/* Language switcher */
+.lang-switcher { position: relative; }
+.lang-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--panel); cursor: pointer; font-size: 13px; font-weight: 500;
+  color: var(--text); transition: border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.lang-btn:hover { border-color: var(--accent); background: #fff; }
+.lang-btn .chevron { font-size: 10px; color: var(--dim); transition: transform 0.2s; }
+.lang-switcher.open .lang-btn .chevron { transform: rotate(180deg); }
+.lang-dropdown {
+  display: none; position: absolute; top: calc(100% + 6px); right: 0;
+  background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 8px 32px -8px rgba(15,23,42,0.18);
+  padding: 6px; min-width: 200px; max-height: 360px; overflow-y: auto;
+  z-index: 100;
+}
+.lang-switcher.open .lang-dropdown { display: block; }
+.lang-option {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 8px; cursor: pointer;
+  font-size: 13px; color: var(--text); transition: background 0.12s;
+}
+.lang-option:hover { background: var(--panel); }
+.lang-option.active { background: rgba(20,184,166,0.08); color: var(--accent-strong); font-weight: 600; }
+.lang-flag { font-size: 18px; line-height: 1; width: 24px; text-align: center; }
+.lang-code { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--dim); margin-left: auto; }
 
 .tape { border-bottom: 1px solid var(--line); background: var(--panel); overflow: hidden; white-space: nowrap; padding: 8px 0; font-size: 12px; }
 .tape-track { display: inline-block; animation: scroll 60s linear infinite; padding-left: 100%; }
@@ -83,7 +113,6 @@ a { color: inherit; text-decoration: none; }
 .card { background: #FFFFFF; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; position: relative; }
 .card:hover { transform: translateY(-3px); border-color: var(--accent-card, var(--accent)); box-shadow: 0 16px 48px -12px rgba(15,23,42,0.18); }
 
-/* BIG LOGO at top of every card */
 .card-logo {
   width: 128px; height: 128px;
   background: var(--accent-card-soft, #F1F5F9);
@@ -97,21 +126,11 @@ a { color: inherit; text-decoration: none; }
   opacity: 0.2; pointer-events: none;
 }
 .card-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.card-logo .fallback {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700; font-size: 36px;
-  color: var(--accent-card, var(--accent));
-  letter-spacing: 1px;
-}
-.card.small .card-logo {
-  width: 96px; height: 96px;
-  border-radius: 20px; padding: 16px;
-  margin-bottom: 16px;
-}
+.card-logo .fallback { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 36px; color: var(--accent-card, var(--accent)); letter-spacing: 1px; }
+.card.small .card-logo { width: 96px; height: 96px; border-radius: 20px; padding: 16px; margin-bottom: 16px; }
 .card.small .card-logo::after { border-radius: 20px; }
 .card.small .card-logo .fallback { font-size: 26px; }
 
-/* FEATURED */
 .featured { margin-top: 24px; display: grid; grid-template-columns: 1.1fr 1fr; min-height: 520px; }
 .featured .left { padding: 40px 40px 36px; display: flex; flex-direction: column; }
 .featured .right { background: var(--panel); border-left: 1px solid var(--line); position: relative; overflow: hidden; }
@@ -135,11 +154,7 @@ a { color: inherit; text-decoration: none; }
 .cta.ghost:hover { border-color: var(--accent-card, var(--accent)); color: var(--accent-card, var(--accent)); box-shadow: none; }
 
 .preview { position: absolute; inset: 0; }
-.preview iframe { width: 200%; height: 200%; border: 0; transform: scale(0.5); transform-origin: top left; pointer-events: none; filter: saturate(1.05); }
 .preview .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 0%, rgba(248,250,252,0.0) 50%, rgba(248,250,252,0.55) 100%); pointer-events: none; }
-.preview .fallback-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent-card-soft, #F1F5F9) 0%, #FFFFFF 100%); display: none; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; color: var(--accent-card, var(--accent)); font-size: 12px; text-align: center; padding: 24px; flex-direction: column; gap: 8px; }
-.preview.no-frame .fallback-bg { display: flex; }
-.preview.no-frame iframe, .preview.no-frame .scrim { display: none; }
 
 .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 22px; }
 .card.small { display: flex; flex-direction: column; min-height: 420px; }
@@ -148,10 +163,6 @@ a { color: inherit; text-decoration: none; }
 .card.small .tagline { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
 .card.small .desc { color: #334155; font-size: 13px; line-height: 1.6; }
 .card.small .small-preview { position: relative; flex: 1; min-height: 160px; background: var(--panel); border-top: 1px solid var(--line); overflow: hidden; }
-.card.small .small-preview iframe { width: 250%; height: 250%; border: 0; transform: scale(0.4); transform-origin: top left; pointer-events: none; }
-.card.small .small-preview .fallback-bg { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 6px; background: linear-gradient(135deg, var(--accent-card-soft) 0%, #FFFFFF 100%); font-family: 'JetBrains Mono', monospace; color: var(--accent-card); font-size: 12px; }
-.card.small .small-preview.no-frame .fallback-bg { display: flex; }
-.card.small .small-preview.no-frame iframe { display: none; }
 .card.small .small-bottom { padding: 16px 24px 20px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .card.small .cta-link { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent-card, var(--accent)); font-weight: 600; letter-spacing: 0.5px; }
 .card.small .cta-link .arrow { display: inline-block; transition: transform 0.2s; }
@@ -161,6 +172,13 @@ a { color: inherit; text-decoration: none; }
 .footer .who { color: var(--muted); font-size: 13px; }
 .footer .who strong { color: var(--text); }
 .footer .credits { color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; }
+
+/* RTL support */
+html[dir="rtl"] .tape-track { animation-direction: reverse; }
+html[dir="rtl"] .lang-dropdown { right: auto; left: 0; }
+html[dir="rtl"] .cta:hover { transform: translateX(-2px); }
+html[dir="rtl"] .cta:hover .arrow { transform: translateX(-4px); }
+html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px); }
 
 @media (max-width: 960px) {
   .hero h1 { font-size: 42px; }
@@ -183,6 +201,7 @@ a { color: inherit; text-decoration: none; }
   .industries { padding: 16px 20px 24px; }
   .card-logo { width: 96px; height: 96px; padding: 16px; }
   .card.small .card-logo { width: 80px; height: 80px; padding: 12px; }
+  .lang-btn span:not(.chevron):not(.lang-flag) { display: none; }
 }
 </style>
 </head><body>
@@ -191,25 +210,68 @@ a { color: inherit; text-decoration: none; }
     <div class="brand-mark">SA</div>
     <div class="brand-info">
       <div class="brand-name">Samir Asadov</div>
-      <div class="brand-role">M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Modeler</div>
+      <div class="brand-role" data-i18n="nav.role">M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Modeler</div>
     </div>
   </div>
-  <div class="clock mono"><span class="dot"></span><span id="clock">--:--:-- UTC</span></div>
+  <div class="topbar-right">
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <span class="lang-flag" id="langFlag">🇬🇧</span>
+        <span id="langLabel">EN</span>
+        <span class="chevron">▾</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown" role="listbox">
+        <div class="lang-option active" data-lang="en" role="option"><span class="lang-flag">🇬🇧</span> English <span class="lang-code">EN</span></div>
+        <div class="lang-option" data-lang="uk" role="option"><span class="lang-flag">🇺🇦</span> Українська <span class="lang-code">UK</span></div>
+        <div class="lang-option" data-lang="fr" role="option"><span class="lang-flag">🇫🇷</span> Français <span class="lang-code">FR</span></div>
+        <div class="lang-option" data-lang="es" role="option"><span class="lang-flag">🇪🇸</span> Español <span class="lang-code">ES</span></div>
+        <div class="lang-option" data-lang="de" role="option"><span class="lang-flag">🇩🇪</span> Deutsch <span class="lang-code">DE</span></div>
+        <div class="lang-option" data-lang="pt" role="option"><span class="lang-flag">🇵🇹</span> Português <span class="lang-code">PT</span></div>
+        <div class="lang-option" data-lang="it" role="option"><span class="lang-flag">🇮🇹</span> Italiano <span class="lang-code">IT</span></div>
+        <div class="lang-option" data-lang="nl" role="option"><span class="lang-flag">🇳🇱</span> Nederlands <span class="lang-code">NL</span></div>
+        <div class="lang-option" data-lang="tr" role="option"><span class="lang-flag">🇹🇷</span> Türkçe <span class="lang-code">TR</span></div>
+        <div class="lang-option" data-lang="zh" role="option"><span class="lang-flag">🇨🇳</span> 中文 <span class="lang-code">ZH</span></div>
+        <div class="lang-option" data-lang="ar" role="option"><span class="lang-flag">🇸🇦</span> العربية <span class="lang-code">AR</span></div>
+        <div class="lang-option" data-lang="hi" role="option"><span class="lang-flag">🇮🇳</span> हिन्दी <span class="lang-code">HI</span></div>
+        <div class="lang-option" data-lang="ru" role="option"><span class="lang-flag" style="font-family:monospace;font-size:12px;font-weight:700;color:var(--dim);">ru</span> Русский <span class="lang-code">RU</span></div>
+        <div class="lang-option" data-lang="bn" role="option"><span class="lang-flag">🇧🇩</span> বাংলা <span class="lang-code">BN</span></div>
+        <div class="lang-option" data-lang="ja" role="option"><span class="lang-flag">🇯🇵</span> 日本語 <span class="lang-code">JA</span></div>
+        <div class="lang-option" data-lang="id" role="option"><span class="lang-flag">🇮🇩</span> Indonesia <span class="lang-code">ID</span></div>
+      </div>
+    </div>
+    <div class="clock mono"><span class="dot"></span><span id="clock">--:--:-- UTC</span></div>
+  </div>
 </header>
+
 <div class="tape"><div class="tape-track"><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span></div></div>
+
 <section class="hero">
-  <div class="eyebrow mono">PORTFOLIO · 2026 · AI-NATIVE</div>
-  <h1>Seven AI products.<br><span class="accent">One discipline.</span></h1>
-  <p>Institutional-grade analysis, applied to the choices people actually make — from buying a home to financing the rebuilding of an entire country.</p>
+  <div class="eyebrow mono" data-i18n="hero.eyebrow">PORTFOLIO · 2026 · AI-NATIVE</div>
+  <h1><span data-i18n="hero.h1a">Seven AI products.</span><br><span class="accent" data-i18n="hero.h1b">One discipline.</span></h1>
+  <p data-i18n="hero.p">Institutional-grade analysis, applied to the choices people actually make — from buying a home to financing the rebuilding of an entire country.</p>
   <div class="stats">
-    <div class="stat"><span class="stat-num mono">7</span><span class="stat-label">AI-NATIVE PRODUCTS</span></div>
-    <div class="stat"><span class="stat-num mono">7</span><span class="stat-label">INDUSTRIES SERVED</span></div>
+    <div class="stat"><span class="stat-num mono">7</span><span class="stat-label" data-i18n="stats.label1">AI-NATIVE PRODUCTS</span></div>
+    <div class="stat"><span class="stat-num mono">7</span><span class="stat-label" data-i18n="stats.label2">INDUSTRIES SERVED</span></div>
   </div>
 </section>
-<div class="industries"><span class="lab">INDUSTRIES //</span><a href="#uvidnova" class="chip" style="--chip-bg: #FEF3C7; --chip-text: #92400E; --chip-dot: #F59E0B;">Reconstruction Finance</a><a href="#modelup" class="chip" style="--chip-bg: #CCFBF1; --chip-text: #0F766E; --chip-dot: #14B8A6;">Financial Modeling</a><a href="#roofsolar" class="chip" style="--chip-bg: #FFEDD5; --chip-text: #9A3412; --chip-dot: #F97316;">Clean Energy</a><a href="#polymind" class="chip" style="--chip-bg: #EDE9FE; --chip-text: #5B21B6; --chip-dot: #8B5CF6;">Prediction Markets</a><a href="#dishroll" class="chip" style="--chip-bg: #FCE7F3; --chip-text: #9D174D; --chip-dot: #EC4899;">Wellness</a><a href="#mortwise" class="chip" style="--chip-bg: #DBEAFE; --chip-text: #1E40AF; --chip-dot: #3B82F6;">Real Estate</a><a href="#storyroute" class="chip" style="--chip-bg: #D1FAE5; --chip-text: #065F46; --chip-dot: #10B981;">Travel</a></div>
-<div class="section-head"><h2 class="mono">FEATURED POSITION</h2><span class="meta mono">// anchor asset</span></div>
+
+<div class="industries">
+  <span class="lab" data-i18n="ind.label">INDUSTRIES //</span>
+  <a href="#uvidnova" class="chip" style="--chip-bg:#FEF3C7;--chip-text:#92400E;--chip-dot:#F59E0B;" data-i18n="ind.reconstruction">Reconstruction Finance</a>
+  <a href="#modelup" class="chip" style="--chip-bg:#CCFBF1;--chip-text:#0F766E;--chip-dot:#14B8A6;" data-i18n="ind.modeling">Financial Modeling</a>
+  <a href="#roofsolar" class="chip" style="--chip-bg:#FFEDD5;--chip-text:#9A3412;--chip-dot:#F97316;" data-i18n="ind.energy">Clean Energy</a>
+  <a href="#polymind" class="chip" style="--chip-bg:#EDE9FE;--chip-text:#5B21B6;--chip-dot:#8B5CF6;" data-i18n="ind.prediction">Prediction Markets</a>
+  <a href="#dishroll" class="chip" style="--chip-bg:#FCE7F3;--chip-text:#9D174D;--chip-dot:#EC4899;" data-i18n="ind.wellness">Wellness</a>
+  <a href="#mortwise" class="chip" style="--chip-bg:#DBEAFE;--chip-text:#1E40AF;--chip-dot:#3B82F6;" data-i18n="ind.realestate">Real Estate</a>
+  <a href="#storyroute" class="chip" style="--chip-bg:#D1FAE5;--chip-text:#065F46;--chip-dot:#10B981;" data-i18n="ind.travel">Travel</a>
+</div>
+
+<div class="section-head">
+  <h2 class="mono" data-i18n="sec.featured">FEATURED POSITION</h2>
+  <span class="meta mono" data-i18n="sec.featured.meta">// anchor asset</span>
+</div>
 <div class="positions">
-<article class="card featured" id="uvidnova" style="--accent-card: #F59E0B; --accent-card-soft: #FEF3C7;">
+<article class="card featured" id="uvidnova" style="--accent-card:#F59E0B;--accent-card-soft:#FEF3C7;">
   <div class="left">
     <div class="card-logo">
       <img class="logo-img" src="assets/logos/uVidNova.png" alt="uVidNova logo">
@@ -218,14 +280,14 @@ a { color: inherit; text-decoration: none; }
     <div class="card-meta">
       <span class="ticker mono">UVN</span>
       <span class="pill live">LIVE</span>
-      <span class="category">NON-PROFIT · RECONSTRUCTION FINANCE</span>
+      <span class="category" data-i18n="uvn.category">NON-PROFIT · RECONSTRUCTION FINANCE</span>
     </div>
     <h2>uVidNova</h2>
-    <div class="tagline">The AI-powered reconstruction-finance atlas of Ukraine</div>
-    <p class="desc">A non-profit AI atlas that maps Ukraine&#x27;s reconstruction asset by asset. For every damaged school, hospital, bridge, or substation, the AI produces three deterministic cost paths — baseline / code-compliant / build-back-better — anchored to World Bank RDNA3 + KSE methodology, and pairs each with the financing structures most likely to fund it.</p>
+    <div class="tagline" data-i18n="uvn.tagline">The AI-powered reconstruction-finance atlas of Ukraine</div>
+    <p class="desc" data-i18n="uvn.desc">A non-profit AI atlas that maps Ukraine's reconstruction asset by asset. For every damaged school, hospital, bridge, or substation, the AI produces three deterministic cost paths — baseline / code-compliant / build-back-better — anchored to World Bank RDNA3 + KSE methodology, and pairs each with the financing structures most likely to fund it.</p>
     <div class="cta-row">
-      <a class="cta" href="https://uvidnova.netlify.app/" target="_blank" rel="noopener">Open uVidNova <span class="arrow">→</span></a>
-      <a class="cta ghost" href="#all">View all positions</a>
+      <a class="cta" href="https://uvidnova.netlify.app/" target="_blank" rel="noopener"><span data-i18n="uvn.cta1">Open uVidNova</span> <span class="arrow">→</span></a>
+      <a class="cta ghost" href="#all" data-i18n="uvn.cta2">View all positions</a>
     </div>
   </div>
   <div class="right">
@@ -234,158 +296,174 @@ a { color: inherit; text-decoration: none; }
       <div class="scrim"></div>
     </div>
   </div>
-</article></div>
-<div class="section-head" id="all"><h2 class="mono">ALL POSITIONS</h2><span class="meta mono">// 6 products</span></div>
+</article>
+</div>
+
+<div class="section-head" id="all">
+  <h2 class="mono" data-i18n="sec.all">ALL POSITIONS</h2>
+  <span class="meta mono" data-i18n="sec.all.meta">// 6 products</span>
+</div>
 <div class="positions"><div class="card-grid">
-<article class="card small" id="modelup" style="--accent-card: #14B8A6; --accent-card-soft: #CCFBF1;">
+
+<article class="card small" id="modelup" style="--accent-card:#14B8A6;--accent-card-soft:#CCFBF1;">
   <a href="https://modelups.netlify.app" target="_blank" rel="noopener" style="display:contents;">
     <div class="small-top">
       <div class="card-logo">
-      <img class="logo-img" src="assets/logos/ModelUp.png" alt="ModelUp logo">
-      <span class="fallback" style="display:none">MUP</span>
-    </div>
+        <img class="logo-img" src="assets/logos/ModelUp.png" alt="ModelUp logo">
+        <span class="fallback" style="display:none">MUP</span>
+      </div>
       <div class="card-meta">
         <span class="ticker mono">MUP</span>
         <span class="pill live">LIVE</span>
       </div>
       <h3>ModelUp</h3>
-      <div class="tagline">AI-generated financial models for founders</div>
-      <p class="desc">Describe your business in plain language and the AI generates an investor-grade three-statement model — revenue forecasts, sensitivities, runway, professional formatting. Decades of M&amp;A and structured finance discipline distilled into an AI engine.</p>
+      <div class="tagline" data-i18n="mup.tagline">AI-generated financial models for founders</div>
+      <p class="desc" data-i18n="mup.desc">Describe your business in plain language and the AI generates an investor-grade three-statement model — revenue forecasts, sensitivities, runway, professional formatting. Decades of M&amp;A and structured finance discipline distilled into an AI engine.</p>
     </div>
     <div class="small-preview">
       <img src="assets/ModelUp.png" alt="ModelUp preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
     </div>
     <div class="small-bottom">
-      <span class="category">SAAS · FINANCIAL MODELING</span>
-      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+      <span class="category" data-i18n="mup.category">SAAS · FINANCIAL MODELING</span>
+      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
     </div>
   </a>
 </article>
-<article class="card small" id="roofsolar" style="--accent-card: #F97316; --accent-card-soft: #FFEDD5;">
+
+<article class="card small" id="roofsolar" style="--accent-card:#F97316;--accent-card-soft:#FFEDD5;">
   <a href="https://roofsolars.netlify.app" target="_blank" rel="noopener" style="display:contents;">
     <div class="small-top">
       <div class="card-logo">
-      <img class="logo-img" src="assets/logos/RoofSolar.png" alt="RoofSolar logo">
-      <span class="fallback" style="display:none">RSL</span>
-    </div>
+        <img class="logo-img" src="assets/logos/RoofSolar.png" alt="RoofSolar logo">
+        <span class="fallback" style="display:none">RSL</span>
+      </div>
       <div class="card-meta">
         <span class="ticker mono">RSL</span>
         <span class="pill live">LIVE</span>
       </div>
       <h3>RoofSolar</h3>
-      <div class="tagline">AI-driven solar ROI in seconds</div>
-      <p class="desc">Enter location, roof size, and electricity bill — the AI factors in sunlight patterns, panel efficiency curves, utility rates, incentives, and lifetime degradation to project payback, monthly savings, and 25-year cash flows. Model-grade economics without the sales pitch.</p>
+      <div class="tagline" data-i18n="rsl.tagline">AI-driven solar ROI in seconds</div>
+      <p class="desc" data-i18n="rsl.desc">Enter location, roof size, and electricity bill — the AI factors in sunlight patterns, panel efficiency curves, utility rates, incentives, and lifetime degradation to project payback, monthly savings, and 25-year cash flows. Model-grade economics without the sales pitch.</p>
     </div>
     <div class="small-preview">
       <img src="assets/RoofSolar.png" alt="RoofSolar preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
     </div>
     <div class="small-bottom">
-      <span class="category">CALCULATOR · CLEAN ENERGY</span>
-      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+      <span class="category" data-i18n="rsl.category">CALCULATOR · CLEAN ENERGY</span>
+      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
     </div>
   </a>
 </article>
-<article class="card small" id="polymind" style="--accent-card: #8B5CF6; --accent-card-soft: #EDE9FE;">
+
+<article class="card small" id="polymind" style="--accent-card:#8B5CF6;--accent-card-soft:#EDE9FE;">
   <a href="https://polyminds.netlify.app" target="_blank" rel="noopener" style="display:contents;">
     <div class="small-top">
       <div class="card-logo">
-      <img class="logo-img" src="assets/logos/PolyMind.png" alt="PolyMind logo">
-      <span class="fallback" style="display:none">PMD</span>
-    </div>
+        <img class="logo-img" src="assets/logos/PolyMind.png" alt="PolyMind logo">
+        <span class="fallback" style="display:none">PMD</span>
+      </div>
       <div class="card-meta">
         <span class="ticker mono">PMD</span>
         <span class="pill live">LIVE</span>
       </div>
       <h3>PolyMind</h3>
-      <div class="tagline">AI signals for prediction-market traders</div>
-      <p class="desc">An AI alert engine that watches the entire PolyMarket firehose and pings you the moment a contract moves on real signal — not noise. Price action, volume spikes, and news flow across politics, sports, crypto, and macro, intelligently filtered.</p>
+      <div class="tagline" data-i18n="pmd.tagline">AI signals for prediction-market traders</div>
+      <p class="desc" data-i18n="pmd.desc">An AI alert engine that watches the entire PolyMarket firehose and pings you the moment a contract moves on real signal — not noise. Price action, volume spikes, and news flow across politics, sports, crypto, and macro, intelligently filtered.</p>
     </div>
     <div class="small-preview">
       <img src="assets/PolyMind.png" alt="PolyMind preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
     </div>
     <div class="small-bottom">
-      <span class="category">TRADING · PREDICTION MARKETS</span>
-      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+      <span class="category" data-i18n="pmd.category">TRADING · PREDICTION MARKETS</span>
+      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
     </div>
   </a>
 </article>
-<article class="card small" id="dishroll" style="--accent-card: #EC4899; --accent-card-soft: #FCE7F3;">
+
+<article class="card small" id="dishroll" style="--accent-card:#EC4899;--accent-card-soft:#FCE7F3;">
   <a href="https://dishroll.netlify.app" target="_blank" rel="noopener" style="display:contents;">
     <div class="small-top">
       <div class="card-logo">
-      <img class="logo-img" src="assets/logos/DishRoll.png" alt="DishRoll logo">
-      <span class="fallback" style="display:none">DSH</span>
-    </div>
+        <img class="logo-img" src="assets/logos/DishRoll.png" alt="DishRoll logo">
+        <span class="fallback" style="display:none">DSH</span>
+      </div>
       <div class="card-meta">
         <span class="ticker mono">DSH</span>
         <span class="pill live">LIVE</span>
       </div>
       <h3>DishRoll</h3>
-      <div class="tagline">Your personal AI meal planner</div>
-      <p class="desc">Tell the AI your diet, allergies, budget, and cooking time — it generates a 7-day plan with recipes, a consolidated shopping list, and balanced nutrition. PWA runs anywhere and learns what you actually like. Stripe-powered freemium.</p>
+      <div class="tagline" data-i18n="dsh.tagline">Your personal AI meal planner</div>
+      <p class="desc" data-i18n="dsh.desc">Tell the AI your diet, allergies, budget, and cooking time — it generates a 7-day plan with recipes, a consolidated shopping list, and balanced nutrition. PWA runs anywhere and learns what you actually like. Stripe-powered freemium.</p>
     </div>
     <div class="small-preview">
       <img src="assets/DishRoll.png" alt="DishRoll preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
     </div>
     <div class="small-bottom">
-      <span class="category">CONSUMER · WELLNESS</span>
-      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+      <span class="category" data-i18n="dsh.category">CONSUMER · WELLNESS</span>
+      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
     </div>
   </a>
 </article>
-<article class="card small" id="mortwise" style="--accent-card: #3B82F6; --accent-card-soft: #DBEAFE;">
+
+<article class="card small" id="mortwise" style="--accent-card:#3B82F6;--accent-card-soft:#DBEAFE;">
   <a href="https://mortwise.netlify.app" target="_blank" rel="noopener" style="display:contents;">
     <div class="small-top">
       <div class="card-logo">
-      <img class="logo-img" src="assets/logos/MortWise.png" alt="MortWise logo">
-      <span class="fallback" style="display:none">MWS</span>
-    </div>
+        <img class="logo-img" src="assets/logos/MortWise.png" alt="MortWise logo">
+        <span class="fallback" style="display:none">MWS</span>
+      </div>
       <div class="card-meta">
         <span class="ticker mono">MWS</span>
         <span class="pill live">LIVE</span>
       </div>
       <h3>MortWise</h3>
-      <div class="tagline">Your AI mortgage co-pilot</div>
-      <p class="desc">AI mortgage analyzer that runs full amortization schedules, surfaces the cheapest path over the loan&#x27;s life, and stress-tests scenarios most buyers never check — extra payments, rate shifts, refinancing windows.</p>
+      <div class="tagline" data-i18n="mws.tagline">Your AI mortgage co-pilot</div>
+      <p class="desc" data-i18n="mws.desc">AI mortgage analyzer that runs full amortization schedules, surfaces the cheapest path over the loan's life, and stress-tests scenarios most buyers never check — extra payments, rate shifts, refinancing windows.</p>
     </div>
     <div class="small-preview">
       <img src="assets/MortWise.png" alt="MortWise preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
     </div>
     <div class="small-bottom">
-      <span class="category">CALCULATOR · REAL ESTATE</span>
-      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+      <span class="category" data-i18n="mws.category">CALCULATOR · REAL ESTATE</span>
+      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
     </div>
   </a>
 </article>
-<article class="card small" id="storyroute" style="--accent-card: #10B981; --accent-card-soft: #D1FAE5;">
+
+<article class="card small" id="storyroute" style="--accent-card:#10B981;--accent-card-soft:#D1FAE5;">
   <a href="https://storyroute.netlify.app" target="_blank" rel="noopener" style="display:contents;">
     <div class="small-top">
       <div class="card-logo">
-      <img class="logo-img" src="assets/logos/StoryRoute.png" alt="StoryRoute logo">
-      <span class="fallback" style="display:none">SRT</span>
-    </div>
+        <img class="logo-img" src="assets/logos/StoryRoute.png" alt="StoryRoute logo">
+        <span class="fallback" style="display:none">SRT</span>
+      </div>
       <div class="card-meta">
         <span class="ticker mono">SRT</span>
         <span class="pill live">LIVE</span>
       </div>
       <h3>StoryRoute</h3>
-      <div class="tagline">AI-narrated city exploration</div>
-      <p class="desc">AI travel companion that turns any city walk into an immersive narrated experience. Custom routes tuned to your interests, with the stories behind each street, building, and hidden corner woven into a cinematic walking tour.</p>
+      <div class="tagline" data-i18n="srt.tagline">AI-narrated city exploration</div>
+      <p class="desc" data-i18n="srt.desc">AI travel companion that turns any city walk into an immersive narrated experience. Custom routes tuned to your interests, with the stories behind each street, building, and hidden corner woven into a cinematic walking tour.</p>
     </div>
     <div class="small-preview">
       <img src="assets/storyroute.png" alt="StoryRoute preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
     </div>
     <div class="small-bottom">
-      <span class="category">CONSUMER · TRAVEL</span>
-      <span class="cta-link">OPEN <span class="arrow">→</span></span>
+      <span class="category" data-i18n="srt.category">CONSUMER · TRAVEL</span>
+      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
     </div>
   </a>
-</article></div></div>
+</article>
+
+</div></div>
+
 <footer class="footer">
-  <div class="who"><strong>Samir Asadov</strong> · M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Financial Modeler</div>
-  <div class="credits mono">© 2026 · BUILT WITH AI · DEPLOYED ON NETLIFY</div>
+  <div class="who"><strong>Samir Asadov</strong> · <span data-i18n="nav.role">M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Financial Modeler</span></div>
+  <div class="credits mono" data-i18n="footer.credits">© 2026 · BUILT WITH AI · DEPLOYED ON NETLIFY</div>
 </footer>
+
 <script>
+// ── Clock ──────────────────────────────────────────────────────────────────
 (function(){
   const el = document.getElementById('clock');
   if (!el) return;
@@ -393,13 +471,8 @@ a { color: inherit; text-decoration: none; }
     el.textContent = `${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}:${String(d.getUTCSeconds()).padStart(2,'0')} UTC`;
   } tick(); setInterval(tick, 1000);
 })();
-(function(){
-  document.querySelectorAll('.preview, .small-preview').forEach(c => {
-    const f = c.querySelector('iframe'); if (!f) return;
-    let loaded = false; f.addEventListener('load', () => loaded = true);
-    setTimeout(() => { if (!loaded) c.classList.add('no-frame'); }, 5000);
-  });
-})();
+
+// ── Logo fallback ──────────────────────────────────────────────────────────
 (function(){
   document.querySelectorAll('.logo-img').forEach(img => {
     img.addEventListener('error', () => {
@@ -409,6 +482,351 @@ a { color: inherit; text-decoration: none; }
     });
   });
 })();
+
+// ── Translations ───────────────────────────────────────────────────────────
+const T = {
+en:{
+  "nav.role":"M&A · Structured Finance · CFA · FMWC Top-Ranked Modeler",
+  "hero.eyebrow":"PORTFOLIO · 2026 · AI-NATIVE",
+  "hero.h1a":"Seven AI products.",
+  "hero.h1b":"One discipline.",
+  "hero.p":"Institutional-grade analysis, applied to the choices people actually make — from buying a home to financing the rebuilding of an entire country.",
+  "stats.label1":"AI-NATIVE PRODUCTS","stats.label2":"INDUSTRIES SERVED",
+  "ind.label":"INDUSTRIES //","ind.reconstruction":"Reconstruction Finance","ind.modeling":"Financial Modeling","ind.energy":"Clean Energy","ind.prediction":"Prediction Markets","ind.wellness":"Wellness","ind.realestate":"Real Estate","ind.travel":"Travel",
+  "sec.featured":"FEATURED POSITION","sec.featured.meta":"// anchor asset","sec.all":"ALL POSITIONS","sec.all.meta":"// 6 products",
+  "uvn.category":"NON-PROFIT · RECONSTRUCTION FINANCE","uvn.tagline":"The AI-powered reconstruction-finance atlas of Ukraine","uvn.desc":"A non-profit AI atlas that maps Ukraine's reconstruction asset by asset. For every damaged school, hospital, bridge, or substation, the AI produces three deterministic cost paths — baseline / code-compliant / build-back-better — anchored to World Bank RDNA3 + KSE methodology, and pairs each with the financing structures most likely to fund it.","uvn.cta1":"Open uVidNova","uvn.cta2":"View all positions",
+  "mup.category":"SAAS · FINANCIAL MODELING","mup.tagline":"AI-generated financial models for founders","mup.desc":"Describe your business in plain language and the AI generates an investor-grade three-statement model — revenue forecasts, sensitivities, runway, professional formatting. Decades of M&A and structured finance discipline distilled into an AI engine.",
+  "rsl.category":"CALCULATOR · CLEAN ENERGY","rsl.tagline":"AI-driven solar ROI in seconds","rsl.desc":"Enter location, roof size, and electricity bill — the AI factors in sunlight patterns, panel efficiency curves, utility rates, incentives, and lifetime degradation to project payback, monthly savings, and 25-year cash flows. Model-grade economics without the sales pitch.",
+  "pmd.category":"TRADING · PREDICTION MARKETS","pmd.tagline":"AI signals for prediction-market traders","pmd.desc":"An AI alert engine that watches the entire PolyMarket firehose and pings you the moment a contract moves on real signal — not noise. Price action, volume spikes, and news flow across politics, sports, crypto, and macro, intelligently filtered.",
+  "dsh.category":"CONSUMER · WELLNESS","dsh.tagline":"Your personal AI meal planner","dsh.desc":"Tell the AI your diet, allergies, budget, and cooking time — it generates a 7-day plan with recipes, a consolidated shopping list, and balanced nutrition. PWA runs anywhere and learns what you actually like. Stripe-powered freemium.",
+  "mws.category":"CALCULATOR · REAL ESTATE","mws.tagline":"Your AI mortgage co-pilot","mws.desc":"AI mortgage analyzer that runs full amortization schedules, surfaces the cheapest path over the loan's life, and stress-tests scenarios most buyers never check — extra payments, rate shifts, refinancing windows.",
+  "srt.category":"CONSUMER · TRAVEL","srt.tagline":"AI-narrated city exploration","srt.desc":"AI travel companion that turns any city walk into an immersive narrated experience. Custom routes tuned to your interests, with the stories behind each street, building, and hidden corner woven into a cinematic walking tour.",
+  "open":"OPEN","footer.credits":"© 2026 · BUILT WITH AI · DEPLOYED ON NETLIFY"
+},
+uk:{
+  "nav.role":"M&A · Структурні фінанси · CFA · FMWC Топ-Модельєр",
+  "hero.eyebrow":"ПОРТФОЛІО · 2026 · ШІ-НАТИВНИЙ",
+  "hero.h1a":"Сім ШІ-продуктів.","hero.h1b":"Одна дисципліна.",
+  "hero.p":"Інституційний аналіз, застосований до рішень, які люди реально приймають — від купівлі будинку до фінансування відновлення цілої країни.",
+  "stats.label1":"ШІ-НАТИВНИХ ПРОДУКТІВ","stats.label2":"ГАЛУЗЕЙ ОХОПЛЕНО",
+  "ind.label":"ГАЛУЗІ //","ind.reconstruction":"Фінансування відновлення","ind.modeling":"Фінансове моделювання","ind.energy":"Чиста енергія","ind.prediction":"Ринки прогнозів","ind.wellness":"Здоровʼя","ind.realestate":"Нерухомість","ind.travel":"Подорожі",
+  "sec.featured":"ОБРАНА ПОЗИЦІЯ","sec.featured.meta":"// основний актив","sec.all":"УСІ ПОЗИЦІЇ","sec.all.meta":"// 6 продуктів",
+  "uvn.category":"НКО · ФІНАНСУВАННЯ ВІДНОВЛЕННЯ","uvn.tagline":"Атлас фінансування відновлення України на базі ШІ","uvn.desc":"Некомерційний ШІ-атлас, який картографує відновлення України об'єкт за об'єктом. Для кожної пошкодженої школи, лікарні, мосту або підстанції ШІ генерує три детерміновані шляхи витрат — базовий / відповідний нормам / будувати краще — на основі методології Світового банку RDNA3 + KSE.","uvn.cta1":"Відкрити uVidNova","uvn.cta2":"Усі позиції",
+  "mup.category":"SAAS · ФІНАНСОВЕ МОДЕЛЮВАННЯ","mup.tagline":"Фінансові моделі для засновників, згенеровані ШІ","mup.desc":"Опишіть свій бізнес простою мовою, і ШІ згенерує інвестиційну трьохзвітну модель — прогнози доходів, чутливість, злітно-посадкова смуга, професійне форматування.",
+  "rsl.category":"КАЛЬКУЛЯТОР · ЧИСТА ЕНЕРГІЯ","rsl.tagline":"ROI сонячних панелей за секунди на базі ШІ","rsl.desc":"Введіть місцезнаходження, площу даху та рахунок за електроенергію — ШІ враховує сонячне випромінювання, ефективність панелей, тарифи, стимули та деградацію за весь термін служби для розрахунку окупності та 25-річних грошових потоків.",
+  "pmd.category":"ТОРГІВЛЯ · РИНКИ ПРОГНОЗІВ","pmd.tagline":"ШІ-сигнали для трейдерів на ринках прогнозів","pmd.desc":"ШІ-рушій оповіщень, що відстежує весь потік PolyMarket і сповіщає вас щойно контракт рухається на реальному сигналі — не шумі.",
+  "dsh.category":"СПОЖИВАЧ · ЗДОРОВʼЯ","dsh.tagline":"Ваш персональний ШІ-планувальник харчування","dsh.desc":"Розкажіть ШІ про свою дієту, алергії, бюджет і час приготування — він згенерує 7-денний план з рецептами, зведеним списком покупок та збалансованим харчуванням.",
+  "mws.category":"КАЛЬКУЛЯТОР · НЕРУХОМІСТЬ","mws.tagline":"Ваш ШІ-копілот з іпотеки","mws.desc":"ШІ-аналізатор іпотеки, який розраховує повні графіки амортизації, знаходить найдешевший шлях та стрес-тестує сценарії, які більшість покупців ніколи не перевіряють.",
+  "srt.category":"СПОЖИВАЧ · ПОДОРОЖІ","srt.tagline":"Дослідження міста з ШІ-оповіддю","srt.desc":"ШІ-супутник у подорожах, що перетворює будь-яку міську прогулянку на захоплюючий досвід з оповіддю. Маршрути, підібрані під ваші інтереси, з історіями кожної вулиці та будівлі.",
+  "open":"ВІДКРИТИ","footer.credits":"© 2026 · СТВОРЕНО З ШІ · РОЗГОРНУТО НА NETLIFY"
+},
+fr:{
+  "nav.role":"M&A · Finance Structurée · CFA · Modélisateur Top FMWC",
+  "hero.eyebrow":"PORTFOLIO · 2026 · IA-NATIF",
+  "hero.h1a":"Sept produits IA.","hero.h1b":"Une discipline.",
+  "hero.p":"Analyse de niveau institutionnel, appliquée aux décisions que les gens prennent réellement — de l'achat d'une maison au financement de la reconstruction d'un pays entier.",
+  "stats.label1":"PRODUITS IA-NATIFS","stats.label2":"SECTEURS COUVERTS",
+  "ind.label":"SECTEURS //","ind.reconstruction":"Finance de Reconstruction","ind.modeling":"Modélisation Financière","ind.energy":"Énergie Propre","ind.prediction":"Marchés Prédictifs","ind.wellness":"Bien-être","ind.realestate":"Immobilier","ind.travel":"Voyage",
+  "sec.featured":"POSITION VEDETTE","sec.featured.meta":"// actif principal","sec.all":"TOUTES LES POSITIONS","sec.all.meta":"// 6 produits",
+  "uvn.category":"SANS BUT LUCRATIF · FINANCE DE RECONSTRUCTION","uvn.tagline":"L'atlas IA de la finance de reconstruction de l'Ukraine","uvn.desc":"Un atlas IA à but non lucratif qui cartographie la reconstruction de l'Ukraine actif par actif. Pour chaque école, hôpital, pont ou poste électrique endommagé, l'IA produit trois trajectoires de coût déterministes ancrées dans la méthodologie Banque Mondiale RDNA3 + KSE.","uvn.cta1":"Ouvrir uVidNova","uvn.cta2":"Voir toutes les positions",
+  "mup.category":"SAAS · MODÉLISATION FINANCIÈRE","mup.tagline":"Modèles financiers générés par IA pour les fondateurs","mup.desc":"Décrivez votre entreprise en langage naturel et l'IA génère un modèle à trois états financiers de niveau investisseur — prévisions de revenus, sensibilités, runway, mise en forme professionnelle.",
+  "rsl.category":"CALCULATEUR · ÉNERGIE PROPRE","rsl.tagline":"ROI solaire en quelques secondes grâce à l'IA","rsl.desc":"Entrez votre localisation, la surface de votre toit et votre facture d'électricité — l'IA projette remboursement, économies mensuelles et flux de trésorerie sur 25 ans.",
+  "pmd.category":"TRADING · MARCHÉS PRÉDICTIFS","pmd.tagline":"Signaux IA pour les traders sur marchés prédictifs","pmd.desc":"Un moteur d'alertes IA qui surveille tout le flux PolyMarket et vous avertit dès qu'un contrat bouge sur un vrai signal — pas du bruit.",
+  "dsh.category":"CONSOMMATEUR · BIEN-ÊTRE","dsh.tagline":"Votre planificateur de repas IA personnel","dsh.desc":"Dites à l'IA votre régime, vos allergies, votre budget et votre temps de cuisine — il génère un plan sur 7 jours avec des recettes et une liste de courses consolidée.",
+  "mws.category":"CALCULATEUR · IMMOBILIER","mws.tagline":"Votre co-pilote IA pour votre prêt immobilier","mws.desc":"Analyseur de prêt immobilier IA qui calcule les tableaux d'amortissement complets et trouve le chemin le moins cher sur la durée du prêt.",
+  "srt.category":"CONSOMMATEUR · VOYAGE","srt.tagline":"Exploration urbaine narrée par IA","srt.desc":"Compagnon de voyage IA qui transforme n'importe quelle balade en ville en une expérience narrée immersive avec des itinéraires sur mesure.",
+  "open":"OUVRIR","footer.credits":"© 2026 · CONSTRUIT AVEC IA · DÉPLOYÉ SUR NETLIFY"
+},
+es:{
+  "nav.role":"M&A · Finanzas Estructuradas · CFA · Modelador Top FMWC",
+  "hero.eyebrow":"PORTAFOLIO · 2026 · IA-NATIVO",
+  "hero.h1a":"Siete productos de IA.","hero.h1b":"Una disciplina.",
+  "hero.p":"Análisis de nivel institucional, aplicado a las decisiones que la gente realmente toma — desde comprar una casa hasta financiar la reconstrucción de todo un país.",
+  "stats.label1":"PRODUCTOS IA-NATIVOS","stats.label2":"INDUSTRIAS ATENDIDAS",
+  "ind.label":"INDUSTRIAS //","ind.reconstruction":"Finanzas de Reconstrucción","ind.modeling":"Modelado Financiero","ind.energy":"Energía Limpia","ind.prediction":"Mercados de Predicción","ind.wellness":"Bienestar","ind.realestate":"Bienes Raíces","ind.travel":"Viajes",
+  "sec.featured":"POSICIÓN DESTACADA","sec.featured.meta":"// activo ancla","sec.all":"TODAS LAS POSICIONES","sec.all.meta":"// 6 productos",
+  "uvn.category":"SIN FINES DE LUCRO · FINANZAS DE RECONSTRUCCIÓN","uvn.tagline":"El atlas de finanzas de reconstrucción de Ucrania impulsado por IA","uvn.desc":"Un atlas de IA sin fines de lucro que mapea la reconstrucción de Ucrania activo por activo, produciendo tres trayectorias de costo deterministas ancladas en la metodología del Banco Mundial RDNA3 + KSE.","uvn.cta1":"Abrir uVidNova","uvn.cta2":"Ver todas las posiciones",
+  "mup.category":"SAAS · MODELADO FINANCIERO","mup.tagline":"Modelos financieros generados por IA para fundadores","mup.desc":"Describe tu negocio en lenguaje natural y la IA genera un modelo de tres estados financieros de nivel inversor — proyecciones de ingresos, sensibilidades, runway, formato profesional.",
+  "rsl.category":"CALCULADORA · ENERGÍA LIMPIA","rsl.tagline":"ROI solar en segundos con IA","rsl.desc":"Introduce tu ubicación, tamaño del techo y factura de electricidad — la IA proyecta el retorno, ahorro mensual y flujos de caja a 25 años.",
+  "pmd.category":"TRADING · MERCADOS DE PREDICCIÓN","pmd.tagline":"Señales de IA para traders de mercados de predicción","pmd.desc":"Un motor de alertas IA que monitorea todo el flujo de PolyMarket y te avisa en el momento en que un contrato se mueve por una señal real.",
+  "dsh.category":"CONSUMIDOR · BIENESTAR","dsh.tagline":"Tu planificador de comidas IA personal","dsh.desc":"Dile a la IA tu dieta, alergias, presupuesto y tiempo de cocina — genera un plan de 7 días con recetas y una lista de compras consolidada.",
+  "mws.category":"CALCULADORA · BIENES RAÍCES","mws.tagline":"Tu co-piloto IA para hipotecas","mws.desc":"Analizador de hipotecas IA que ejecuta calendarios de amortización completos y encuentra el camino más económico durante la vida del préstamo.",
+  "srt.category":"CONSUMIDOR · VIAJES","srt.tagline":"Exploración urbana narrada por IA","srt.desc":"Compañero de viaje IA que convierte cualquier caminata por la ciudad en una experiencia narrativa inmersiva con rutas personalizadas.",
+  "open":"ABRIR","footer.credits":"© 2026 · CONSTRUIDO CON IA · DESPLEGADO EN NETLIFY"
+},
+de:{
+  "nav.role":"M&A · Strukturierte Finanzen · CFA · FMWC Top-Modellierer",
+  "hero.eyebrow":"PORTFOLIO · 2026 · KI-NATIV",
+  "hero.h1a":"Sieben KI-Produkte.","hero.h1b":"Eine Disziplin.",
+  "hero.p":"Institutionelle Analyse, angewandt auf die Entscheidungen, die Menschen wirklich treffen — vom Hauskauf bis zur Finanzierung des Wiederaufbaus eines ganzen Landes.",
+  "stats.label1":"KI-NATIVE PRODUKTE","stats.label2":"BRANCHEN BEDIENT",
+  "ind.label":"BRANCHEN //","ind.reconstruction":"Wiederaufbaufinanzierung","ind.modeling":"Finanzmodellierung","ind.energy":"Saubere Energie","ind.prediction":"Vorhersagemärkte","ind.wellness":"Gesundheit","ind.realestate":"Immobilien","ind.travel":"Reisen",
+  "sec.featured":"AUSGEWÄHLTE POSITION","sec.featured.meta":"// Ankeraktivum","sec.all":"ALLE POSITIONEN","sec.all.meta":"// 6 Produkte",
+  "uvn.category":"GEMEINNÜTZIG · WIEDERAUFBAUFINANZIERUNG","uvn.tagline":"Der KI-gestützte Wiederaufbaufinanz-Atlas der Ukraine","uvn.desc":"Ein gemeinnütziger KI-Atlas, der den Wiederaufbau der Ukraine Anlage für Anlage kartiert. Die KI erstellt drei deterministische Kostenpfade — verankert in der Weltbank-Methodik RDNA3 + KSE.","uvn.cta1":"uVidNova öffnen","uvn.cta2":"Alle Positionen anzeigen",
+  "mup.category":"SAAS · FINANZMODELLIERUNG","mup.tagline":"KI-generierte Finanzmodelle für Gründer","mup.desc":"Beschreiben Sie Ihr Unternehmen in einfacher Sprache und die KI erstellt ein investmentreifes Drei-Abschluss-Modell mit Umsatzprognosen, Sensitivitäten und Runway.",
+  "rsl.category":"RECHNER · SAUBERE ENERGIE","rsl.tagline":"Solar-ROI in Sekunden mit KI","rsl.desc":"Geben Sie Standort, Dachfläche und Stromrechnung ein — die KI berechnet Amortisation, monatliche Einsparungen und 25-Jahres-Cashflows.",
+  "pmd.category":"HANDEL · VORHERSAGEMÄRKTE","pmd.tagline":"KI-Signale für Vorhersagemarkt-Trader","pmd.desc":"Eine KI-Alarmsystem, das den gesamten PolyMarket-Datenstrom überwacht und Sie sofort benachrichtigt, wenn sich ein Kontrakt auf echtes Signal bewegt.",
+  "dsh.category":"VERBRAUCHER · GESUNDHEIT","dsh.tagline":"Ihr persönlicher KI-Mahlzeitenplaner","dsh.desc":"Teilen Sie der KI Ihre Ernährung, Allergien, Budget und Kochzeit mit — sie erstellt einen 7-Tage-Plan mit Rezepten und einer konsolidierten Einkaufsliste.",
+  "mws.category":"RECHNER · IMMOBILIEN","mws.tagline":"Ihr KI-Hypotheken-Copilot","mws.desc":"KI-Hypothekenanalysator, der vollständige Tilgungspläne erstellt und den günstigsten Weg über die gesamte Kreditlaufzeit findet.",
+  "srt.category":"VERBRAUCHER · REISEN","srt.tagline":"KI-narierte Stadterkundung","srt.desc":"KI-Reisebegleiter, der jeden Stadtspaziergang in ein immersives Erlebnis mit maßgeschneiderten Routen und Geschichten verwandelt.",
+  "open":"ÖFFNEN","footer.credits":"© 2026 · MIT KI GEBAUT · AUF NETLIFY BEREITGESTELLT"
+},
+pt:{
+  "nav.role":"M&A · Finanças Estruturadas · CFA · Modelador Top FMWC",
+  "hero.eyebrow":"PORTFÓLIO · 2026 · IA-NATIVO",
+  "hero.h1a":"Sete produtos de IA.","hero.h1b":"Uma disciplina.",
+  "hero.p":"Análise de nível institucional, aplicada às decisões que as pessoas realmente tomam — da compra de uma casa ao financiamento da reconstrução de um país inteiro.",
+  "stats.label1":"PRODUTOS IA-NATIVOS","stats.label2":"SETORES ATENDIDOS",
+  "ind.label":"SETORES //","ind.reconstruction":"Finanças de Reconstrução","ind.modeling":"Modelagem Financeira","ind.energy":"Energia Limpa","ind.prediction":"Mercados de Previsão","ind.wellness":"Bem-estar","ind.realestate":"Imóveis","ind.travel":"Viagens",
+  "sec.featured":"POSIÇÃO EM DESTAQUE","sec.featured.meta":"// ativo âncora","sec.all":"TODAS AS POSIÇÕES","sec.all.meta":"// 6 produtos",
+  "uvn.category":"SEM FINS LUCRATIVOS · FINANÇAS DE RECONSTRUÇÃO","uvn.tagline":"O atlas de finanças de reconstrução da Ucrânia com IA","uvn.desc":"Um atlas de IA sem fins lucrativos que mapeia a reconstrução da Ucrânia ativo por ativo, produzindo três trajetórias de custo determinísticas ancoradas na metodologia do Banco Mundial RDNA3 + KSE.","uvn.cta1":"Abrir uVidNova","uvn.cta2":"Ver todas as posições",
+  "mup.category":"SAAS · MODELAGEM FINANCEIRA","mup.tagline":"Modelos financeiros gerados por IA para fundadores","mup.desc":"Descreva seu negócio em linguagem simples e a IA gera um modelo de três demonstrações de nível investidor com previsões de receita, sensibilidades e runway.",
+  "rsl.category":"CALCULADORA · ENERGIA LIMPA","rsl.tagline":"ROI solar em segundos com IA","rsl.desc":"Insira localização, tamanho do telhado e conta de luz — a IA projeta retorno, economia mensal e fluxos de caixa de 25 anos.",
+  "pmd.category":"TRADING · MERCADOS DE PREVISÃO","pmd.tagline":"Sinais de IA para traders de mercados de previsão","pmd.desc":"Um motor de alertas IA que monitora todo o fluxo do PolyMarket e avisa você no momento em que um contrato se move por sinal real.",
+  "dsh.category":"CONSUMIDOR · BEM-ESTAR","dsh.tagline":"Seu planejador de refeições IA pessoal","dsh.desc":"Diga à IA sua dieta, alergias, orçamento e tempo de cozinha — ela gera um plano de 7 dias com receitas e lista de compras consolidada.",
+  "mws.category":"CALCULADORA · IMÓVEIS","mws.tagline":"Seu co-piloto IA para hipotecas","mws.desc":"Analisador de hipotecas IA que executa cronogramas de amortização completos e encontra o caminho mais barato ao longo da vida do empréstimo.",
+  "srt.category":"CONSUMIDOR · VIAGENS","srt.tagline":"Exploração urbana narrada por IA","srt.desc":"Companheiro de viagem IA que transforma qualquer caminhada pela cidade em uma experiência narrada imersiva com rotas personalizadas.",
+  "open":"ABRIR","footer.credits":"© 2026 · CONSTRUÍDO COM IA · IMPLANTADO NO NETLIFY"
+},
+it:{
+  "nav.role":"M&A · Finanza Strutturata · CFA · Modellatore Top FMWC",
+  "hero.eyebrow":"PORTFOLIO · 2026 · IA-NATIVO",
+  "hero.h1a":"Sette prodotti IA.","hero.h1b":"Una disciplina.",
+  "hero.p":"Analisi di livello istituzionale, applicata alle scelte che le persone fanno davvero — dall'acquisto di una casa al finanziamento della ricostruzione di un intero paese.",
+  "stats.label1":"PRODOTTI IA-NATIVI","stats.label2":"SETTORI SERVITI",
+  "ind.label":"SETTORI //","ind.reconstruction":"Finanza della Ricostruzione","ind.modeling":"Modellazione Finanziaria","ind.energy":"Energia Pulita","ind.prediction":"Mercati Predittivi","ind.wellness":"Benessere","ind.realestate":"Immobiliare","ind.travel":"Viaggi",
+  "sec.featured":"POSIZIONE IN EVIDENZA","sec.featured.meta":"// asset principale","sec.all":"TUTTE LE POSIZIONI","sec.all.meta":"// 6 prodotti",
+  "uvn.category":"NO PROFIT · FINANZA DELLA RICOSTRUZIONE","uvn.tagline":"L'atlante IA della finanza della ricostruzione dell'Ucraina","uvn.desc":"Un atlante IA no profit che mappa la ricostruzione dell'Ucraina asset per asset, producendo tre percorsi di costo deterministici ancorati alla metodologia della Banca Mondiale RDNA3 + KSE.","uvn.cta1":"Apri uVidNova","uvn.cta2":"Vedi tutte le posizioni",
+  "mup.category":"SAAS · MODELLAZIONE FINANZIARIA","mup.tagline":"Modelli finanziari generati dall'IA per i fondatori","mup.desc":"Descrivi la tua azienda in linguaggio semplice e l'IA genera un modello a tre rendiconti di livello investitore con previsioni di ricavi, sensibilità e runway.",
+  "rsl.category":"CALCOLATORE · ENERGIA PULITA","rsl.tagline":"ROI solare in secondi con IA","rsl.desc":"Inserisci posizione, dimensione del tetto e bolletta elettrica — l'IA proietta il ritorno, risparmi mensili e flussi di cassa a 25 anni.",
+  "pmd.category":"TRADING · MERCATI PREDITTIVI","pmd.tagline":"Segnali IA per i trader di mercati predittivi","pmd.desc":"Un motore di alert IA che monitora l'intero flusso di PolyMarket e ti avvisa nel momento in cui un contratto si muove su un segnale reale.",
+  "dsh.category":"CONSUMATORE · BENESSERE","dsh.tagline":"Il tuo pianificatore di pasti IA personale","dsh.desc":"Dì all'IA la tua dieta, allergie, budget e tempo di cottura — genera un piano di 7 giorni con ricette e una lista della spesa consolidata.",
+  "mws.category":"CALCOLATORE · IMMOBILIARE","mws.tagline":"Il tuo co-pilota IA per i mutui","mws.desc":"Analizzatore di mutui IA che esegue piani di ammortamento completi e trova il percorso più economico per la durata del prestito.",
+  "srt.category":"CONSUMATORE · VIAGGI","srt.tagline":"Esplorazione urbana narrata dall'IA","srt.desc":"Compagno di viaggio IA che trasforma qualsiasi passeggiata in città in un'esperienza narrativa immersiva con percorsi personalizzati.",
+  "open":"APRI","footer.credits":"© 2026 · COSTRUITO CON IA · DISTRIBUITO SU NETLIFY"
+},
+nl:{
+  "nav.role":"M&A · Gestructureerde Financiën · CFA · FMWC Top-Modelleur",
+  "hero.eyebrow":"PORTFOLIO · 2026 · AI-NATIVE",
+  "hero.h1a":"Zeven AI-producten.","hero.h1b":"Één discipline.",
+  "hero.p":"Institutionele analyse, toegepast op de keuzes die mensen echt maken — van het kopen van een huis tot het financieren van de wederopbouw van een heel land.",
+  "stats.label1":"AI-NATIVE PRODUCTEN","stats.label2":"SECTOREN BEDIEND",
+  "ind.label":"SECTOREN //","ind.reconstruction":"Wederopbouwfinanciering","ind.modeling":"Financiële Modellering","ind.energy":"Schone Energie","ind.prediction":"Voorspellingsmarkten","ind.wellness":"Welzijn","ind.realestate":"Vastgoed","ind.travel":"Reizen",
+  "sec.featured":"UITGELICHTE POSITIE","sec.featured.meta":"// ankerbezit","sec.all":"ALLE POSITIES","sec.all.meta":"// 6 producten",
+  "uvn.category":"NON-PROFIT · WEDEROPBOUWFINANCIERING","uvn.tagline":"De AI-gestuurde wederopbouwfinancieringsatlas van Oekraïne","uvn.desc":"Een non-profit AI-atlas die de wederopbouw van Oekraïne asset voor asset in kaart brengt, met drie deterministische kostenpaden verankerd in de Wereldbank RDNA3 + KSE-methodologie.","uvn.cta1":"Open uVidNova","uvn.cta2":"Alle posities bekijken",
+  "mup.category":"SAAS · FINANCIËLE MODELLERING","mup.tagline":"AI-gegenereerde financiële modellen voor oprichters","mup.desc":"Beschrijf uw bedrijf in gewone taal en de AI genereert een investeerdersniveau driestatementmodel met omzetprognoses, gevoeligheden en runway.",
+  "rsl.category":"CALCULATOR · SCHONE ENERGIE","rsl.tagline":"Zonne-energie ROI in seconden met AI","rsl.desc":"Voer locatie, dakoppervlak en elektriciteitsrekening in — de AI projecteert terugverdientijd, maandelijkse besparingen en 25-jarige kasstromen.",
+  "pmd.category":"HANDEL · VOORSPELLINGSMARKTEN","pmd.tagline":"AI-signalen voor traders op voorspellingsmarkten","pmd.desc":"Een AI-alertmotor die de volledige PolyMarket-datastroom bewaakt en u onmiddellijk waarschuwt wanneer een contract beweegt op een echt signaal.",
+  "dsh.category":"CONSUMENT · WELZIJN","dsh.tagline":"Uw persoonlijke AI-maaltijdplanner","dsh.desc":"Vertel de AI uw dieet, allergieën, budget en kooktijd — het genereert een 7-daags plan met recepten en een geconsolideerde boodschappenlijst.",
+  "mws.category":"CALCULATOR · VASTGOED","mws.tagline":"Uw AI-hypotheekco-piloot","mws.desc":"AI-hypotheekanalysator die volledige aflossingsschema's uitvoert en het goedkoopste pad over de looptijd van de lening vindt.",
+  "srt.category":"CONSUMENT · REIZEN","srt.tagline":"AI-verteld stadsverkenning","srt.desc":"AI-reisgezel die elke stadswandeling omzet in een meeslepende vertelervaring met aangepaste routes en verhalen.",
+  "open":"OPENEN","footer.credits":"© 2026 · GEBOUWD MET AI · GEÏMPLEMENTEERD OP NETLIFY"
+},
+tr:{
+  "nav.role":"M&A · Yapılandırılmış Finansman · CFA · FMWC En İyi Modelleyici",
+  "hero.eyebrow":"PORTFÖY · 2026 · YZ-DOĞAL",
+  "hero.h1a":"Yedi YZ ürünü.","hero.h1b":"Tek disiplin.",
+  "hero.p":"Kurumsal düzeyde analiz, insanların gerçekten verdiği kararlara uygulandı — ev satın almaktan tüm bir ülkenin yeniden inşasını finanse etmeye kadar.",
+  "stats.label1":"YZ-DOĞAL ÜRÜNLER","stats.label2":"HİZMET VERİLEN SEKTÖRLER",
+  "ind.label":"SEKTÖRLER //","ind.reconstruction":"Yeniden İnşa Finansmanı","ind.modeling":"Finansal Modelleme","ind.energy":"Temiz Enerji","ind.prediction":"Tahmin Piyasaları","ind.wellness":"Sağlık","ind.realestate":"Gayrimenkul","ind.travel":"Seyahat",
+  "sec.featured":"ÖNE ÇIKAN POZİSYON","sec.featured.meta":"// çapa varlık","sec.all":"TÜM POZİSYONLAR","sec.all.meta":"// 6 ürün",
+  "uvn.category":"KAR AMACI GÜTMEYEN · YENİDEN İNŞA FİNANSMANI","uvn.tagline":"Ukrayna'nın YZ destekli yeniden inşa finansmanı atlası","uvn.desc":"Ukrayna'nın yeniden inşasını varlık varlık haritalayan kar amacı gütmeyen bir YZ atlası; Dünya Bankası RDNA3 + KSE metodolojisine dayalı üç deterministik maliyet yolu üretiyor.","uvn.cta1":"uVidNova'yı aç","uvn.cta2":"Tüm pozisyonları gör",
+  "mup.category":"SAAS · FİNANSAL MODELLEME","mup.tagline":"Kurucular için YZ tarafından oluşturulan finansal modeller","mup.desc":"İşletmenizi sade bir dille tanımlayın, YZ yatırımcı düzeyinde üç tablolu model oluştursun — gelir tahminleri, duyarlılıklar, runway.",
+  "rsl.category":"HESAP MAKİNESİ · TEMİZ ENERJİ","rsl.tagline":"YZ ile saniyeler içinde güneş enerjisi ROI'si","rsl.desc":"Konum, çatı büyüklüğü ve elektrik faturasını girin — YZ geri ödeme süresini, aylık tasarrufu ve 25 yıllık nakit akışlarını tahmin eder.",
+  "pmd.category":"TİCARET · TAHMİN PİYASALARI","pmd.tagline":"Tahmin piyasası traderları için YZ sinyalleri","pmd.desc":"Tüm PolyMarket akışını izleyen ve bir sözleşme gerçek sinyal üzerine hareket ettiği anda sizi uyaran YZ uyarı motoru.",
+  "dsh.category":"TÜKETİCİ · SAĞLIK","dsh.tagline":"Kişisel YZ yemek planlayıcınız","dsh.desc":"YZ'ye diyetinizi, alerjilerinizi, bütçenizi ve pişirme sürenizi söyleyin — tarifler ve alışveriş listesiyle 7 günlük plan oluştursun.",
+  "mws.category":"HESAP MAKİNESİ · GAYRİMENKUL","mws.tagline":"İpotek için YZ ko-pilotunuz","mws.desc":"Tam amortisman takvimleri oluşturan ve kredi ömrü boyunca en ucuz yolu bulan YZ ipotek analizörü.",
+  "srt.category":"TÜKETİCİ · SEYAHAT","srt.tagline":"YZ anlatımlı şehir keşfi","srt.desc":"Herhangi bir şehir yürüyüşünü sürükleyici bir anlatı deneyimine dönüştüren ve ilgi alanlarına göre özelleştirilmiş rotalar sunan YZ seyahat arkadaşı.",
+  "open":"AÇ","footer.credits":"© 2026 · YZ İLE İNŞA EDİLDİ · NETLIFY'DA YAYINLANDI"
+},
+zh:{
+  "nav.role":"并购 · 结构性金融 · CFA · FMWC 顶级建模师",
+  "hero.eyebrow":"投资组合 · 2026 · AI 原生",
+  "hero.h1a":"七款 AI 产品。","hero.h1b":"一种纪律。",
+  "hero.p":"机构级分析，应用于人们实际做出的决策——从购置房产到为一个国家的重建融资。",
+  "stats.label1":"AI 原生产品","stats.label2":"覆盖行业",
+  "ind.label":"行业 //","ind.reconstruction":"重建融资","ind.modeling":"金融建模","ind.energy":"清洁能源","ind.prediction":"预测市场","ind.wellness":"健康","ind.realestate":"房地产","ind.travel":"旅行",
+  "sec.featured":"精选标的","sec.featured.meta":"// 核心资产","sec.all":"全部标的","sec.all.meta":"// 6 款产品",
+  "uvn.category":"非营利 · 重建融资","uvn.tagline":"乌克兰 AI 驱动的重建融资图谱","uvn.desc":"一个非营利 AI 图谱，逐项资产记录乌克兰的重建工作，基于世界银行 RDNA3 + KSE 方法论生成三条确定性成本路径。","uvn.cta1":"打开 uVidNova","uvn.cta2":"查看全部标的",
+  "mup.category":"SAAS · 金融建模","mup.tagline":"AI 为创始人生成的金融模型","mup.desc":"用简单语言描述您的业务，AI 即可生成投资级三表模型——收入预测、敏感性分析、融资跑道、专业格式。",
+  "rsl.category":"计算器 · 清洁能源","rsl.tagline":"AI 秒算太阳能投资回报率","rsl.desc":"输入位置、屋顶面积和电费账单——AI 预测回收周期、月均节省及 25 年现金流。",
+  "pmd.category":"交易 · 预测市场","pmd.tagline":"AI 为预测市场交易者提供信号","pmd.desc":"实时监控 PolyMarket 全量数据流的 AI 预警引擎，一旦合约出现真实信号即刻推送，经过智能过滤。",
+  "dsh.category":"消费 · 健康","dsh.tagline":"您的个人 AI 饮食规划师","dsh.desc":"告知 AI 您的饮食偏好、过敏症、预算和烹饪时间——生成含食谱的 7 日计划和汇总购物清单。",
+  "mws.category":"计算器 · 房地产","mws.tagline":"您的 AI 贷款购房副驾","mws.desc":"AI 贷款分析仪，提供完整摊销计划，找出贷款全期最低成本路径。",
+  "srt.category":"消费 · 旅行","srt.tagline":"AI 解说城市探索","srt.desc":"AI 旅行伴侣，将每一次城市漫步化为沉浸式解说体验，根据您的兴趣定制路线。",
+  "open":"打开","footer.credits":"© 2026 · AI 构建 · 部署于 NETLIFY"
+},
+ar:{
+  "nav.role":"الاندماجات والاستحواذات · التمويل الهيكلي · CFA · مصمم نماذج من الفئة الأولى FMWC",
+  "hero.eyebrow":"المحفظة · 2026 · منتجات ذكاء اصطناعي",
+  "hero.h1a":"سبعة منتجات ذكاء اصطناعي.","hero.h1b":"انضباط واحد.",
+  "hero.p":"تحليل على المستوى المؤسسي، مطبّق على القرارات التي يتخذها الناس فعلاً — من شراء منزل إلى تمويل إعادة بناء بلد بأكمله.",
+  "stats.label1":"منتجات ذكاء اصطناعي","stats.label2":"القطاعات المخدومة",
+  "ind.label":"القطاعات //","ind.reconstruction":"تمويل إعادة الإعمار","ind.modeling":"النمذجة المالية","ind.energy":"الطاقة النظيفة","ind.prediction":"أسواق التنبؤ","ind.wellness":"الصحة والعافية","ind.realestate":"العقارات","ind.travel":"السفر",
+  "sec.featured":"المركز المميز","sec.featured.meta":"// الأصل الرئيسي","sec.all":"جميع المراكز","sec.all.meta":"// 6 منتجات",
+  "uvn.category":"غير ربحي · تمويل إعادة الإعمار","uvn.tagline":"أطلس تمويل إعادة إعمار أوكرانيا المدعوم بالذكاء الاصطناعي","uvn.desc":"أطلس ذكاء اصطناعي غير ربحي يرسم خريطة إعادة إعمار أوكرانيا أصلاً بأصل، مستنداً إلى منهجية البنك الدولي RDNA3 + KSE لإنتاج ثلاثة مسارات تكلفة حتمية.","uvn.cta1":"فتح uVidNova","uvn.cta2":"عرض جميع المراكز",
+  "mup.category":"SAAS · النمذجة المالية","mup.tagline":"نماذج مالية يولّدها الذكاء الاصطناعي للمؤسسين","mup.desc":"صِف عملك بلغة بسيطة وسيُولّد الذكاء الاصطناعي نموذجاً مالياً ثلاثي القوائم بمستوى المستثمرين.",
+  "rsl.category":"حاسبة · الطاقة النظيفة","rsl.tagline":"عائد استثمار الطاقة الشمسية في ثوانٍ بالذكاء الاصطناعي","rsl.desc":"أدخل الموقع وحجم السطح وفاتورة الكهرباء — يتوقع الذكاء الاصطناعي فترة الاسترداد والمدخرات الشهرية والتدفقات النقدية لـ25 عاماً.",
+  "pmd.category":"التداول · أسواق التنبؤ","pmd.tagline":"إشارات الذكاء الاصطناعي لمتداولي أسواق التنبؤ","pmd.desc":"محرك تنبيهات ذكاء اصطناعي يرصد تدفق بيانات PolyMarket بالكامل ويُنبّهك فور تحرك عقد على إشارة حقيقية.",
+  "dsh.category":"المستهلك · الصحة والعافية","dsh.tagline":"مخطط وجباتك الشخصي بالذكاء الاصطناعي","dsh.desc":"أخبر الذكاء الاصطناعي بنظامك الغذائي وحساسيتك وميزانيتك ووقت الطهي — سيُولّد خطة لـ7 أيام مع وصفات وقائمة تسوق.",
+  "mws.category":"حاسبة · العقارات","mws.tagline":"مرافقك الذكي للرهن العقاري","mws.desc":"محلل رهن عقاري بالذكاء الاصطناعي يُشغّل جداول الاستهلاك الكاملة ويجد المسار الأرخص طوال مدة القرض.",
+  "srt.category":"المستهلك · السفر","srt.tagline":"استكشاف المدن مع سرد الذكاء الاصطناعي","srt.desc":"رفيق سفر بالذكاء الاصطناعي يُحوّل أي جولة في المدينة إلى تجربة سردية غامرة بمسارات مخصصة.",
+  "open":"فتح","footer.credits":"© 2026 · مبني بالذكاء الاصطناعي · مُستضاف على NETLIFY"
+},
+hi:{
+  "nav.role":"M&A · संरचित वित्त · CFA · FMWC शीर्ष मॉडलर",
+  "hero.eyebrow":"पोर्टफोलियो · 2026 · AI-नेटिव",
+  "hero.h1a":"सात AI उत्पाद।","hero.h1b":"एक अनुशासन।",
+  "hero.p":"संस्थागत स्तर का विश्लेषण, उन फैसलों पर लागू किया जो लोग वास्तव में लेते हैं — घर खरीदने से लेकर पूरे देश के पुनर्निर्माण के वित्तपोषण तक।",
+  "stats.label1":"AI-नेटिव उत्पाद","stats.label2":"सेवित उद्योग",
+  "ind.label":"उद्योग //","ind.reconstruction":"पुनर्निर्माण वित्त","ind.modeling":"वित्तीय मॉडलिंग","ind.energy":"स्वच्छ ऊर्जा","ind.prediction":"भविष्यवाणी बाजार","ind.wellness":"वेलनेस","ind.realestate":"रियल एस्टेट","ind.travel":"यात्रा",
+  "sec.featured":"विशेष स्थिति","sec.featured.meta":"// मुख्य संपत्ति","sec.all":"सभी स्थितियाँ","sec.all.meta":"// 6 उत्पाद",
+  "uvn.category":"गैर-लाभकारी · पुनर्निर्माण वित्त","uvn.tagline":"यूक्रेन का AI-संचालित पुनर्निर्माण-वित्त एटलस","uvn.desc":"एक गैर-लाभकारी AI एटलस जो यूक्रेन के पुनर्निर्माण को संपत्ति दर संपत्ति मैप करता है, विश्व बैंक RDNA3 + KSE पद्धति पर आधारित तीन निर्धारक लागत पथ उत्पन्न करता है।","uvn.cta1":"uVidNova खोलें","uvn.cta2":"सभी स्थितियाँ देखें",
+  "mup.category":"SAAS · वित्तीय मॉडलिंग","mup.tagline":"संस्थापकों के लिए AI-जनित वित्तीय मॉडल","mup.desc":"सरल भाषा में अपना व्यवसाय बताएं और AI निवेशक-ग्रेड तीन-विवरण मॉडल तैयार करेगा।",
+  "rsl.category":"कैलकुलेटर · स्वच्छ ऊर्जा","rsl.tagline":"सेकंडों में AI के साथ सौर ROI","rsl.desc":"स्थान, छत का आकार और बिजली बिल दर्ज करें — AI भुगतान, मासिक बचत और 25-वर्षीय नकद प्रवाह का अनुमान लगाता है।",
+  "pmd.category":"ट्रेडिंग · भविष्यवाणी बाजार","pmd.tagline":"भविष्यवाणी बाजार ट्रेडर्स के लिए AI संकेत","pmd.desc":"एक AI अलर्ट इंजन जो पूरे PolyMarket डेटा फ्लो पर नजर रखता है और वास्तविक संकेत पर आपको सूचित करता है।",
+  "dsh.category":"उपभोक्ता · वेलनेस","dsh.tagline":"आपका व्यक्तिगत AI भोजन योजनाकार","dsh.desc":"AI को अपना आहार, एलर्जी, बजट और खाना पकाने का समय बताएं — यह 7-दिन की योजना तैयार करेगा।",
+  "mws.category":"कैलकुलेटर · रियल एस्टेट","mws.tagline":"आपका AI होम लोन सह-पायलट","mws.desc":"AI गृह ऋण विश्लेषक जो पूर्ण परिशोधन अनुसूचियां चलाता है और ऋण जीवन पर सबसे सस्ता रास्ता ढूंढता है।",
+  "srt.category":"उपभोक्ता · यात्रा","srt.tagline":"AI-वर्णित शहर अन्वेषण","srt.desc":"AI यात्रा साथी जो किसी भी शहरी सैर को व्यापक वर्णित अनुभव में बदल देता है।",
+  "open":"खोलें","footer.credits":"© 2026 · AI के साथ बनाया · NETLIFY पर तैनात"
+},
+ru:{
+  "nav.role":"M&A · Структурированные финансы · CFA · Топ-модельер FMWC",
+  "hero.eyebrow":"ПОРТФЕЛЬ · 2026 · ИИ-НАТИВНЫЙ",
+  "hero.h1a":"Семь ИИ-продуктов.","hero.h1b":"Одна дисциплина.",
+  "hero.p":"Институциональный анализ, применённый к решениям, которые люди реально принимают — от покупки жилья до финансирования восстановления целой страны.",
+  "stats.label1":"ИИ-НАТИВНЫХ ПРОДУКТОВ","stats.label2":"ОХВАЧЕННЫХ ОТРАСЛЕЙ",
+  "ind.label":"ОТРАСЛИ //","ind.reconstruction":"Финансирование реконструкции","ind.modeling":"Финансовое моделирование","ind.energy":"Чистая энергетика","ind.prediction":"Рынки прогнозов","ind.wellness":"Здоровье","ind.realestate":"Недвижимость","ind.travel":"Путешествия",
+  "sec.featured":"ВЫБРАННАЯ ПОЗИЦИЯ","sec.featured.meta":"// якорный актив","sec.all":"ВСЕ ПОЗИЦИИ","sec.all.meta":"// 6 продуктов",
+  "uvn.category":"НКО · ФИНАНСИРОВАНИЕ РЕКОНСТРУКЦИИ","uvn.tagline":"Атлас финансирования восстановления Украины на базе ИИ","uvn.desc":"Некоммерческий ИИ-атлас, картографирующий восстановление Украины объект за объектом, на основе методологии Всемирного банка RDNA3 + KSE.","uvn.cta1":"Открыть uVidNova","uvn.cta2":"Все позиции",
+  "mup.category":"SAAS · ФИНАНСОВОЕ МОДЕЛИРОВАНИЕ","mup.tagline":"Финансовые модели для основателей, созданные ИИ","mup.desc":"Опишите свой бизнес простыми словами — ИИ сгенерирует инвестиционную трёхотчётную модель с прогнозами выручки, чувствительностями и runway.",
+  "rsl.category":"КАЛЬКУЛЯТОР · ЧИСТАЯ ЭНЕРГЕТИКА","rsl.tagline":"ROI солнечных панелей за секунды с ИИ","rsl.desc":"Введите местоположение, площадь крыши и счёт за электроэнергию — ИИ рассчитает окупаемость, ежемесячную экономию и денежные потоки за 25 лет.",
+  "pmd.category":"ТРЕЙДИНГ · РЫНКИ ПРОГНОЗОВ","pmd.tagline":"ИИ-сигналы для трейдеров рынков прогнозов","pmd.desc":"ИИ-система оповещений, отслеживающая весь поток PolyMarket и уведомляющая вас в момент реального сигнала.",
+  "dsh.category":"ПОТРЕБИТЕЛЬ · ЗДОРОВЬЕ","dsh.tagline":"Ваш персональный ИИ-планировщик питания","dsh.desc":"Расскажите ИИ о вашей диете, аллергиях, бюджете и времени готовки — он составит 7-дневный план с рецептами.",
+  "mws.category":"КАЛЬКУЛЯТОР · НЕДВИЖИМОСТЬ","mws.tagline":"Ваш ИИ-копилот по ипотеке","mws.desc":"ИИ-анализатор ипотеки, строящий полные графики погашения и находящий наиболее выгодный путь за весь срок кредита.",
+  "srt.category":"ПОТРЕБИТЕЛЬ · ПУТЕШЕСТВИЯ","srt.tagline":"Исследование города с ИИ-нарративом","srt.desc":"ИИ-компаньон, превращающий любую городскую прогулку в иммерсивный рассказ с маршрутами по вашим интересам.",
+  "open":"ОТКРЫТЬ","footer.credits":"© 2026 · СОЗДАНО С ИИ · РАЗВЁРНУТО НА NETLIFY"
+},
+bn:{
+  "nav.role":"M&A · কাঠামোগত অর্থায়ন · CFA · FMWC শীর্ষ মডেলার",
+  "hero.eyebrow":"পোর্টফোলিও · ২০২৬ · AI-নেটিভ",
+  "hero.h1a":"সাতটি AI পণ্য।","hero.h1b":"একটি শৃঙ্খলা।",
+  "hero.p":"প্রাতিষ্ঠানিক মানের বিশ্লেষণ, মানুষ যে সিদ্ধান্তগুলি বাস্তবে নেয় তার ক্ষেত্রে প্রয়োগ করা হয়েছে — বাড়ি কেনা থেকে পুনর্নির্মাণে অর্থায়ন পর্যন্ত।",
+  "stats.label1":"AI-নেটিভ পণ্য","stats.label2":"পরিষেবিত শিল্প",
+  "ind.label":"শিল্প //","ind.reconstruction":"পুনর্নির্মাণ অর্থায়ন","ind.modeling":"আর্থিক মডেলিং","ind.energy":"পরিষ্কার শক্তি","ind.prediction":"পূর্বাভাস বাজার","ind.wellness":"সুস্থতা","ind.realestate":"রিয়েল এস্টেট","ind.travel":"ভ্রমণ",
+  "sec.featured":"বিশেষ অবস্থান","sec.featured.meta":"// মূল সম্পদ","sec.all":"সমস্ত অবস্থান","sec.all.meta":"// ৬টি পণ্য",
+  "uvn.category":"অলাভজনক · পুনর্নির্মাণ অর্থায়ন","uvn.tagline":"ইউক্রেনের AI-চালিত পুনর্নির্মাণ-অর্থায়ন অ্যাটলাস","uvn.desc":"একটি অলাভজনক AI অ্যাটলাস যা ইউক্রেনের পুনর্নির্মাণ সম্পদ ধরে ধরে মানচিত্র তৈরি করে, বিশ্বব্যাংক RDNA3 + KSE পদ্ধতিতে তিনটি নির্ণায়ক ব্যয় পথ তৈরি করে।","uvn.cta1":"uVidNova খুলুন","uvn.cta2":"সমস্ত অবস্থান দেখুন",
+  "mup.category":"SAAS · আর্থিক মডেলিং","mup.tagline":"প্রতিষ্ঠাতাদের জন্য AI-জেনারেটেড আর্থিক মডেল","mup.desc":"সহজ ভাষায় আপনার ব্যবসার বর্ণনা করুন এবং AI বিনিয়োগকারী-গ্রেডের তিন-বিবৃতি মডেল তৈরি করবে।",
+  "rsl.category":"ক্যালকুলেটর · পরিষ্কার শক্তি","rsl.tagline":"সেকেন্ডে AI দিয়ে সৌর ROI","rsl.desc":"অবস্থান, ছাদের আকার এবং বিদ্যুৎ বিল লিখুন — AI পেব্যাক, মাসিক সঞ্চয় এবং ২৫ বছরের নগদ প্রবাহ প্রজেক্ট করে।",
+  "pmd.category":"ট্রেডিং · পূর্বাভাস বাজার","pmd.tagline":"পূর্বাভাস বাজার ট্রেডারদের জন্য AI সংকেত","pmd.desc":"একটি AI সতর্কতা ইঞ্জিন যা সম্পূর্ণ PolyMarket ডেটা প্রবাহ পর্যবেক্ষণ করে এবং বাস্তব সংকেতে সংক্ষিপ্তভাবে জানায়।",
+  "dsh.category":"ভোক্তা · সুস্থতা","dsh.tagline":"আপনার ব্যক্তিগত AI খাবার পরিকল্পনাকারী","dsh.desc":"AI কে আপনার খাদ্য, অ্যালার্জি, বাজেট এবং রান্নার সময় বলুন — ৭-দিনের পরিকল্পনা তৈরি করবে।",
+  "mws.category":"ক্যালকুলেটর · রিয়েল এস্টেট","mws.tagline":"আপনার AI বন্ধকী সহ-পাইলট","mws.desc":"AI বন্ধকী বিশ্লেষক যা সম্পূর্ণ পরিশোধন সময়সূচী চালায় এবং সবচেয়ে সস্তা পথ খোঁজে।",
+  "srt.category":"ভোক্তা · ভ্রমণ","srt.tagline":"AI-বর্ণিত শহর অন্বেষণ","srt.desc":"AI ভ্রমণ সঙ্গী যা যেকোনো শহরের হাঁটাকে একটি নিমজ্জিত বর্ণিত অভিজ্ঞতায় পরিণত করে।",
+  "open":"খুলুন","footer.credits":"© ২০২৬ · AI দিয়ে নির্মিত · NETLIFY-এ মোতায়েন"
+},
+ja:{
+  "nav.role":"M&A · ストラクチャードファイナンス · CFA · FMWC トップモデラー",
+  "hero.eyebrow":"ポートフォリオ · 2026 · AI ネイティブ",
+  "hero.h1a":"7つのAIプロダクト。","hero.h1b":"ひとつの規律。",
+  "hero.p":"機関投資家レベルの分析を、人々が実際に下す意思決定に。住宅の購入から国全体の復興資金調達まで。",
+  "stats.label1":"AIネイティブ製品","stats.label2":"対応業界数",
+  "ind.label":"業界 //","ind.reconstruction":"復興ファイナンス","ind.modeling":"財務モデリング","ind.energy":"クリーンエネルギー","ind.prediction":"予測市場","ind.wellness":"ウェルネス","ind.realestate":"不動産","ind.travel":"旅行",
+  "sec.featured":"注目ポジション","sec.featured.meta":"// 中核資産","sec.all":"全ポジション","sec.all.meta":"// 6製品",
+  "uvn.category":"非営利 · 復興ファイナンス","uvn.tagline":"ウクライナのAI駆動復興ファイナンス・アトラス","uvn.desc":"ウクライナの復興をアセットごとにマッピングする非営利AIアトラス。世界銀行RDNA3 + KSE手法に基づいた3つの確定的コストシナリオを生成します。","uvn.cta1":"uVidNovaを開く","uvn.cta2":"全ポジションを見る",
+  "mup.category":"SAAS · 財務モデリング","mup.tagline":"AIが生成する創業者向け財務モデル","mup.desc":"ビジネスを平易な言葉で説明するだけで、AIが投資家レベルの3表モデルを生成します。",
+  "rsl.category":"計算ツール · クリーンエネルギー","rsl.tagline":"AIで太陽光ROIを瞬時に算出","rsl.desc":"場所・屋根面積・電気代を入力するだけで、AIが回収期間・月間節約額・25年間のキャッシュフローを試算します。",
+  "pmd.category":"トレーディング · 予測市場","pmd.tagline":"予測市場トレーダー向けAIシグナル","pmd.desc":"PolyMarket全データを監視するAIアラートエンジン。コントラクトが真のシグナルで動いた瞬間に通知します。",
+  "dsh.category":"コンシューマー · ウェルネス","dsh.tagline":"あなた専用のAI食事プランナー","dsh.desc":"食事制限・アレルギー・予算・調理時間をAIに伝えると、レシピ付き7日間プランと買い物リストを自動生成します。",
+  "mws.category":"計算ツール · 不動産","mws.tagline":"住宅ローンのAIコパイロット","mws.desc":"完全な償還スケジュールを計算し、ローン期間中の最安コストルートを見つけるAI住宅ローン分析ツール。",
+  "srt.category":"コンシューマー · 旅行","srt.tagline":"AIナレーションによる都市探索","srt.desc":"街歩きを没入型ナレーション体験に変えるAI旅行コンパニオン。あなたの興味に合わせたカスタムルートで。",
+  "open":"開く","footer.credits":"© 2026 · AIで構築 · Netlifyでデプロイ"
+},
+id:{
+  "nav.role":"M&A · Keuangan Terstruktur · CFA · Pemodelan Top FMWC",
+  "hero.eyebrow":"PORTOFOLIO · 2026 · BERBASIS AI",
+  "hero.h1a":"Tujuh produk AI.","hero.h1b":"Satu disiplin.",
+  "hero.p":"Analisis tingkat institusional, diterapkan pada pilihan yang benar-benar dibuat orang — dari membeli rumah hingga membiayai pembangunan kembali seluruh negara.",
+  "stats.label1":"PRODUK BERBASIS AI","stats.label2":"INDUSTRI YANG DILAYANI",
+  "ind.label":"INDUSTRI //","ind.reconstruction":"Keuangan Rekonstruksi","ind.modeling":"Pemodelan Keuangan","ind.energy":"Energi Bersih","ind.prediction":"Pasar Prediksi","ind.wellness":"Kesehatan","ind.realestate":"Properti","ind.travel":"Perjalanan",
+  "sec.featured":"POSISI UNGGULAN","sec.featured.meta":"// aset utama","sec.all":"SEMUA POSISI","sec.all.meta":"// 6 produk",
+  "uvn.category":"NIRLABA · KEUANGAN REKONSTRUKSI","uvn.tagline":"Atlas keuangan rekonstruksi Ukraina berbasis AI","uvn.desc":"Atlas AI nirlaba yang memetakan rekonstruksi Ukraina aset per aset, menghasilkan tiga jalur biaya deterministik berdasarkan metodologi Bank Dunia RDNA3 + KSE.","uvn.cta1":"Buka uVidNova","uvn.cta2":"Lihat semua posisi",
+  "mup.category":"SAAS · PEMODELAN KEUANGAN","mup.tagline":"Model keuangan yang dihasilkan AI untuk para pendiri","mup.desc":"Jelaskan bisnis Anda dalam bahasa sederhana dan AI akan menghasilkan model tiga laporan tingkat investor.",
+  "rsl.category":"KALKULATOR · ENERGI BERSIH","rsl.tagline":"ROI solar dalam hitungan detik dengan AI","rsl.desc":"Masukkan lokasi, ukuran atap, dan tagihan listrik — AI memproyeksikan payback, penghematan bulanan, dan arus kas 25 tahun.",
+  "pmd.category":"PERDAGANGAN · PASAR PREDIKSI","pmd.tagline":"Sinyal AI untuk trader pasar prediksi","pmd.desc":"Mesin peringatan AI yang memantau seluruh aliran data PolyMarket dan memberi tahu Anda saat kontrak bergerak pada sinyal nyata.",
+  "dsh.category":"KONSUMEN · KESEHATAN","dsh.tagline":"Perencana makan AI pribadi Anda","dsh.desc":"Ceritakan kepada AI tentang diet, alergi, anggaran, dan waktu memasak — AI menghasilkan rencana 7 hari dengan resep dan daftar belanja.",
+  "mws.category":"KALKULATOR · PROPERTI","mws.tagline":"Ko-pilot AI hipotek Anda","mws.desc":"Penganalisis hipotek AI yang menjalankan jadwal amortisasi lengkap dan menemukan jalur termurah sepanjang umur pinjaman.",
+  "srt.category":"KONSUMEN · PERJALANAN","srt.tagline":"Eksplorasi kota dengan narasi AI","srt.desc":"Teman perjalanan AI yang mengubah setiap jalan-jalan di kota menjadi pengalaman narasi imersif dengan rute khusus.",
+  "open":"BUKA","footer.credits":"© 2026 · DIBANGUN DENGAN AI · DITERAPKAN DI NETLIFY"
+}
+};
+
+const LANGS = {
+  en:{flag:"🇬🇧",label:"EN",dir:"ltr"},
+  uk:{flag:"🇺🇦",label:"UK",dir:"ltr"},
+  fr:{flag:"🇫🇷",label:"FR",dir:"ltr"},
+  es:{flag:"🇪🇸",label:"ES",dir:"ltr"},
+  de:{flag:"🇩🇪",label:"DE",dir:"ltr"},
+  pt:{flag:"🇵🇹",label:"PT",dir:"ltr"},
+  it:{flag:"🇮🇹",label:"IT",dir:"ltr"},
+  nl:{flag:"🇳🇱",label:"NL",dir:"ltr"},
+  tr:{flag:"🇹🇷",label:"TR",dir:"ltr"},
+  zh:{flag:"🇨🇳",label:"ZH",dir:"ltr"},
+  ar:{flag:"🇸🇦",label:"AR",dir:"rtl"},
+  hi:{flag:"🇮🇳",label:"HI",dir:"ltr"},
+  ru:{flag:"ru",label:"RU",dir:"ltr"},
+  bn:{flag:"🇧🇩",label:"BN",dir:"ltr"},
+  ja:{flag:"🇯🇵",label:"JA",dir:"ltr"},
+  id:{flag:"🇮🇩",label:"ID",dir:"ltr"}
+};
+
+function applyLang(code) {
+  const t = T[code]; if (!t) return;
+  const meta = LANGS[code];
+  document.documentElement.lang = code;
+  document.documentElement.dir = meta.dir;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  // update btn
+  const isRu = code === 'ru';
+  document.getElementById('langFlag').textContent = isRu ? '' : meta.flag;
+  document.getElementById('langFlag').style.fontFamily = isRu ? 'monospace' : '';
+  document.getElementById('langFlag').style.fontSize = isRu ? '11px' : '';
+  document.getElementById('langFlag').style.fontWeight = isRu ? '700' : '';
+  document.getElementById('langFlag').style.color = isRu ? 'var(--dim)' : '';
+  document.getElementById('langFlag').textContent = isRu ? 'ru' : meta.flag;
+  document.getElementById('langLabel').textContent = meta.label;
+  // active state
+  document.querySelectorAll('.lang-option').forEach(o => {
+    o.classList.toggle('active', o.dataset.lang === code);
+  });
+  localStorage.setItem('lang', code);
+}
+
+// Dropdown toggle
+const switcher = document.getElementById('langSwitcher');
+const btn = document.getElementById('langBtn');
+btn.addEventListener('click', e => {
+  e.stopPropagation();
+  const open = switcher.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+});
+document.addEventListener('click', () => {
+  switcher.classList.remove('open');
+  btn.setAttribute('aria-expanded', false);
+});
+document.querySelectorAll('.lang-option').forEach(opt => {
+  opt.addEventListener('click', e => {
+    e.stopPropagation();
+    applyLang(opt.dataset.lang);
+    switcher.classList.remove('open');
+    btn.setAttribute('aria-expanded', false);
+  });
+});
+
+// Init
+applyLang(localStorage.getItem('lang') || 'en');
 </script>
 </body>
 </html>

@@ -225,6 +225,63 @@ a { color: inherit; text-decoration: none; }
 .footer .who strong { color: var(--text); }
 .footer .credits { color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; }
 
+/* Feedback button + modal */
+.feedback-btn {
+  position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: 999px;
+  background: var(--accent); color: #fff;
+  font-weight: 600; font-size: 13px; cursor: pointer; border: none;
+  box-shadow: 0 4px 20px -4px rgba(20,184,166,0.5);
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+.feedback-btn:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 8px 28px -6px rgba(20,184,166,0.6); }
+.feedback-overlay {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: rgba(15,23,42,0.4); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.feedback-overlay.open { display: flex; }
+.feedback-modal {
+  background: #fff; border-radius: 20px; padding: 36px;
+  width: 100%; max-width: 480px;
+  box-shadow: 0 24px 64px -12px rgba(15,23,42,0.28);
+  position: relative;
+}
+.feedback-modal h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 6px; }
+.feedback-modal p { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+.feedback-close {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--panel); border: none; border-radius: 8px;
+  width: 32px; height: 32px; cursor: pointer; font-size: 16px;
+  color: var(--muted); display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.feedback-close:hover { background: var(--line); }
+.feedback-modal label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 6px; }
+.feedback-modal input,
+.feedback-modal textarea,
+.feedback-modal select {
+  width: 100%; padding: 10px 14px; border-radius: 10px;
+  border: 1px solid var(--line); font-size: 14px; font-family: inherit;
+  color: var(--text); background: var(--panel); margin-bottom: 16px;
+  transition: border-color 0.15s;
+}
+.feedback-modal input:focus,
+.feedback-modal textarea:focus,
+.feedback-modal select:focus { outline: none; border-color: var(--accent); background: #fff; }
+.feedback-modal textarea { resize: vertical; min-height: 100px; }
+.feedback-submit {
+  width: 100%; padding: 13px; border-radius: 10px; border: none;
+  background: var(--accent); color: #fff; font-weight: 600; font-size: 14px;
+  cursor: pointer; transition: filter 0.15s;
+}
+.feedback-submit:hover { filter: brightness(1.08); }
+.feedback-success { display: none; text-align: center; padding: 16px 0; }
+.feedback-success .check { font-size: 40px; margin-bottom: 12px; }
+.feedback-success h4 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.feedback-success p { color: var(--muted); font-size: 14px; }
+
 /* RTL support */
 html[dir="rtl"] .tape-track { animation-direction: reverse; }
 html[dir="rtl"] .lang-dropdown { right: auto; left: 0; }
@@ -513,6 +570,52 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
   <div class="who"><strong>Samir Asadov</strong> · <span data-i18n="nav.role">M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Financial Modeler</span></div>
   <div class="credits mono" data-i18n="footer.credits">© 2026 · BUILT WITH AI · DEPLOYED ON NETLIFY</div>
 </footer>
+
+<!-- Feedback button -->
+<button class="feedback-btn" id="feedbackBtn">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  Feedback
+</button>
+
+<!-- Feedback modal -->
+<div class="feedback-overlay" id="feedbackOverlay">
+  <div class="feedback-modal">
+    <button class="feedback-close" id="feedbackClose">✕</button>
+    <h3>Share your feedback</h3>
+    <p>What's working? What could be better? We read every message.</p>
+    <div id="feedbackForm">
+      <form action="https://formsubmit.co/finmodelup@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Portfolio Feedback">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <label>Your name (optional)</label>
+        <input type="text" name="name" placeholder="e.g. Alex">
+        <label>Email (optional, for a reply)</label>
+        <input type="email" name="email" placeholder="you@example.com">
+        <label>Which product?</label>
+        <select name="product">
+          <option value="General">General / whole portfolio</option>
+          <option value="uVidNova">uVidNova</option>
+          <option value="ModelUp">ModelUp</option>
+          <option value="RoofSolar">RoofSolar</option>
+          <option value="PolyMind">PolyMind</option>
+          <option value="DishRoll">DishRoll</option>
+          <option value="MortWise">MortWise</option>
+          <option value="StoryRoute">StoryRoute</option>
+        </select>
+        <label>Your feedback</label>
+        <textarea name="message" placeholder="Tell us what you think…" required></textarea>
+        <input type="hidden" name="_next" value="https://asadov-stack.netlify.app?feedback=sent">
+        <button type="submit" class="feedback-submit">Send feedback →</button>
+      </form>
+    </div>
+    <div class="feedback-success" id="feedbackSuccess">
+      <div class="check">✅</div>
+      <h4>Thanks for your feedback!</h4>
+      <p>We'll review your message and get back to you if you left an email.</p>
+    </div>
+  </div>
+</div>
 
 <script>
 // ── Clock ──────────────────────────────────────────────────────────────────
@@ -879,6 +982,29 @@ document.querySelectorAll('.lang-option').forEach(opt => {
 
 // Init
 applyLang(localStorage.getItem('lang') || 'en');
+
+// ── Feedback modal ─────────────────────────────────────────────────────────
+(function(){
+  const overlay = document.getElementById('feedbackOverlay');
+  const openBtn = document.getElementById('feedbackBtn');
+  const closeBtn = document.getElementById('feedbackClose');
+
+  function openModal(){ overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeModal(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Show success if redirected back after submission
+  if (new URLSearchParams(location.search).get('feedback') === 'sent') {
+    document.getElementById('feedbackForm').style.display = 'none';
+    document.getElementById('feedbackSuccess').style.display = 'block';
+    openModal();
+    history.replaceState({}, '', location.pathname);
+  }
+})();
 </script>
 </body>
 </html>

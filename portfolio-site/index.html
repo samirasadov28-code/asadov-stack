@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Samir Asadov — AI Product Portfolio</title>
-<meta name="description" content="Eight products across finance, real estate, clean energy, prediction markets, wellness, travel, reconstruction, and sports predictions. Built by Samir Asadov.">
+<title>Asadov Stack | Tools for financial decisions</title>
+<meta name="description" content="Explore ModelUp, MortWise and RoofSolar, plus Samir Asadov's wider portfolio of practical apps and non-profit work.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://asadov-stack.netlify.app">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Samir Asadov">
+<meta property="og:site_name" content="Asadov Stack">
 <meta property="og:url" content="https://asadov-stack.netlify.app">
-<meta property="og:title" content="Samir Asadov — AI Product Portfolio">
-<meta property="og:description" content="Eight products across finance, real estate, clean energy, prediction markets, wellness, travel, reconstruction, and sports predictions. Built by Samir Asadov.">
+<meta property="og:title" content="Asadov Stack | Tools for financial decisions">
+<meta property="og:description" content="Explore ModelUp, MortWise and RoofSolar, plus Samir Asadov's wider portfolio of practical apps and non-profit work.">
 <!-- TODO: upload a 1200×630px image to assets/og-image.png for social previews -->
 <meta property="og:image" content="https://asadov-stack.netlify.app/assets/og-image.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Samir Asadov — AI Product Portfolio">
-<meta name="twitter:description" content="Eight products across finance, real estate, clean energy, prediction markets, wellness, travel, reconstruction, and sports predictions. Built by Samir Asadov.">
+<meta name="twitter:title" content="Asadov Stack | Tools for financial decisions">
+<meta name="twitter:description" content="Explore ModelUp, MortWise and RoofSolar, plus Samir Asadov's wider portfolio of practical apps and non-profit work.">
 <meta name="twitter:image" content="https://asadov-stack.netlify.app/assets/og-image.png">
 
 <!-- JSON-LD structured data -->
@@ -32,8 +32,8 @@
       "@type": "WebSite",
       "@id": "https://asadov-stack.netlify.app/#website",
       "url": "https://asadov-stack.netlify.app",
-      "name": "Samir Asadov — AI Product Portfolio",
-      "description": "Eight products across finance, real estate, clean energy, prediction markets, wellness, travel, reconstruction, and sports predictions.",
+      "name": "Asadov Stack",
+      "description": "Tools for financial decisions, plus experiments in travel, food and markets.",
       "author": { "@id": "https://asadov-stack.netlify.app/#person" }
     },
     {
@@ -313,17 +313,111 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
   .card.small .card-logo { width: 80px; height: 80px; padding: 12px; }
   .lang-btn span:not(.chevron):not(.lang-flag) { display: none; }
 }
+
+/* ── Funnel layout additions ───────────────────────────────────────────── */
+.nav-modeloop { display: none; font-size: 13px; font-weight: 500; color: var(--muted); padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line); white-space: nowrap; transition: color 0.15s, border-color 0.15s; align-items: center; }
+.nav-modeloop:hover { color: var(--accent-strong); border-color: var(--accent); }
+@media (min-width: 900px) { .nav-modeloop { display: inline-flex; } }
+
+.hero { padding: 40px 28px 24px; max-width: 1120px; margin: 0 auto; }
+.hero h1 { font-size: 44px; font-weight: 700; line-height: 1.1; letter-spacing: -1.2px; max-width: 680px; color: var(--text); }
+.hero > p { color: var(--muted); font-size: 16px; margin-top: 12px; max-width: 520px; line-height: 1.55; }
+.hero-shortcuts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.hero-shortcuts a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--text); font-size: 14px; font-weight: 500; background: var(--panel); transition: border-color 0.15s, background 0.15s, color 0.15s; }
+.hero-shortcuts a:hover { border-color: var(--accent); background: #fff; color: var(--accent-strong); }
+
+.quick-access { background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.quick-access-inner { max-width: 1120px; margin: 0 auto; padding: 0 28px; display: grid; grid-template-columns: repeat(3, 1fr); }
+.qa-item { display: flex; flex-direction: column; gap: 3px; padding: 14px 12px; text-decoration: none; border-right: 1px solid var(--line); transition: background 0.15s; justify-content: center; }
+.qa-item:last-child { border-right: none; }
+.qa-item:hover { background: rgba(20,184,166,0.05); }
+.qa-name { font-weight: 700; font-size: 14px; color: var(--text); }
+.qa-action { font-size: 12px; color: var(--accent-strong); }
+
+.ps-wrap { padding: 0 28px; }
+.ps-inner { max-width: 1120px; margin: 0 auto; }
+.ps-head { display: flex; align-items: baseline; gap: 12px; padding: 40px 0 20px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+.ps-head h2 { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; font-weight: 600; color: var(--accent-strong); }
+.ps-head .meta { color: var(--dim); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+
+.pcard { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; scroll-margin-top: 80px; }
+.pcard:hover { transform: translateY(-2px); border-color: var(--pc-accent, var(--accent)); box-shadow: 0 12px 36px -10px rgba(15,23,42,0.14); }
+.pcard + .pcard { margin-top: 20px; }
+.pcard-content { padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 10px; }
+.pcard-hd { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 2px; }
+.pcard-lw { width: 52px; height: 52px; border-radius: 12px; background: var(--pc-soft, var(--panel)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; padding: 8px; border: 1px solid rgba(0,0,0,0.06); }
+.pcard-lw img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.pcard-lw .fb { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 16px; color: var(--pc-accent, var(--accent)); }
+.pcard-mr { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.pcard-name { font-size: 22px; font-weight: 700; letter-spacing: -0.4px; color: var(--text); line-height: 1.1; }
+.pcard-name a { color: inherit; }
+.pcard-name a:hover { color: var(--pc-accent, var(--accent)); }
+.pcard-for { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.pcard-outcome { font-size: 15px; color: var(--text); line-height: 1.6; font-weight: 500; }
+.pcard-try { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.pcard-access { font-size: 11px; color: var(--dim); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.2px; }
+.pcard-cta { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 20px; border-radius: 10px; background: var(--pc-accent, var(--accent)); color: #fff; font-weight: 600; font-size: 14px; transition: filter 0.15s, transform 0.15s; align-self: flex-start; margin-top: 4px; text-decoration: none; }
+.pcard-cta:hover { filter: brightness(1.08); transform: translateX(2px); }
+.pcard-img { background: var(--panel); border-left: 1px solid var(--line); overflow: hidden; position: relative; }
+.pcard-img a { display: block; width: 100%; height: 100%; }
+.pcard-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+
+.port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.pcards { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; scroll-margin-top: 80px; }
+.pcards:hover { transform: translateY(-2px); border-color: var(--pc-accent, var(--accent)); box-shadow: 0 8px 24px -8px rgba(15,23,42,0.14); }
+.pcards-body { padding: 18px 18px 14px; flex: 1; display: flex; flex-direction: column; gap: 7px; }
+.pcards-mr { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 2px; }
+.pcards-name { font-size: 17px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.pcards-for { font-size: 13px; color: var(--muted); line-height: 1.5; }
+.pcards-outcome { font-size: 13px; color: var(--text); line-height: 1.55; }
+.pcards-img { border-top: 1px solid var(--line); overflow: hidden; height: 130px; background: var(--panel); flex-shrink: 0; }
+.pcards-img a { display: block; width: 100%; height: 100%; }
+.pcards-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.pcards-foot { padding: 12px 18px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.pcards-access { font-size: 10px; color: var(--dim); font-family: 'JetBrains Mono', monospace; }
+.pcards-cta { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--pc-accent, var(--accent)); font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.pcards-cta:hover { text-decoration: underline; }
+.badge-np { display: inline-flex; align-items: center; gap: 4px; font-size: 9px; letter-spacing: 1px; padding: 2px 7px; border-radius: 999px; background: rgba(245,158,11,0.1); color: #92400E; border: 1px solid rgba(245,158,11,0.3); font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+
+.builder-wrap { padding: 40px 28px 48px; }
+.builder-inner { max-width: 1120px; margin: 0 auto; background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 36px 36px 32px; }
+.builder-inner h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 10px; }
+.builder-inner p { font-size: 15px; color: var(--muted); line-height: 1.65; max-width: 620px; margin-bottom: 6px; }
+.builder-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.builder-link { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line-2); font-size: 14px; font-weight: 500; color: var(--text); background: #fff; transition: border-color 0.15s, color 0.15s; text-decoration: none; }
+.builder-link:hover { border-color: var(--accent); color: var(--accent-strong); }
+
+@media (max-width: 900px) {
+  .pcard { grid-template-columns: 1fr; }
+  .pcard-img { border-left: none; border-top: 1px solid var(--line); min-height: 200px; }
+  .port-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .hero { padding: 28px 20px 18px; }
+  .hero h1 { font-size: 28px; letter-spacing: -0.6px; }
+  .hero > p { font-size: 15px; }
+  .quick-access-inner { padding: 0 20px; }
+  .qa-item { padding: 10px 0; }
+  .ps-wrap { padding: 0 20px; }
+  .pcard-content { padding: 18px 18px 14px; }
+  .pcard-name { font-size: 19px; }
+  .pcard-outcome { font-size: 14px; }
+  .port-grid { grid-template-columns: 1fr; }
+  .builder-wrap { padding: 28px 20px 36px; }
+  .builder-inner { padding: 22px 18px; }
+}
 </style>
 </head><body>
 <header class="topbar">
   <div class="brand">
     <div class="brand-mark">SA</div>
     <div class="brand-info">
-      <div class="brand-name">Samir Asadov</div>
-      <div class="brand-role" data-i18n="nav.role">M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Modeler</div>
+      <div class="brand-name">Asadov Stack</div>
+      <div class="brand-role" data-i18n="nav.role">Tools for financial decisions</div>
     </div>
   </div>
   <div class="topbar-right">
+    <a class="nav-modeloop" href="https://modeloop.net" target="_blank" rel="noopener">ModeLoop: courses &amp; models</a>
     <div class="lang-switcher" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
         <span class="lang-flag" id="langFlag">🇬🇧</span>
@@ -356,248 +450,263 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
 <div class="tape"><div class="tape-track"><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SPO</span> · SpotOn WC26 — SPORTS · WC PREDICTIONS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SPO</span> · SpotOn WC26 — SPORTS · WC PREDICTIONS <span class="chg-up">▲ LIVE</span></span></div></div>
 
 <section class="hero">
-  <div class="eyebrow mono" data-i18n="hero.eyebrow">PORTFOLIO · 2026 · AI-NATIVE</div>
-  <h1><span data-i18n="hero.h1a">Eight products.</span><br><span class="accent" data-i18n="hero.h1b">One discipline.</span></h1>
-  <p data-i18n="hero.p">Institutional-grade analysis, applied to the choices people actually make — from buying a home to financing the rebuilding of an entire country.</p>
-  <div class="stats">
-    <div class="stat"><span class="stat-num mono">8</span><span class="stat-label" data-i18n="stats.label1">PRODUCTS</span></div>
-    <div class="stat"><span class="stat-num mono">8</span><span class="stat-label" data-i18n="stats.label2">INDUSTRIES SERVED</span></div>
-  </div>
+  <h1>Practical tools for financial decisions</h1>
+  <p>Explore tools for mortgages, solar payback and business finance, built by Samir Asadov.</p>
+  <nav class="hero-shortcuts" aria-label="Jump to product">
+    <a href="#mortwise">Mortgage</a>
+    <a href="#roofsolar">Solar</a>
+    <a href="#modelup">Business finance</a>
+  </nav>
 </section>
 
-<div class="industries">
-  <span class="lab" data-i18n="ind.label">INDUSTRIES //</span>
-  <a href="#uvidnova" class="chip" style="--chip-bg:#FEF3C7;--chip-text:#92400E;--chip-dot:#F59E0B;" data-i18n="ind.reconstruction">Reconstruction Finance</a>
-  <a href="#modelup" class="chip" style="--chip-bg:#CCFBF1;--chip-text:#0F766E;--chip-dot:#14B8A6;" data-i18n="ind.modeling">Financial Modeling</a>
-  <a href="#roofsolar" class="chip" style="--chip-bg:#FFEDD5;--chip-text:#9A3412;--chip-dot:#F97316;" data-i18n="ind.energy">Clean Energy</a>
-  <a href="#polymind" class="chip" style="--chip-bg:#EDE9FE;--chip-text:#5B21B6;--chip-dot:#8B5CF6;" data-i18n="ind.prediction">Prediction Markets</a>
-  <a href="#dishroll" class="chip" style="--chip-bg:#FCE7F3;--chip-text:#9D174D;--chip-dot:#EC4899;" data-i18n="ind.wellness">Wellness</a>
-  <a href="#mortwise" class="chip" style="--chip-bg:#DBEAFE;--chip-text:#1E40AF;--chip-dot:#3B82F6;" data-i18n="ind.realestate">Real Estate</a>
-  <a href="#storyroute" class="chip" style="--chip-bg:#D1FAE5;--chip-text:#065F46;--chip-dot:#10B981;" data-i18n="ind.travel">Travel</a>
-  <a href="#spoton" class="chip" style="--chip-bg:#DCFCE7;--chip-text:#166534;--chip-dot:#16A34A;" data-i18n="ind.sports">Sports</a>
+<nav class="quick-access" aria-label="Quick access to tools">
+  <div class="quick-access-inner">
+    <a class="qa-item" href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_quick_access" target="_blank" rel="noopener" data-product-id="modelup" data-placement="quick_access" data-link-role="cta">
+      <span class="qa-name">ModelUp</span>
+      <span class="qa-action">Build a financial model →</span>
+    </a>
+    <a class="qa-item" href="https://mortwise.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=mortwise_quick_access" target="_blank" rel="noopener" data-product-id="mortwise" data-placement="quick_access" data-link-role="cta">
+      <span class="qa-name">MortWise</span>
+      <span class="qa-action">Explore mortgage options →</span>
+    </a>
+    <a class="qa-item" href="https://roofsolars.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=roofsolar_quick_access" target="_blank" rel="noopener" data-product-id="roofsolar" data-placement="quick_access" data-link-role="cta">
+      <span class="qa-name">RoofSolar</span>
+      <span class="qa-action">Calculate solar payback →</span>
+    </a>
+  </div>
+</nav>
+
+<div class="ps-wrap">
+<div class="ps-inner">
+  <div class="ps-head">
+    <h2>TOOLS FOR FINANCIAL DECISIONS</h2>
+    <span class="meta">// commercial</span>
+  </div>
+
+  <article class="pcard" id="modelup" style="--pc-accent:#14B8A6;--pc-soft:#CCFBF1;">
+    <div class="pcard-content">
+      <div class="pcard-hd">
+        <div class="pcard-lw">
+          <img class="logo-img" src="assets/logos/ModelUp.png" alt="ModelUp logo">
+          <span class="fb" style="display:none">MUP</span>
+        </div>
+        <div>
+          <div class="pcard-mr">
+            <span class="ticker mono">MUP</span>
+            <span class="pill live">LIVE</span>
+            <span class="category mono">SAAS · FINANCIAL MODELING</span>
+          </div>
+          <div class="pcard-name"><a href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_commercial_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="commercial_card" data-link-role="title">ModelUp</a></div>
+        </div>
+      </div>
+      <p class="pcard-for">For founders planning a business or funding round.</p>
+      <p class="pcard-outcome">Create a five-year financial model with forecasts, cash runway and scenario comparisons.</p>
+      <p class="pcard-try">Try: Describe your business and review a free model preview.</p>
+      <p class="pcard-access">Free preview · Pro currently free during early access · No card required</p>
+      <a class="pcard-cta" href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_commercial_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="commercial_card" data-link-role="cta">Build a financial model →</a>
+    </div>
+    <div class="pcard-img">
+      <a href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_commercial_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="commercial_card" data-link-role="image">
+        <img src="assets/ModelUp.png" alt="ModelUp example output — financial model" width="640" height="480" loading="lazy">
+      </a>
+    </div>
+  </article>
+
+  <article class="pcard" id="mortwise" style="--pc-accent:#3B82F6;--pc-soft:#DBEAFE;">
+    <div class="pcard-content">
+      <div class="pcard-hd">
+        <div class="pcard-lw">
+          <img class="logo-img" src="assets/logos/MortWise.png" alt="MortWise logo">
+          <span class="fb" style="display:none">MWS</span>
+        </div>
+        <div>
+          <div class="pcard-mr">
+            <span class="ticker mono">MWS</span>
+            <span class="pill live">LIVE</span>
+            <span class="category mono">CALCULATOR · REAL ESTATE</span>
+          </div>
+          <div class="pcard-name"><a href="https://mortwise.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=mortwise_commercial_card" target="_blank" rel="noopener" data-product-id="mortwise" data-placement="commercial_card" data-link-role="title">MortWise</a></div>
+        </div>
+      </div>
+      <p class="pcard-for">For homebuyers and homeowners comparing mortgage choices.</p>
+      <p class="pcard-outcome">Estimate repayments, affordability and total borrowing costs; explore more scenarios with Full.</p>
+      <p class="pcard-try">Try: Enter a loan amount, term and rate for a free repayment estimate.</p>
+      <p class="pcard-access">Free calculator · Full €3.99/month</p>
+      <a class="pcard-cta" href="https://mortwise.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=mortwise_commercial_card" target="_blank" rel="noopener" data-product-id="mortwise" data-placement="commercial_card" data-link-role="cta">Explore mortgage options →</a>
+    </div>
+    <div class="pcard-img">
+      <a href="https://mortwise.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=mortwise_commercial_card" target="_blank" rel="noopener" data-product-id="mortwise" data-placement="commercial_card" data-link-role="image">
+        <img src="assets/MortWise.png" alt="MortWise example output — repayment estimate" width="640" height="480" loading="lazy">
+      </a>
+    </div>
+  </article>
+
+  <article class="pcard" id="roofsolar" style="--pc-accent:#F97316;--pc-soft:#FFEDD5;">
+    <div class="pcard-content">
+      <div class="pcard-hd">
+        <div class="pcard-lw">
+          <img class="logo-img" src="assets/logos/RoofSolar.png" alt="RoofSolar logo">
+          <span class="fb" style="display:none">RSL</span>
+        </div>
+        <div>
+          <div class="pcard-mr">
+            <span class="ticker mono">RSL</span>
+            <span class="pill live">LIVE</span>
+            <span class="category mono">CALCULATOR · CLEAN ENERGY</span>
+          </div>
+          <div class="pcard-name"><a href="https://roofsolars.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=roofsolar_commercial_card" target="_blank" rel="noopener" data-product-id="roofsolar" data-placement="commercial_card" data-link-role="title">RoofSolar</a></div>
+        </div>
+      </div>
+      <p class="pcard-for">For homeowners weighing solar panels, batteries or an EV.</p>
+      <p class="pcard-outcome">Estimate payback and 25-year cash flows using your location and energy assumptions.</p>
+      <p class="pcard-try">Try: Start a free solar analysis; upgrade for the full report.</p>
+      <p class="pcard-access">Free analysis · Full report €3.99</p>
+      <a class="pcard-cta" href="https://roofsolars.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=roofsolar_commercial_card" target="_blank" rel="noopener" data-product-id="roofsolar" data-placement="commercial_card" data-link-role="cta">Calculate solar payback →</a>
+    </div>
+    <div class="pcard-img">
+      <a href="https://roofsolars.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=roofsolar_commercial_card" target="_blank" rel="noopener" data-product-id="roofsolar" data-placement="commercial_card" data-link-role="image">
+        <img src="assets/RoofSolar.png" alt="RoofSolar example output — payback estimate" width="640" height="480" loading="lazy">
+      </a>
+    </div>
+  </article>
+
+</div>
 </div>
 
-<div class="section-head">
-  <h2 class="mono" data-i18n="sec.featured">FEATURED POSITIONS</h2>
-  <span class="meta mono" data-i18n="sec.featured.meta">// anchor assets</span>
-</div>
-<div class="positions">
-<article class="card featured" id="uvidnova" style="--accent-card:#F59E0B;--accent-card-soft:#FEF3C7;">
-  <div class="left">
-    <div class="card-logo">
-      <img class="logo-img" src="assets/logos/uVidNova.png" alt="uVidNova logo">
-      <span class="fallback" style="display:none">UVN</span>
-    </div>
-    <div class="card-meta">
-      <span class="ticker mono">UVN</span>
-      <span class="pill live">LIVE</span>
-      <span class="category" data-i18n="uvn.category">NON-PROFIT · RECONSTRUCTION FINANCE</span>
-    </div>
-    <h2>uVidNova</h2>
-    <div class="tagline" data-i18n="uvn.tagline">The AI-powered reconstruction-finance atlas of Ukraine</div>
-    <p class="desc" data-i18n="uvn.desc">A non-profit AI atlas mapping every damaged asset in Ukraine across three deterministic cost paths anchored to World Bank RDNA3 + KSE methodology.</p>
-    <div class="cta-row">
-      <a class="cta" href="https://uvidnova.netlify.app/" target="_blank" rel="noopener"><span data-i18n="uvn.cta1">Open uVidNova</span> <span class="arrow">→</span></a>
-      <a class="cta ghost" href="#all" data-i18n="uvn.cta2">View all positions</a>
+<div class="builder-wrap">
+  <div class="builder-inner">
+    <h2>Built by Samir Asadov</h2>
+    <p>CFA charterholder with experience in M&amp;A, structured finance and financial modelling. A top-ranked Financial Modeling World Cup competitor.</p>
+    <p>Explore his courses and financial models on ModeLoop and Eloquens.</p>
+    <div class="builder-links">
+      <a class="builder-link" href="https://modeloop.net" target="_blank" rel="noopener">Courses and models on ModeLoop →</a>
+      <a class="builder-link" href="https://www.eloquens.com/channel/samir-asadov-cfa" target="_blank" rel="noopener">Financial models on Eloquens →</a>
     </div>
   </div>
-  <div class="right">
-    <div class="preview">
-      <img src="assets/uVidNova.png" alt="uVidNova preview" style="width:100%;height:100%;object-fit:contain;object-position:center;">
-      <div class="scrim"></div>
-    </div>
-  </div>
-</article>
-
-<article class="card featured" id="spoton" style="--accent-card:#16A34A;--accent-card-soft:#DCFCE7;">
-  <div class="left">
-    <div class="card-logo">
-      <img class="logo-img" src="assets/logos/SpotOn.png" alt="SpotOn WC26 logo">
-      <span class="fallback" style="display:none">SPO</span>
-    </div>
-    <div class="card-meta">
-      <span class="ticker mono">SPO</span>
-      <span class="pill live">LIVE</span>
-      <span class="category" data-i18n="spo.category">SPORTS · WC PREDICTIONS</span>
-    </div>
-    <h2>SpotOn WC26</h2>
-    <div class="tagline" data-i18n="spo.tagline">The proper World Cup prediction game</div>
-    <p class="desc" data-i18n="spo.desc">Predict every group-stage score, auto-generate your knockout bracket with real FIFA tiebreakers, and compete on a live leaderboard — free, no install.</p>
-    <div class="cta-row">
-      <a class="cta" href="https://spoton-wc26.netlify.app/" target="_blank" rel="noopener"><span data-i18n="spo.cta1">Open SpotOn WC26</span> <span class="arrow">→</span></a>
-    </div>
-  </div>
-  <div class="right">
-    <div class="preview">
-      <img src="assets/SpotOn.png" alt="SpotOn WC26 preview" style="width:100%;height:100%;object-fit:contain;object-position:center;">
-      <div class="scrim"></div>
-    </div>
-  </div>
-</article>
 </div>
 
-<div class="section-head" id="all">
-  <h2 class="mono" data-i18n="sec.all">ALL POSITIONS</h2>
-  <span class="meta mono" data-i18n="sec.all.meta">// 6 products</span>
+<div class="ps-wrap">
+<div class="ps-inner">
+  <div class="ps-head">
+    <h2>MORE FROM THE PORTFOLIO</h2>
+    <span class="meta">// 5 products</span>
+  </div>
+  <div class="port-grid">
+
+    <article class="pcards" id="uvidnova" style="--pc-accent:#F59E0B;--pc-soft:#FEF3C7;">
+      <div class="pcards-body">
+        <div class="pcards-mr">
+          <span class="ticker mono">UVN</span>
+          <span class="pill live">LIVE</span>
+          <span class="badge-np">NON-PROFIT</span>
+        </div>
+        <div class="pcards-name">uVidNova</div>
+        <p class="pcards-for">For analysts exploring Ukraine reconstruction opportunities.</p>
+        <p class="pcards-outcome">Explore documented damaged assets, estimated reconstruction costs and financing options in a non-profit atlas.</p>
+      </div>
+      <div class="pcards-img">
+        <a href="https://uvidnova.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=uvidnova_portfolio_card" target="_blank" rel="noopener" data-product-id="uvidnova" data-placement="portfolio_card" data-link-role="image">
+          <img src="assets/uVidNova.png" alt="uVidNova — reconstruction atlas view" width="640" height="260" loading="lazy">
+        </a>
+      </div>
+      <div class="pcards-foot">
+        <span class="pcards-access">Non-profit reconstruction atlas</span>
+        <a class="pcards-cta" href="https://uvidnova.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=uvidnova_portfolio_card" target="_blank" rel="noopener" data-product-id="uvidnova" data-placement="portfolio_card" data-link-role="cta">Explore projects →</a>
+      </div>
+    </article>
+
+    <article class="pcards" id="polymind" style="--pc-accent:#8B5CF6;--pc-soft:#EDE9FE;">
+      <div class="pcards-body">
+        <div class="pcards-mr">
+          <span class="ticker mono">PMD</span>
+          <span class="pill live">LIVE</span>
+        </div>
+        <div class="pcards-name">PolyMind</div>
+        <p class="pcards-for">For prediction-market traders monitoring market activity.</p>
+        <p class="pcards-outcome">Follow Polymarket signals with AI analysis of price moves, volume and large trades.</p>
+      </div>
+      <div class="pcards-img">
+        <a href="https://polyminds.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=polymind_portfolio_card" target="_blank" rel="noopener" data-product-id="polymind" data-placement="portfolio_card" data-link-role="image">
+          <img src="assets/PolyMind.png" alt="PolyMind — market signal view" width="640" height="260" loading="lazy">
+        </a>
+      </div>
+      <div class="pcards-foot">
+        <span class="pcards-access">5 live signals/day free · Pro available</span>
+        <a class="pcards-cta" href="https://polyminds.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=polymind_portfolio_card" target="_blank" rel="noopener" data-product-id="polymind" data-placement="portfolio_card" data-link-role="cta">Explore signals →</a>
+      </div>
+    </article>
+
+    <article class="pcards" id="dishroll" style="--pc-accent:#EC4899;--pc-soft:#FCE7F3;">
+      <div class="pcards-body">
+        <div class="pcards-mr">
+          <span class="ticker mono">DSH</span>
+          <span class="pill live">LIVE</span>
+        </div>
+        <div class="pcards-name">DishRoll</div>
+        <p class="pcards-for">For households planning meals around their tastes and budget.</p>
+        <p class="pcards-outcome">Create a weekly meal plan with recipes and a shopping list.</p>
+      </div>
+      <div class="pcards-img">
+        <a href="https://dishroll.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=dishroll_portfolio_card" target="_blank" rel="noopener" data-product-id="dishroll" data-placement="portfolio_card" data-link-role="image">
+          <img src="assets/DishRoll.png" alt="DishRoll — meal plan view" width="640" height="260" loading="lazy">
+        </a>
+      </div>
+      <div class="pcards-foot">
+        <span class="pcards-access">Free trial · Paid upgrade available</span>
+        <a class="pcards-cta" href="https://dishroll.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=dishroll_portfolio_card" target="_blank" rel="noopener" data-product-id="dishroll" data-placement="portfolio_card" data-link-role="cta">Plan meals →</a>
+      </div>
+    </article>
+
+    <article class="pcards" id="storyroute" style="--pc-accent:#10B981;--pc-soft:#D1FAE5;">
+      <div class="pcards-body">
+        <div class="pcards-mr">
+          <span class="ticker mono">SRT</span>
+          <span class="pill live">LIVE</span>
+        </div>
+        <div class="pcards-name">StoryRoute</div>
+        <p class="pcards-for">For travellers and curious walkers exploring a place.</p>
+        <p class="pcards-outcome">Discover AI-generated local stories with audio narration and route tools.</p>
+      </div>
+      <div class="pcards-img">
+        <a href="https://storyroute.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=storyroute_portfolio_card" target="_blank" rel="noopener" data-product-id="storyroute" data-placement="portfolio_card" data-link-role="image">
+          <img src="assets/storyroute.png" alt="StoryRoute — route and story view" width="640" height="260" loading="lazy">
+        </a>
+      </div>
+      <div class="pcards-foot">
+        <span class="pcards-access">Free plan · Pro options in app</span>
+        <a class="pcards-cta" href="https://storyroute.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=storyroute_portfolio_card" target="_blank" rel="noopener" data-product-id="storyroute" data-placement="portfolio_card" data-link-role="cta">Explore an audio tour →</a>
+      </div>
+    </article>
+
+    <article class="pcards" id="spoton" style="--pc-accent:#16A34A;--pc-soft:#DCFCE7;">
+      <div class="pcards-body">
+        <div class="pcards-mr">
+          <span class="ticker mono">SPO</span>
+          <span class="pill live">LIVE</span>
+        </div>
+        <div class="pcards-name">SpotOn WC26</div>
+        <p class="pcards-for">For football fans making World Cup 2026 predictions.</p>
+        <p class="pcards-outcome">Explore score predictions, knockout brackets and leaderboard features.</p>
+      </div>
+      <div class="pcards-img">
+        <a href="https://spoton-wc26.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=spoton_wc26_portfolio_card" target="_blank" rel="noopener" data-product-id="spoton_wc26" data-placement="portfolio_card" data-link-role="image">
+          <img src="assets/SpotOn.png" alt="SpotOn WC26 — bracket and prediction view" width="640" height="260" loading="lazy">
+        </a>
+      </div>
+      <div class="pcards-foot">
+        <span class="pcards-access">World Cup 2026 prediction game</span>
+        <a class="pcards-cta" href="https://spoton-wc26.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=spoton_wc26_portfolio_card" target="_blank" rel="noopener" data-product-id="spoton_wc26" data-placement="portfolio_card" data-link-role="cta">Explore predictions →</a>
+      </div>
+    </article>
+
+  </div>
 </div>
-<div class="positions"><div class="card-grid">
-
-<article class="card small" id="modelup" style="--accent-card:#14B8A6;--accent-card-soft:#CCFBF1;">
-  <a href="https://modelups.netlify.app" target="_blank" rel="noopener" style="display:contents;">
-    <div class="small-top">
-      <div class="card-logo">
-        <img class="logo-img" src="assets/logos/ModelUp.png" alt="ModelUp logo">
-        <span class="fallback" style="display:none">MUP</span>
-      </div>
-      <div class="card-meta">
-        <span class="ticker mono">MUP</span>
-        <span class="pill live">LIVE</span>
-      </div>
-      <h3>ModelUp</h3>
-      <div class="tagline" data-i18n="mup.tagline">AI-generated financial models for founders</div>
-      <p class="desc" data-i18n="mup.desc">Describe your business in plain language and get an investor-grade three-statement model — revenue forecasts, sensitivities, and runway — built by AI.</p>
-    </div>
-    <div class="small-preview">
-      <img src="assets/ModelUp.png" alt="ModelUp preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
-    </div>
-    <div class="small-bottom">
-      <span class="category" data-i18n="mup.category">SAAS · FINANCIAL MODELING</span>
-      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
-    </div>
-  </a>
-</article>
-
-<article class="card small" id="roofsolar" style="--accent-card:#F97316;--accent-card-soft:#FFEDD5;">
-  <a href="https://roofsolars.netlify.app" target="_blank" rel="noopener" style="display:contents;">
-    <div class="small-top">
-      <div class="card-logo">
-        <img class="logo-img" src="assets/logos/RoofSolar.png" alt="RoofSolar logo">
-        <span class="fallback" style="display:none">RSL</span>
-      </div>
-      <div class="card-meta">
-        <span class="ticker mono">RSL</span>
-        <span class="pill live">LIVE</span>
-      </div>
-      <h3>RoofSolar</h3>
-      <div class="tagline" data-i18n="rsl.tagline">AI-driven solar ROI in seconds</div>
-      <p class="desc" data-i18n="rsl.desc">Enter your location and roof size to get AI-powered payback periods, monthly savings, and 25-year cash flows — model-grade solar economics without the sales pitch.</p>
-    </div>
-    <div class="small-preview">
-      <img src="assets/RoofSolar.png" alt="RoofSolar preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
-    </div>
-    <div class="small-bottom">
-      <span class="category" data-i18n="rsl.category">CALCULATOR · CLEAN ENERGY</span>
-      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
-    </div>
-  </a>
-</article>
-
-<article class="card small" id="polymind" style="--accent-card:#8B5CF6;--accent-card-soft:#EDE9FE;">
-  <a href="https://polyminds.netlify.app" target="_blank" rel="noopener" style="display:contents;">
-    <div class="small-top">
-      <div class="card-logo">
-        <img class="logo-img" src="assets/logos/PolyMind.png" alt="PolyMind logo">
-        <span class="fallback" style="display:none">PMD</span>
-      </div>
-      <div class="card-meta">
-        <span class="ticker mono">PMD</span>
-        <span class="pill live">LIVE</span>
-      </div>
-      <h3>PolyMind</h3>
-      <div class="tagline" data-i18n="pmd.tagline">AI signals for prediction-market traders</div>
-      <p class="desc" data-i18n="pmd.desc">AI alert engine that surfaces real signal from the PolyMarket firehose — price action, volume spikes, and news flow across politics, sports, crypto, and macro.</p>
-    </div>
-    <div class="small-preview">
-      <img src="assets/PolyMind.png" alt="PolyMind preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
-    </div>
-    <div class="small-bottom">
-      <span class="category" data-i18n="pmd.category">TRADING · PREDICTION MARKETS</span>
-      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
-    </div>
-  </a>
-</article>
-
-<article class="card small" id="dishroll" style="--accent-card:#EC4899;--accent-card-soft:#FCE7F3;">
-  <a href="https://dishroll.netlify.app" target="_blank" rel="noopener" style="display:contents;">
-    <div class="small-top">
-      <div class="card-logo">
-        <img class="logo-img" src="assets/logos/DishRoll.png" alt="DishRoll logo">
-        <span class="fallback" style="display:none">DSH</span>
-      </div>
-      <div class="card-meta">
-        <span class="ticker mono">DSH</span>
-        <span class="pill live">LIVE</span>
-      </div>
-      <h3>DishRoll</h3>
-      <div class="tagline" data-i18n="dsh.tagline">Your personal AI meal planner</div>
-      <p class="desc" data-i18n="dsh.desc">Tell the AI your diet, allergies, and budget and get a personalized 7-day meal plan with recipes and a consolidated shopping list.</p>
-    </div>
-    <div class="small-preview">
-      <img src="assets/DishRoll.png" alt="DishRoll preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
-    </div>
-    <div class="small-bottom">
-      <span class="category" data-i18n="dsh.category">CONSUMER · WELLNESS</span>
-      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
-    </div>
-  </a>
-</article>
-
-<article class="card small" id="mortwise" style="--accent-card:#3B82F6;--accent-card-soft:#DBEAFE;">
-  <a href="https://mortwise.netlify.app" target="_blank" rel="noopener" style="display:contents;">
-    <div class="small-top">
-      <div class="card-logo">
-        <img class="logo-img" src="assets/logos/MortWise.png" alt="MortWise logo">
-        <span class="fallback" style="display:none">MWS</span>
-      </div>
-      <div class="card-meta">
-        <span class="ticker mono">MWS</span>
-        <span class="pill live">LIVE</span>
-      </div>
-      <h3>MortWise</h3>
-      <div class="tagline" data-i18n="mws.tagline">Your AI mortgage co-pilot</div>
-      <p class="desc" data-i18n="mws.desc">AI mortgage analyzer that runs full amortization schedules, finds the cheapest path over the loan's life, and stress-tests rate shifts and refinancing windows.</p>
-    </div>
-    <div class="small-preview">
-      <img src="assets/MortWise.png" alt="MortWise preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
-    </div>
-    <div class="small-bottom">
-      <span class="category" data-i18n="mws.category">CALCULATOR · REAL ESTATE</span>
-      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
-    </div>
-  </a>
-</article>
-
-<article class="card small" id="storyroute" style="--accent-card:#10B981;--accent-card-soft:#D1FAE5;">
-  <a href="https://storyroute.netlify.app" target="_blank" rel="noopener" style="display:contents;">
-    <div class="small-top">
-      <div class="card-logo">
-        <img class="logo-img" src="assets/logos/StoryRoute.png" alt="StoryRoute logo">
-        <span class="fallback" style="display:none">SRT</span>
-      </div>
-      <div class="card-meta">
-        <span class="ticker mono">SRT</span>
-        <span class="pill live">LIVE</span>
-      </div>
-      <h3>StoryRoute</h3>
-      <div class="tagline" data-i18n="srt.tagline">AI-narrated city exploration</div>
-      <p class="desc" data-i18n="srt.desc">AI travel companion that turns any city walk into a cinematic narrated tour — custom routes with the stories behind every street, building, and hidden corner.</p>
-    </div>
-    <div class="small-preview">
-      <img src="assets/storyroute.png" alt="StoryRoute preview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;">
-    </div>
-    <div class="small-bottom">
-      <span class="category" data-i18n="srt.category">CONSUMER · TRAVEL</span>
-      <span class="cta-link"><span data-i18n="open">OPEN</span> <span class="arrow">→</span></span>
-    </div>
-  </a>
-</article>
-
-</div></div>
+</div>
 
 <footer class="footer">
-  <div class="who"><strong>Samir Asadov</strong> · <span data-i18n="nav.role">M&amp;A · Structured Finance · CFA · FMWC Top-Ranked Financial Modeler</span></div>
+  <div class="who"><strong>Samir Asadov</strong> · CFA · M&amp;A · Structured Finance</div>
   <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-    <div class="credits mono" data-i18n="footer.credits">© 2026 · BUILT WITH AI · DEPLOYED ON NETLIFY</div>
+    <div class="credits mono">© 2026 · ASADOV STACK · NETLIFY</div>
     <a href="/privacy" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--dim);">PRIVACY POLICY</a>
   </div>
 </footer>
@@ -663,9 +772,34 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
 (function(){
   document.querySelectorAll('.logo-img').forEach(img => {
     img.addEventListener('error', () => {
-      const fb = img.parentElement.querySelector('.fallback');
+      const fb = img.parentElement.querySelector('.fallback, .fb');
       img.style.display = 'none';
       if (fb) fb.style.display = 'block';
+    });
+  });
+})();
+
+// ── Product outbound click tracking ───────────────────────────────────────
+(function() {
+  function track(a) {
+    if (typeof window.gtag !== 'function') return;
+    try {
+      const url = new URL(a.href, window.location.href);
+      if (url.origin === window.location.origin) return;
+      window.gtag('event', 'product_outbound_click', {
+        product_id: a.dataset.productId,
+        placement: a.dataset.placement,
+        link_role: a.dataset.linkRole,
+        link_domain: url.hostname,
+        link_url: url.origin + url.pathname
+      });
+    } catch(e) {}
+  }
+  ['click', 'auxclick'].forEach(function(type) {
+    document.addEventListener(type, function(e) {
+      if (type === 'auxclick' && e.button !== 1) return;
+      var a = e.target instanceof Element ? e.target.closest('a[data-product-id]') : null;
+      if (a) track(a);
     });
   });
 })();

@@ -41,8 +41,12 @@
       "@id": "https://asadov-stack.netlify.app/#person",
       "name": "Samir Asadov",
       "url": "https://asadov-stack.netlify.app",
-      "jobTitle": "M&A · Structured Finance · CFA · FMWC Top-Ranked Financial Modeler",
-      "knowsAbout": ["Financial Modeling", "M&A", "Structured Finance", "AI Products", "Clean Energy Finance", "Real Estate Finance"]
+      "jobTitle": "CFA Charterholder · M&A · Structured Finance · FMWC #1 Europe",
+      "knowsAbout": ["Financial Modeling", "M&A", "Structured Finance", "AI Products", "Clean Energy Finance", "Real Estate Finance"],
+      "sameAs": [
+        "https://modeloop.net",
+        "https://www.eloquens.com/channel/samir-asadov-cfa"
+      ]
     },
     {
       "@type": "ItemList",
@@ -387,6 +391,52 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
 .builder-link { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line-2); font-size: 14px; font-weight: 500; color: var(--text); background: #fff; transition: border-color 0.15s, color 0.15s; text-decoration: none; }
 .builder-link:hover { border-color: var(--accent); color: var(--accent-strong); }
 
+/* ── Pill variants ─────────────────────────────────────────────────────── */
+.pill.freemium { background: rgba(99,102,241,0.1); color: #3730A3; border: 1px solid rgba(99,102,241,0.3); }
+.pill.freemium::before,.pill.early-access::before,.pill.free-plan::before,.pill.archive::before,.pill.non-profit::before { display: none; }
+.pill.early-access { background: rgba(20,184,166,0.1); color: #0D9488; border: 1px solid rgba(20,184,166,0.3); }
+.pill.free-plan { background: rgba(16,185,129,0.1); color: #047857; border: 1px solid rgba(16,185,129,0.3); }
+.pill.archive { background: rgba(148,163,184,0.15); color: #64748B; border: 1px solid rgba(148,163,184,0.4); }
+.pill.non-profit { background: rgba(245,158,11,0.12); color: #92400E; border: 1px solid rgba(245,158,11,0.3); }
+
+/* ── Text-only lang badges ─────────────────────────────────────────────── */
+.lang-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.5px; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; color: var(--text); min-width: 24px; text-align: center; flex-shrink: 0; }
+.lang-option .lang-badge { background: transparent; border-color: var(--line-2); }
+.lang-option.active .lang-badge { border-color: var(--accent); color: var(--accent-strong); }
+
+/* ── Hero stats + CTAs ─────────────────────────────────────────────────── */
+.hero-stats { display: flex; gap: 32px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.hero-stat { display: flex; flex-direction: column; }
+.hero-stat-num { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: var(--text); line-height: 1; }
+.hero-stat-label { color: var(--muted); font-size: 10px; letter-spacing: 1px; margin-top: 5px; font-weight: 500; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.hero-cta-primary { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 22px; border-radius: 10px; background: var(--accent); color: #fff; font-weight: 600; font-size: 14px; transition: filter 0.15s, transform 0.15s; text-decoration: none; }
+.hero-cta-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.hero-cta-secondary { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 22px; border-radius: 10px; border: 1px solid var(--line-2); color: var(--text); font-weight: 500; font-size: 14px; background: var(--panel); transition: border-color 0.15s, color 0.15s; text-decoration: none; }
+.hero-cta-secondary:hover { border-color: var(--accent); color: var(--accent-strong); }
+
+/* ── Featured 2-col grid ───────────────────────────────────────────────── */
+.featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 900px) { .featured-grid { grid-template-columns: 1fr; } }
+
+/* ── Contact / Work with me ────────────────────────────────────────────── */
+.contact-wrap { padding: 40px 28px 48px; border-top: 1px solid var(--line); margin-top: 8px; }
+.contact-inner { max-width: 1120px; margin: 0 auto; }
+.contact-inner h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.2px; margin-bottom: 8px; }
+.contact-inner .sub { font-size: 14px; color: var(--muted); margin-bottom: 22px; line-height: 1.55; max-width: 560px; }
+.contact-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.contact-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line-2); font-size: 14px; font-weight: 500; color: var(--text); background: #fff; transition: border-color 0.15s, color 0.15s; text-decoration: none; }
+.contact-btn:hover { border-color: var(--accent); color: var(--accent-strong); }
+.contact-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--dim); margin-bottom: 8px; margin-top: 4px; }
+.todo-ph { opacity: 0.45; pointer-events: none; border-style: dashed !important; cursor: default; }
+
+/* ── Footer disclaimer ─────────────────────────────────────────────────── */
+.footer-disclaimer { font-size: 11px; color: var(--dim); line-height: 1.55; padding: 12px 28px 0; max-width: 1120px; margin: 0 auto; }
+
+/* ── Ticker pause ──────────────────────────────────────────────────────── */
+.tape:hover .tape-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .tape-track { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; } }
+
 @media (max-width: 900px) {
   .pcard { grid-template-columns: 1fr; }
   .pcard-img { border-left: none; border-top: 1px solid var(--line); min-height: 200px; }
@@ -413,41 +463,39 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
     <div class="brand-mark">SA</div>
     <div class="brand-info">
       <div class="brand-name">Asadov Stack</div>
-      <div class="brand-role" data-i18n="nav.role">Tools for financial decisions</div>
+      <div class="brand-role" data-i18n="nav.role">M&amp;A · Structured Finance · CFA · FMWC #1 Europe, Top 3 Worldwide</div>
     </div>
   </div>
   <div class="topbar-right">
     <a class="nav-modeloop" href="https://modeloop.net" target="_blank" rel="noopener">ModeLoop: courses &amp; models</a>
     <div class="lang-switcher" id="langSwitcher">
       <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
-        <span class="lang-flag" id="langFlag">🇬🇧</span>
-        <span id="langLabel">EN</span>
+        <span class="lang-badge" id="langBadge">EN</span>
         <span class="chevron">▾</span>
       </button>
       <div class="lang-dropdown" id="langDropdown" role="listbox">
-        <div class="lang-option active" data-lang="en" role="option"><span class="lang-flag">🇬🇧</span> English <span class="lang-code">EN</span></div>
-        <div class="lang-option" data-lang="uk" role="option"><span class="lang-flag">🇺🇦</span> Українська <span class="lang-code">UK</span></div>
-        <div class="lang-option" data-lang="fr" role="option"><span class="lang-flag">🇫🇷</span> Français <span class="lang-code">FR</span></div>
-        <div class="lang-option" data-lang="es" role="option"><span class="lang-flag">🇪🇸</span> Español <span class="lang-code">ES</span></div>
-        <div class="lang-option" data-lang="de" role="option"><span class="lang-flag">🇩🇪</span> Deutsch <span class="lang-code">DE</span></div>
-        <div class="lang-option" data-lang="pt" role="option"><span class="lang-flag">🇵🇹</span> Português <span class="lang-code">PT</span></div>
-        <div class="lang-option" data-lang="it" role="option"><span class="lang-flag">🇮🇹</span> Italiano <span class="lang-code">IT</span></div>
-        <div class="lang-option" data-lang="nl" role="option"><span class="lang-flag">🇳🇱</span> Nederlands <span class="lang-code">NL</span></div>
-        <div class="lang-option" data-lang="tr" role="option"><span class="lang-flag">🇹🇷</span> Türkçe <span class="lang-code">TR</span></div>
-        <div class="lang-option" data-lang="zh" role="option"><span class="lang-flag">🇨🇳</span> 中文 <span class="lang-code">ZH</span></div>
-        <div class="lang-option" data-lang="ar" role="option"><span class="lang-flag">🇸🇦</span> العربية <span class="lang-code">AR</span></div>
-        <div class="lang-option" data-lang="hi" role="option"><span class="lang-flag">🇮🇳</span> हिन्दी <span class="lang-code">HI</span></div>
-        <div class="lang-option" data-lang="ru" role="option"><span class="lang-flag" style="font-family:monospace;font-size:12px;font-weight:700;color:var(--dim);">ru</span> Русский <span class="lang-code">RU</span></div>
-        <div class="lang-option" data-lang="bn" role="option"><span class="lang-flag">🇧🇩</span> বাংলা <span class="lang-code">BN</span></div>
-        <div class="lang-option" data-lang="ja" role="option"><span class="lang-flag">🇯🇵</span> 日本語 <span class="lang-code">JA</span></div>
-        <div class="lang-option" data-lang="id" role="option"><span class="lang-flag">🇮🇩</span> Indonesia <span class="lang-code">ID</span></div>
+        <div class="lang-option active" data-lang="en" role="option"><span class="lang-badge">EN</span> English</div>
+        <div class="lang-option" data-lang="uk" role="option"><span class="lang-badge">UK</span> Українська</div>
+        <div class="lang-option" data-lang="fr" role="option"><span class="lang-badge">FR</span> Français</div>
+        <div class="lang-option" data-lang="es" role="option"><span class="lang-badge">ES</span> Español</div>
+        <div class="lang-option" data-lang="de" role="option"><span class="lang-badge">DE</span> Deutsch</div>
+        <div class="lang-option" data-lang="pt" role="option"><span class="lang-badge">PT</span> Português</div>
+        <div class="lang-option" data-lang="it" role="option"><span class="lang-badge">IT</span> Italiano</div>
+        <div class="lang-option" data-lang="nl" role="option"><span class="lang-badge">NL</span> Nederlands</div>
+        <div class="lang-option" data-lang="tr" role="option"><span class="lang-badge">TR</span> Türkçe</div>
+        <div class="lang-option" data-lang="zh" role="option"><span class="lang-badge">ZH</span> 中文</div>
+        <div class="lang-option" data-lang="ar" role="option"><span class="lang-badge">AR</span> العربية</div>
+        <div class="lang-option" data-lang="hi" role="option"><span class="lang-badge">HI</span> हिन्दी</div>
+        <div class="lang-option" data-lang="ru" role="option"><span class="lang-badge">RU</span> Русский</div>
+        <div class="lang-option" data-lang="bn" role="option"><span class="lang-badge">BN</span> বাংলা</div>
+        <div class="lang-option" data-lang="ja" role="option"><span class="lang-badge">JA</span> 日本語</div>
+        <div class="lang-option" data-lang="id" role="option"><span class="lang-badge">ID</span> Indonesia</div>
       </div>
     </div>
-    <div class="clock mono"><span class="dot"></span><span id="clock">--:--:-- UTC</span></div>
   </div>
 </header>
 
-<div class="tape"><div class="tape-track"><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SPO</span> · SpotOn WC26 — SPORTS · WC PREDICTIONS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SPO</span> · SpotOn WC26 — SPORTS · WC PREDICTIONS <span class="chg-up">▲ LIVE</span></span></div></div>
+<div class="tape"><div class="tape-track"><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SPO</span> · SpotOn WC26 — SPORTS · WC PREDICTIONS <span style="color:var(--dim)">■ ARCHIVE</span></span><span class="tape-item mono"><span class="sym">UVN</span> · uVidNova — NON-PROFIT · RECONSTRUCTION FINANCE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MUP</span> · ModelUp — SAAS · FINANCIAL MODELING <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">RSL</span> · RoofSolar — CALCULATOR · CLEAN ENERGY <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">PMD</span> · PolyMind — TRADING · PREDICTION MARKETS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">DSH</span> · DishRoll — CONSUMER · WELLNESS <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">MWS</span> · MortWise — CALCULATOR · REAL ESTATE <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SRT</span> · StoryRoute — CONSUMER · TRAVEL <span class="chg-up">▲ LIVE</span></span><span class="tape-item mono"><span class="sym">SPO</span> · SpotOn WC26 — SPORTS · WC PREDICTIONS <span style="color:var(--dim)">■ ARCHIVE</span></span></div></div>
 
 <section class="hero">
   <h1>Practical tools for financial decisions</h1>
@@ -457,6 +505,24 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
     <a href="#roofsolar">Solar</a>
     <a href="#modelup">Business finance</a>
   </nav>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">8</div>
+      <div class="hero-stat-label">PRODUCTS</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">15+ yrs</div>
+      <div class="hero-stat-label">M&amp;A &amp; PROJECT FINANCE</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">#1 Europe</div>
+      <div class="hero-stat-label">FMWC · TOP 3 WORLDWIDE</div>
+    </div>
+  </div>
+  <div class="hero-ctas">
+    <a class="hero-cta-primary" href="#modelup">Explore the products</a>
+    <a class="hero-cta-secondary" href="#contact">Get in touch</a>
+  </div>
 </section>
 
 <nav class="quick-access" aria-label="Quick access to tools">
@@ -479,38 +545,77 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
 <div class="ps-wrap">
 <div class="ps-inner">
   <div class="ps-head">
-    <h2>TOOLS FOR FINANCIAL DECISIONS</h2>
-    <span class="meta">// commercial</span>
+    <h2>FEATURED</h2>
+    <span class="meta">// 2 products</span>
   </div>
+  <div class="featured-grid">
 
-  <article class="pcard" id="modelup" style="--pc-accent:#14B8A6;--pc-soft:#CCFBF1;">
-    <div class="pcard-content">
-      <div class="pcard-hd">
-        <div class="pcard-lw">
-          <img class="logo-img" src="assets/logos/ModelUp.png" alt="ModelUp logo">
-          <span class="fb" style="display:none">MUP</span>
-        </div>
-        <div>
-          <div class="pcard-mr">
-            <span class="ticker mono">MUP</span>
-            <span class="pill live">LIVE</span>
-            <span class="category mono">SAAS · FINANCIAL MODELING</span>
+    <article class="pcard" id="uvidnova" style="--pc-accent:#F59E0B;--pc-soft:#FEF3C7;">
+      <div class="pcard-content">
+        <div class="pcard-hd">
+          <div class="pcard-lw">
+            <img class="logo-img" src="assets/logos/uVidNova.png" alt="uVidNova logo">
+            <span class="fb" style="display:none">UVN</span>
           </div>
-          <div class="pcard-name"><a href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_commercial_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="commercial_card" data-link-role="title">ModelUp</a></div>
+          <div>
+            <div class="pcard-mr">
+              <span class="ticker mono">UVN</span>
+              <span class="pill non-profit">NON-PROFIT</span>
+            </div>
+            <div class="pcard-name"><a href="https://uvidnova.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=uvidnova_featured_card" target="_blank" rel="noopener" data-product-id="uvidnova" data-placement="featured_card" data-link-role="title">uVidNova</a></div>
+          </div>
         </div>
+        <p class="pcard-for">For analysts exploring Ukraine reconstruction opportunities.</p>
+        <p class="pcard-outcome">Explore documented damaged assets, estimated reconstruction costs and financing options in a non-profit atlas.</p>
+        <p class="pcard-access">Non-profit reconstruction atlas · No account required</p>
+        <a class="pcard-cta" href="https://uvidnova.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=uvidnova_featured_card" target="_blank" rel="noopener" data-product-id="uvidnova" data-placement="featured_card" data-link-role="cta">Explore reconstruction projects →</a>
       </div>
-      <p class="pcard-for">For founders planning a business or funding round.</p>
-      <p class="pcard-outcome">Create a five-year financial model with forecasts, cash runway and scenario comparisons.</p>
-      <p class="pcard-try">Try: Describe your business and review a free model preview.</p>
-      <p class="pcard-access">Free preview · Pro currently free during early access · No card required</p>
-      <a class="pcard-cta" href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_commercial_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="commercial_card" data-link-role="cta">Build a financial model →</a>
-    </div>
-    <div class="pcard-img">
-      <a href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_commercial_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="commercial_card" data-link-role="image">
-        <img src="assets/ModelUp.png" alt="ModelUp example output — financial model" width="640" height="480" loading="lazy">
-      </a>
-    </div>
-  </article>
+      <div class="pcard-img">
+        <a href="https://uvidnova.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=uvidnova_featured_card" target="_blank" rel="noopener" data-product-id="uvidnova" data-placement="featured_card" data-link-role="image">
+          <img src="assets/uVidNova.png" alt="uVidNova — reconstruction atlas view" width="640" height="480" loading="lazy">
+        </a>
+      </div>
+    </article>
+
+    <article class="pcard" id="modelup" style="--pc-accent:#14B8A6;--pc-soft:#CCFBF1;">
+      <div class="pcard-content">
+        <div class="pcard-hd">
+          <div class="pcard-lw">
+            <img class="logo-img" src="assets/logos/ModelUp.png" alt="ModelUp logo">
+            <span class="fb" style="display:none">MUP</span>
+          </div>
+          <div>
+            <div class="pcard-mr">
+              <span class="ticker mono">MUP</span>
+              <span class="pill early-access">EARLY ACCESS</span>
+              <span class="category mono">SAAS · FINANCIAL MODELING</span>
+            </div>
+            <div class="pcard-name"><a href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_featured_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="featured_card" data-link-role="title">ModelUp</a></div>
+          </div>
+        </div>
+        <p class="pcard-for">For founders planning a business or funding round.</p>
+        <p class="pcard-outcome">Create a five-year financial model with forecasts, cash runway and scenario comparisons.</p>
+        <p class="pcard-try">Try: Describe your business and review a free model preview.</p>
+        <p class="pcard-access">Free preview · Pro currently free during early access · No card required</p>
+        <a class="pcard-cta" href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_featured_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="featured_card" data-link-role="cta">Build a financial model →</a>
+      </div>
+      <div class="pcard-img">
+        <a href="https://modelups.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=modelup_featured_card" target="_blank" rel="noopener" data-product-id="modelup" data-placement="featured_card" data-link-role="image">
+          <img src="assets/ModelUp.png" alt="ModelUp example output — financial model" width="640" height="480" loading="lazy">
+        </a>
+      </div>
+    </article>
+
+  </div>
+</div>
+</div>
+
+<div class="ps-wrap">
+<div class="ps-inner">
+  <div class="ps-head">
+    <h2>TOOLS FOR FINANCIAL DECISIONS</h2>
+    <span class="meta">// 2 products</span>
+  </div>
 
   <article class="pcard" id="mortwise" style="--pc-accent:#3B82F6;--pc-soft:#DBEAFE;">
     <div class="pcard-content">
@@ -522,7 +627,7 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
         <div>
           <div class="pcard-mr">
             <span class="ticker mono">MWS</span>
-            <span class="pill live">LIVE</span>
+            <span class="pill freemium">FREEMIUM</span>
             <span class="category mono">CALCULATOR · REAL ESTATE</span>
           </div>
           <div class="pcard-name"><a href="https://mortwise.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=mortwise_commercial_card" target="_blank" rel="noopener" data-product-id="mortwise" data-placement="commercial_card" data-link-role="title">MortWise</a></div>
@@ -551,7 +656,7 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
         <div>
           <div class="pcard-mr">
             <span class="ticker mono">RSL</span>
-            <span class="pill live">LIVE</span>
+            <span class="pill freemium">FREEMIUM</span>
             <span class="category mono">CALCULATOR · CLEAN ENERGY</span>
           </div>
           <div class="pcard-name"><a href="https://roofsolars.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=roofsolar_commercial_card" target="_blank" rel="noopener" data-product-id="roofsolar" data-placement="commercial_card" data-link-role="title">RoofSolar</a></div>
@@ -588,38 +693,16 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
 <div class="ps-wrap">
 <div class="ps-inner">
   <div class="ps-head">
-    <h2>MORE FROM THE PORTFOLIO</h2>
-    <span class="meta">// 5 products</span>
+    <h2>MORE PRODUCTS</h2>
+    <span class="meta">// 4 products</span>
   </div>
   <div class="port-grid">
-
-    <article class="pcards" id="uvidnova" style="--pc-accent:#F59E0B;--pc-soft:#FEF3C7;">
-      <div class="pcards-body">
-        <div class="pcards-mr">
-          <span class="ticker mono">UVN</span>
-          <span class="pill live">LIVE</span>
-          <span class="badge-np">NON-PROFIT</span>
-        </div>
-        <div class="pcards-name">uVidNova</div>
-        <p class="pcards-for">For analysts exploring Ukraine reconstruction opportunities.</p>
-        <p class="pcards-outcome">Explore documented damaged assets, estimated reconstruction costs and financing options in a non-profit atlas.</p>
-      </div>
-      <div class="pcards-img">
-        <a href="https://uvidnova.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=uvidnova_portfolio_card" target="_blank" rel="noopener" data-product-id="uvidnova" data-placement="portfolio_card" data-link-role="image">
-          <img src="assets/uVidNova.png" alt="uVidNova — reconstruction atlas view" width="640" height="260" loading="lazy">
-        </a>
-      </div>
-      <div class="pcards-foot">
-        <span class="pcards-access">Non-profit reconstruction atlas</span>
-        <a class="pcards-cta" href="https://uvidnova.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=uvidnova_portfolio_card" target="_blank" rel="noopener" data-product-id="uvidnova" data-placement="portfolio_card" data-link-role="cta">Explore projects →</a>
-      </div>
-    </article>
 
     <article class="pcards" id="polymind" style="--pc-accent:#8B5CF6;--pc-soft:#EDE9FE;">
       <div class="pcards-body">
         <div class="pcards-mr">
           <span class="ticker mono">PMD</span>
-          <span class="pill live">LIVE</span>
+          <span class="pill freemium">FREEMIUM</span>
         </div>
         <div class="pcards-name">PolyMind</div>
         <p class="pcards-for">For prediction-market traders monitoring market activity.</p>
@@ -640,7 +723,7 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
       <div class="pcards-body">
         <div class="pcards-mr">
           <span class="ticker mono">DSH</span>
-          <span class="pill live">LIVE</span>
+          <span class="pill freemium">FREEMIUM</span>
         </div>
         <div class="pcards-name">DishRoll</div>
         <p class="pcards-for">For households planning meals around their tastes and budget.</p>
@@ -661,7 +744,7 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
       <div class="pcards-body">
         <div class="pcards-mr">
           <span class="ticker mono">SRT</span>
-          <span class="pill live">LIVE</span>
+          <span class="pill free-plan">FREE PLAN</span>
         </div>
         <div class="pcards-name">StoryRoute</div>
         <p class="pcards-for">For travellers and curious walkers exploring a place.</p>
@@ -682,20 +765,20 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
       <div class="pcards-body">
         <div class="pcards-mr">
           <span class="ticker mono">SPO</span>
-          <span class="pill live">LIVE</span>
+          <span class="pill archive">ARCHIVE · WC26 FINAL</span>
         </div>
         <div class="pcards-name">SpotOn WC26</div>
-        <p class="pcards-for">For football fans making World Cup 2026 predictions.</p>
-        <p class="pcards-outcome">Explore score predictions, knockout brackets and leaderboard features.</p>
+        <p class="pcards-for">World Cup 2026 prediction game — World Cup ended July 2026.</p>
+        <p class="pcards-outcome">See the final leaderboard and bracket results from the WC26 tournament.</p>
       </div>
       <div class="pcards-img">
         <a href="https://spoton-wc26.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=spoton_wc26_portfolio_card" target="_blank" rel="noopener" data-product-id="spoton_wc26" data-placement="portfolio_card" data-link-role="image">
-          <img src="assets/SpotOn.png" alt="SpotOn WC26 — bracket and prediction view" width="640" height="260" loading="lazy">
+          <img src="assets/SpotOn.png" alt="SpotOn WC26 — final bracket and leaderboard" width="640" height="260" loading="lazy">
         </a>
       </div>
       <div class="pcards-foot">
-        <span class="pcards-access">World Cup 2026 prediction game</span>
-        <a class="pcards-cta" href="https://spoton-wc26.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=spoton_wc26_portfolio_card" target="_blank" rel="noopener" data-product-id="spoton_wc26" data-placement="portfolio_card" data-link-role="cta">Explore predictions →</a>
+        <span class="pcards-access">Archived · WC26 final results</span>
+        <a class="pcards-cta" href="https://spoton-wc26.netlify.app?utm_source=asadov_stack&utm_medium=portfolio&utm_campaign=stack_tools&utm_content=spoton_wc26_portfolio_card" target="_blank" rel="noopener" data-product-id="spoton_wc26" data-placement="portfolio_card" data-link-role="cta">See final leaderboard →</a>
       </div>
     </article>
 
@@ -703,11 +786,34 @@ html[dir="rtl"] .card.small:hover .cta-link .arrow { transform: translateX(-4px)
 </div>
 </div>
 
+<section class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <h2>Work with me / Get in touch</h2>
+    <p class="sub">CFA charterholder · M&amp;A and structured finance · Financial Modeling World Cup #1 Europe, Top 3 Worldwide. Available for consulting and financial modelling engagements.</p>
+    <div class="contact-row">
+      <a class="contact-btn todo-ph" href="#" title="LinkedIn URL — TODO: add your LinkedIn profile URL">LinkedIn — TODO</a>
+      <a class="contact-btn" href="mailto:finmodelup@gmail.com">Email: finmodelup@gmail.com</a>
+      <a class="contact-btn todo-ph" href="#" title="Consulting enquiries URL or mailto — TODO">Consulting &amp; modelling enquiries — TODO</a>
+    </div>
+    <p class="contact-label">FINANCIAL MODELLING</p>
+    <div class="contact-row">
+      <a class="contact-btn" href="https://modeloop.net" target="_blank" rel="noopener">ModeLoop: courses &amp; models</a>
+      <a class="contact-btn todo-ph" href="#" title="Udemy course URL — TODO">Udemy course — TODO</a>
+      <a class="contact-btn todo-ph" href="#" title="YouTube channel URL (Mod3Loop) — TODO">YouTube: Mod3Loop — TODO</a>
+      <a class="contact-btn todo-ph" href="#" title="Podcast URL — TODO">Podcast — TODO</a>
+      <a class="contact-btn" href="https://www.eloquens.com/channel/samir-asadov-cfa" target="_blank" rel="noopener">Eloquens models</a>
+    </div>
+  </div>
+</section>
+
+<p class="footer-disclaimer">Personal projects. Not affiliated with, or endorsed by, any employer. Nothing here is financial, investment, mortgage, tax or legal advice.</p>
+
 <footer class="footer">
   <div class="who"><strong>Samir Asadov</strong> · CFA · M&amp;A · Structured Finance</div>
   <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
     <div class="credits mono">© 2026 · ASADOV STACK · NETLIFY</div>
     <a href="/privacy" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--dim);">PRIVACY POLICY</a>
+    <a href="/terms" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;color:var(--dim);">TERMS &amp; DISCLAIMER</a>
   </div>
 </footer>
 
@@ -1083,22 +1189,22 @@ id:{
 };
 
 const LANGS = {
-  en:{flag:"🇬🇧",label:"EN",dir:"ltr"},
-  uk:{flag:"🇺🇦",label:"UK",dir:"ltr"},
-  fr:{flag:"🇫🇷",label:"FR",dir:"ltr"},
-  es:{flag:"🇪🇸",label:"ES",dir:"ltr"},
-  de:{flag:"🇩🇪",label:"DE",dir:"ltr"},
-  pt:{flag:"🇵🇹",label:"PT",dir:"ltr"},
-  it:{flag:"🇮🇹",label:"IT",dir:"ltr"},
-  nl:{flag:"🇳🇱",label:"NL",dir:"ltr"},
-  tr:{flag:"🇹🇷",label:"TR",dir:"ltr"},
-  zh:{flag:"🇨🇳",label:"ZH",dir:"ltr"},
-  ar:{flag:"🇸🇦",label:"AR",dir:"rtl"},
-  hi:{flag:"🇮🇳",label:"HI",dir:"ltr"},
-  ru:{flag:"ru",label:"RU",dir:"ltr"},
-  bn:{flag:"🇧🇩",label:"BN",dir:"ltr"},
-  ja:{flag:"🇯🇵",label:"JA",dir:"ltr"},
-  id:{flag:"🇮🇩",label:"ID",dir:"ltr"}
+  en:{label:"EN",dir:"ltr"},
+  uk:{label:"UK",dir:"ltr"},
+  fr:{label:"FR",dir:"ltr"},
+  es:{label:"ES",dir:"ltr"},
+  de:{label:"DE",dir:"ltr"},
+  pt:{label:"PT",dir:"ltr"},
+  it:{label:"IT",dir:"ltr"},
+  nl:{label:"NL",dir:"ltr"},
+  tr:{label:"TR",dir:"ltr"},
+  zh:{label:"ZH",dir:"ltr"},
+  ar:{label:"AR",dir:"rtl"},
+  hi:{label:"HI",dir:"ltr"},
+  ru:{label:"RU",dir:"ltr"},
+  bn:{label:"BN",dir:"ltr"},
+  ja:{label:"JA",dir:"ltr"},
+  id:{label:"ID",dir:"ltr"}
 };
 
 function applyLang(code) {
@@ -1111,14 +1217,7 @@ function applyLang(code) {
     if (t[key] !== undefined) el.textContent = t[key];
   });
   // update btn
-  const isRu = code === 'ru';
-  document.getElementById('langFlag').textContent = isRu ? '' : meta.flag;
-  document.getElementById('langFlag').style.fontFamily = isRu ? 'monospace' : '';
-  document.getElementById('langFlag').style.fontSize = isRu ? '11px' : '';
-  document.getElementById('langFlag').style.fontWeight = isRu ? '700' : '';
-  document.getElementById('langFlag').style.color = isRu ? 'var(--dim)' : '';
-  document.getElementById('langFlag').textContent = isRu ? 'ru' : meta.flag;
-  document.getElementById('langLabel').textContent = meta.label;
+  document.getElementById('langBadge').textContent = meta.label;
   // active state
   document.querySelectorAll('.lang-option').forEach(o => {
     o.classList.toggle('active', o.dataset.lang === code);

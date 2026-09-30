@@ -1,4 +1,8 @@
-# AI Product Portfolio — Portfolio Terminal
+# Asadov Stack
+
+> **Do not use a Russian flag (🇷🇺) anywhere in the UI.** Russian is available as a language and is displayed with the text badge "RU" only. This applies to the language switcher, any flag-icon libraries, SVG/PNG flag assets, and any lookup keyed on "ru" or "RU".
+
+
 
 Single-page site. Drop this folder onto Netlify (Netlify Drop: https://app.netlify.com/drop)
 or run `netlify deploy --dir=. --prod` after `npm install -g netlify-cli`.

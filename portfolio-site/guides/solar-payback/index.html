@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>When do solar panels pay for themselves? The payback maths, honestly | Asadov Stack</title><meta name="description" content="Solar payback explained: system cost, generation, self-consumption, tariffs and battery economics."><link rel="canonical" href="https://asadov-stack.netlify.app/guides/solar-payback/"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #FFFFFF; --panel: #F8FAFC; --line: #E5E7EB;
+  --text: #0F172A; --muted: #475569; --dim: #94A3B8;
+  --accent: #14B8A6; --accent-strong: #0D9488;
+  --green: #10B981;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; }
+a { color: var(--accent-strong); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topbar {
+  border-bottom: 1px solid var(--line); padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(12px); background-color: rgba(255,255,255,0.85);
+}
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
+.brand-mark {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  color: #FFFFFF; font-size: 16px; flex-shrink: 0;
+}
+.brand-name { font-weight: 600; font-size: 15px; letter-spacing: -0.2px; }
+.brand-role { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.back-link { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.back-link:hover { color: var(--accent-strong); text-decoration: none; }
+
+.prose {
+  max-width: 760px; margin: 0 auto; padding: 56px 28px 80px;
+}
+.prose .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; font-weight: 600;
+  color: var(--accent-strong); margin-bottom: 12px;
+}
+.prose h1 {
+  font-size: 40px; font-weight: 700; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 8px;
+}
+.prose .effective {
+  color: var(--muted); font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 40px; padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.prose h2 {
+  font-size: 18px; font-weight: 700; letter-spacing: -0.2px;
+  margin-top: 40px; margin-bottom: 12px; color: var(--text);
+}
+.prose p {
+  font-size: 15px; line-height: 1.75; color: #334155;
+  margin-bottom: 14px;
+}
+.prose ul {
+  margin: 0 0 14px 20px;
+}
+.prose ul li {
+  font-size: 15px; line-height: 1.75; color: #334155;
+  margin-bottom: 6px;
+}
+.prose strong { color: var(--text); }
+
+.footer {
+  padding: 32px 28px 40px; max-width: 1200px; margin: 0 auto;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer .who { color: var(--muted); font-size: 13px; }
+.footer .who strong { color: var(--text); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; }
+.footer-links a:hover { color: var(--accent-strong); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .prose { padding: 36px 20px 60px; }
+  .prose h1 { font-size: 30px; }
+  .topbar { padding: 12px 20px; }
+  .brand-role { display: none; }
+}
+
+.prose ol {margin:0 0 18px 22px;} .prose li {font-size:15px;line-height:1.75;color:#334155;margin-bottom:8px;}
+.prose a {text-decoration:underline;} .intro{font-size:18px!important;} .guide-card{border:1px solid var(--line);border-radius:12px;padding:24px;margin:22px 0;background:var(--panel);} .guide-card h2{margin-top:0;} .guide-card a{font-weight:600;} .assumptions{background:var(--panel);border-left:3px solid var(--accent);padding:16px;}
+</style></head><body><header class="topbar"><a class="brand" href="/"><div class="brand-mark">SA</div><div><div class="brand-name">Asadov Stack</div><div class="brand-role">Practical tools for financial decisions</div></div></a><a class="back-link" href="/guides/">Guides</a></header><main class="prose"><div class="eyebrow">PRACTICAL GUIDES</div><h1>When do solar panels pay for themselves? The payback maths, honestly</h1>
+<p>Simple payback is the number of years for estimated bill savings and export income to match the upfront cost. It is not a full profit measure: financing, maintenance, replacements, degradation and tariff changes also matter. There is no single payback range that fits every Irish or UK home. Start with five numbers, then test less favourable assumptions.</p>
+<h2>The five numbers that decide your payback</h2>
+<ol>
+<li><strong>System cost after grants.</strong> Use written installer quotes, less any grant you are eligible for. SEAI lists a maximum domestic solar PV grant of €1,800 in 2026. UK zero-rate VAT currently applies to qualifying installed energy-saving materials until 31 March 2027. Eligibility and installation scope matter; check the official rules before relying on relief.</li>
+<li><strong>Annual generation.</strong> Use a location- and roof-specific generation estimate. Orientation, shading and system size matter. The 3,400 kWh used below is an illustration, not a promise for a particular roof.</li>
+<li><strong>Self-consumption share.</strong> Electricity you use yourself is worth the full retail price. Electricity you export earns the agreed export tariff. Compare it with the retail price rather than assume a fixed gap. The share you use directly is the single biggest lever you control.</li>
+<li><strong>Your electricity price.</strong> At €0.35/kWh, every self-consumed unit saves 35 cents. At €0.25, it saves 25. Higher prices shorten payback.</li>
+<li><strong>Export tariff.</strong> What your supplier pays for exported electricity. Check the rate, eligibility and contract terms directly with the supplier. The €0.20/kWh below is an illustrative assumption, not a current offer.</li>
+</ol>
+<h2>A worked example</h2>
+<p>Illustrative example: a 4 kWp system in Ireland. Assume constant tariffs and generation, with no financing costs, maintenance, replacement costs or panel degradation in this simple payback calculation.</p>
+<ul>
+<li>Cost after grant: €8,500</li>
+<li>Annual generation: 3,400 kWh</li>
+<li>Self-consumption: 60% at €0.35/kWh = €714 saved</li>
+<li>Export: 40% at €0.20/kWh = €272 earned</li>
+<li>Total first-year benefit: about €986</li>
+</ul>
+<p>Simple payback: €8,500 / €986 = about 8.6 years. This simple result excludes future replacement and maintenance costs, degradation and tariff changes. Energy Saving Trust says panels should last 25 years or more, but an inverter may need replacing after around 12 years. Lifespan is not a blanket 25-year warranty: check each product and performance warranty in the installer’s quote.</p>
+<p>Move the self-consumption from 60% to 80% (run the dishwasher, washing machine and EV charging in daylight) and the annual benefit rises to about €1,088, pulling payback under 8 years. Drop it to 40% because the house is empty all day, and the annual benefit is €884 and simple payback is about 9.6 years.</p>
+<h2>What a battery changes</h2>
+<p>A battery can shift generated electricity to times when you need it, but adds cost, losses and possible replacement costs. Its value depends on your usage, capacity, tariffs and export income you give up. Ask for quotes and compare scenarios with and without storage; it does not automatically shorten payback.</p>
+<h2>What makes payback longer</h2>
+<ul>
+<li>Less favourable roof orientation or shading reducing generation</li>
+<li>A household out all day with no battery, exporting most of what it generates</li>
+<li>Financing costs, if you borrow to fund the system</li>
+<li>Panel degradation, maintenance and inverter or battery replacement costs</li>
+</ul>
+<h2>What makes it shorter</h2>
+<ul>
+<li>High electricity prices, which raise the value of every self-consumed unit</li>
+<li>Grants and VAT relief, which cut the upfront number directly</li>
+<li>An EV or heat pump, if its usage overlaps with generation</li>
+<li>A suitable time-of-use tariff, if storage savings exceed the extra costs and losses</li>
+</ul>
+<h2>Run the maths on your actual roof</h2>
+<p>An average cannot settle your own payback. Your payback depends on your roof's orientation and shading, your tariff, your consumption pattern and your country's grants. I built RoofSolar to do this properly: try the calculator with your location, costs and usage assumptions. Compare its estimates with an installer’s roof assessment and written quote; outputs are not guaranteed savings.</p>
+<p><a href="https://roofsolars.netlify.app/?utm_source=hub_guides&amp;utm_medium=guide&amp;utm_campaign=seo_guides">Get your free RoofSolar analysis</a></p>
+<h2>Common questions</h2>
+<p><strong>Is solar still worth it without grants?</strong>
+It can be, but removing a grant raises your upfront cost. Recalculate using the quote without the grant and check scheme timing and eligibility before committing.</p>
+<p><strong>Do panels work in Ireland and the UK?</strong>
+Panels can generate electricity on cloudy days. The useful output still depends on location, roof conditions and system design. Your tariffs and usage determine the saving.</p>
+<p><strong>What happens after 25 years?</strong>
+There is no universal expiry or warranty date. Energy Saving Trust says panels should last 25 years or more, while other components can need replacing sooner. Inspect the supplier’s product and performance warranties.</p>
+<p><strong>Should I wait for prices to fall further?</strong>
+Future equipment, installation prices and tariffs are uncertain. Compare current quotes with your budget and expected savings rather than assume prices will only move one way.</p>
+<p><em>This guide is general information, not financial advice. Quotes and grant rules for your own home and country control the real numbers.</em></p>
+<h2>Sources and assumptions</h2>
+<p>Checked 30 September 2026. The €8,500 cost, 3,400 kWh generation and €0.35/€0.20 tariffs are illustrative, not current quotes or supplier offers. Simple payback excludes financing, maintenance, replacement, degradation and changes in tariffs.</p>
+<ul>
+<li><a href="https://energysavingtrust.org.uk/advice/solar-panels/">Energy Saving Trust: costs, savings, roof suitability and component lifespan</a></li>
+<li><a href="https://www.seai.ie/grants/home-energy-grants/individual-grants/solar-electricity-grant">SEAI: domestic solar electricity grant and eligibility</a></li>
+<li><a href="https://www.gov.uk/guidance/vat-on-energy-saving-materials-and-heating-equipment-notice-7086">HMRC: qualifying energy-saving installations and VAT relief</a></li>
+</ul></main><footer class="footer"><div class="who"><strong>Samir Asadov</strong> · CFA · M&amp;A · Structured Finance</div><div class="footer-links"><a href="/">TOOLS</a><a href="/guides/">GUIDES</a><a href="/privacy">PRIVACY</a><a href="/terms">TERMS</a></div></footer></body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mortgage overpayment: how much interest you actually save | Asadov Stack</title><meta name="description" content="How mortgage overpayments affect interest and repayment time, with a worked example and MortWise calculator."><link rel="canonical" href="https://asadov-stack.netlify.app/guides/mortgage-overpayment/"><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #FFFFFF; --panel: #F8FAFC; --line: #E5E7EB;
+  --text: #0F172A; --muted: #475569; --dim: #94A3B8;
+  --accent: #14B8A6; --accent-strong: #0D9488;
+  --green: #10B981;
+}
+html, body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+body { min-height: 100vh; }
+a { color: var(--accent-strong); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.topbar {
+  border-bottom: 1px solid var(--line); padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; position: sticky; top: 0; z-index: 50;
+  backdrop-filter: blur(12px); background-color: rgba(255,255,255,0.85);
+}
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
+.brand-mark {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  color: #FFFFFF; font-size: 16px; flex-shrink: 0;
+}
+.brand-name { font-weight: 600; font-size: 15px; letter-spacing: -0.2px; }
+.brand-role { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.back-link { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.back-link:hover { color: var(--accent-strong); text-decoration: none; }
+
+.prose {
+  max-width: 760px; margin: 0 auto; padding: 56px 28px 80px;
+}
+.prose .eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; font-weight: 600;
+  color: var(--accent-strong); margin-bottom: 12px;
+}
+.prose h1 {
+  font-size: 40px; font-weight: 700; letter-spacing: -1px;
+  line-height: 1.1; margin-bottom: 8px;
+}
+.prose .effective {
+  color: var(--muted); font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 40px; padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.prose h2 {
+  font-size: 18px; font-weight: 700; letter-spacing: -0.2px;
+  margin-top: 40px; margin-bottom: 12px; color: var(--text);
+}
+.prose p {
+  font-size: 15px; line-height: 1.75; color: #334155;
+  margin-bottom: 14px;
+}
+.prose ul {
+  margin: 0 0 14px 20px;
+}
+.prose ul li {
+  font-size: 15px; line-height: 1.75; color: #334155;
+  margin-bottom: 6px;
+}
+.prose strong { color: var(--text); }
+
+.footer {
+  padding: 32px 28px 40px; max-width: 1200px; margin: 0 auto;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer .who { color: var(--muted); font-size: 13px; }
+.footer .who strong { color: var(--text); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { color: var(--dim); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1px; }
+.footer-links a:hover { color: var(--accent-strong); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .prose { padding: 36px 20px 60px; }
+  .prose h1 { font-size: 30px; }
+  .topbar { padding: 12px 20px; }
+  .brand-role { display: none; }
+}
+
+.prose ol {margin:0 0 18px 22px;} .prose li {font-size:15px;line-height:1.75;color:#334155;margin-bottom:8px;}
+.prose a {text-decoration:underline;} .intro{font-size:18px!important;} .guide-card{border:1px solid var(--line);border-radius:12px;padding:24px;margin:22px 0;background:var(--panel);} .guide-card h2{margin-top:0;} .guide-card a{font-weight:600;} .assumptions{background:var(--panel);border-left:3px solid var(--accent);padding:16px;}
+</style></head><body><header class="topbar"><a class="brand" href="/"><div class="brand-mark">SA</div><div><div class="brand-name">Asadov Stack</div><div class="brand-role">Practical tools for financial decisions</div></div></a><a class="back-link" href="/guides/">Guides</a></header><main class="prose"><div class="eyebrow">PRACTICAL GUIDES</div><h1>Mortgage overpayment: how much interest you actually save</h1>
+<p>Overpaying a repayment mortgage can reduce the balance and future interest charges. Whether it is a good use of spare cash depends on your lender’s charges, the interest rate, savings alternatives and how much accessible cash you need. This guide shows the mechanics, a worked example and what to check before you start.</p>
+<h2>How an overpayment saves you money</h2>
+<p>A mortgage payment has two parts: interest on the outstanding balance, and principal repayment. The split depends on your rate and remaining term. If your lender applies the extra payment to principal, the balance falls faster. Check how your lender applies overpayments and any fees first.</p>
+<p>If your normal repayment and interest rate stay unchanged, a smaller balance means less interest next month and more of each payment goes to principal. Regular overpayments can shorten the term under those assumptions.</p>
+<h2>A worked example</h2>
+<p>Illustrative example: a €300,000 repayment mortgage at a constant 4% annual rate over 30 years, with monthly interest and repayments. Assume no fees or early repayment charges, and keep the standard repayment unchanged when overpaying.</p>
+<ul>
+<li>Standard monthly payment: about €1,432</li>
+<li>Total repaid over 30 years: about €515,600, of which €215,600 is interest</li>
+</ul>
+<p>Now add a €200 monthly overpayment from day one:</p>
+<ul>
+<li>New monthly payment: €1,632</li>
+<li>Mortgage cleared in about 23 years and 10 months, roughly 6 years early</li>
+<li>Total interest: about €165,197</li>
+</ul>
+<p>That €200 a month saves about €50,412 in interest. A €100 monthly overpayment saves about €28,747. The savings do not scale linearly.</p>
+<p>A lump sum works the same way. A single €10,000 overpayment immediately after the 60th monthly payment saves about €16,358 in interest under the same constant-rate assumptions, with the standard monthly repayment unchanged.</p>
+<h2>Monthly overpayment or lump sum?</h2>
+<p>Timing matters: paying the same amount earlier generally reduces more interest, assuming no extra charges. In practice:</p>
+<ul>
+<li>Monthly overpayments suit steady savers and build the habit. Ask your lender how to set them up, change them or stop them.</li>
+<li>Lump sums suit irregular income, bonuses or the end of a fixed period, when your lender’s charges or allowances may change. Check your deal rather than assume there is no limit.</li>
+</ul>
+<p>If you can only do one, do the one you will actually stick to.</p>
+<h2>Check before you overpay</h2>
+<ol>
+<li>Early repayment charges. In the UK, many mortgages allow about 10% a year without a fee, but the basis and allowance vary by deal. Irish and other mortgages can have different rules. Charges can outweigh savings. Check your mortgage terms first.</li>
+<li>Expensive debt first. Compare the rates on your debts. Repaying higher-interest borrowing may save more than overpaying the mortgage, after allowing for fees and your circumstances.</li>
+<li>Emergency fund. Ordinary overpayments may not be accessible again without new borrowing. Flexible or offset mortgages can differ. Keep an emergency cash buffer suited to your circumstances.</li>
+<li>Pension and employer matching. Check the contribution your employer offers and the pension rules before redirecting cash away from your pension. The benefit depends on the matching rate, tax treatment and access restrictions.</li>
+</ol>
+<h2>Overpay or invest?</h2>
+<p>With no fees and an unchanged rate, reducing mortgage debt avoids interest at that rate. This is not a blanket promise of a tax-free or risk-free return: charges, rate changes, tax treatment and losing access to cash matter. Compare available savings rates after tax, pension benefits and your need for cash. Investment returns are uncertain. Neither overpaying nor investing is right for everyone.</p>
+<h2>Run your own numbers</h2>
+<p>Every mortgage is different: rate, remaining term, balance and ERC rules all move the result. I built MortWise for exactly this kind of question. Use the calculator with your own assumptions, then confirm the result and repayment rules with your lender. Calculator outputs are estimates, not a lender quote.</p>
+<p><a href="https://mortwise.netlify.app/?utm_source=hub_guides&amp;utm_medium=guide&amp;utm_campaign=seo_guides">Try the MortWise overpayment simulator</a></p>
+<h2>Common questions</h2>
+<p><strong>Is it better to overpay monthly or yearly?</strong>
+For the same annual amount, paying earlier generally avoids more interest, assuming no extra charges. Your lender’s interest calculation and fees can affect the result.</p>
+<p><strong>Do overpayments reduce my monthly payment or the term?</strong>
+Ask your lender what options it offers. Keeping the normal repayment unchanged generally clears the balance sooner; reducing the payment instead frees cash each month. Compare both outcomes before choosing.</p>
+<p><strong>Can I get overpayments back?</strong>
+Generally no, unless your mortgage has an offset or drawdown facility. Treat overpayments as locked in.</p>
+<p><strong>Should I overpay during a fixed period?</strong>
+Check the penalty-free allowance and any early repayment charge. Compare the charge with the interest saving before deciding whether to overpay now or later.</p>
+<p><em>This guide is general information, not financial advice. Your mortgage terms control what you can overpay and at what cost.</em></p>
+<h2>Sources and assumptions</h2>
+<p>Checked 30 September 2026. The figures above are calculated illustrations, not lender quotes. They assume monthly interest at 4%/12, repayments at month-end, no fees and an unchanged standard repayment. Real lenders may calculate interest differently.</p>
+<ul>
+<li><a href="https://www.moneyhelper.org.uk/en/homes/buying-a-home/mortgage-interest-rate-options">MoneyHelper: mortgage interest-rate options, overpayment allowances and flexible mortgages</a></li>
+</ul></main><footer class="footer"><div class="who"><strong>Samir Asadov</strong> · CFA · M&amp;A · Structured Finance</div><div class="footer-links"><a href="/">TOOLS</a><a href="/guides/">GUIDES</a><a href="/privacy">PRIVACY</a><a href="/terms">TERMS</a></div></footer></body></html>
